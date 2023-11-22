@@ -3,7 +3,7 @@ function setup() {
 }
 
 function draw() {
-  background(235, 255, 160);
+  background('#d1d6e6');
 
   
   const div = pow(2, floor((frameCount % 160) / 40)) * 8;
