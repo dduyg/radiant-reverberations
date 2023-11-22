@@ -6,7 +6,7 @@ function draw() {
   background('#d1d6e6');
 
   
-  const div = pow(2, floor((frameCount % 160) / 40)) * 8;
+  const div = pow(2, floor((frameCount % 180) / 40)) * 8;
   
   const sampleDelta = PI / div;
   const nrSampes = 0.0;
