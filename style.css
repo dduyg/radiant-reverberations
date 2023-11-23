@@ -1,1 +1,26 @@
 body {margin:0px; padding:0px; overflow: hidden}
+
+#infoButton {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+}
+
+#infoDropdown {
+  display: none;
+  position: fixed;
+  top: 60px;
+  right: 20px;
+  background-color: #f9f9f9;
+  border: 1px solid #ddd;
+  padding: 15px;
+  max-width: 300px;
+}
+
+.close {
+  position: absolute;
+  top: 0;
+  right: 0;
+  padding: 10px;
+  cursor: pointer;
+}
