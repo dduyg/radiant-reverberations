@@ -33,7 +33,7 @@ function draw() {
   }
 
   // Increase the vertical separation between the two spheres
-  const yOffset = 150; // Adjust this value for the desired vertical separation
+  const yOffset = 170; // Adjust this value for the desired vertical separation
 
   // Draw the vertically flipped sphere below and a lot lower than the first one
   for (let phi = 0.0; phi < 2.0 * PI; phi += sampleDelta) {
