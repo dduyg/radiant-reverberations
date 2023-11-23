@@ -1,4 +1,4 @@
-# Irradiance Sampling
+## Irradiance Sampling
 
 [codepen](https://codepen.io/kynd/pen/mdGvzgq)
 
