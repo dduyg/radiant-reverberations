@@ -10,7 +10,6 @@ h3,
 h4,
 h5 {
  font-weight: normal;
- color: black;
  letter-spacing: 1px;
 }
 
@@ -58,7 +57,7 @@ h5 {
 
 #fixedFooter {
   position: fixed;
-  bottom: 90px;
+  bottom: 50px;
   width: 100%;
   background-color: transparent;
   color: #01af52;
