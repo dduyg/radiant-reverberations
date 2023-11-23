@@ -1,9 +1,33 @@
-body {margin:0px; padding:0px; overflow: hidden}
+body {
+  margin:0px; 
+  padding:0px; 
+  overflow: hidden;
+}
 
 #infoButton {
   position: fixed;
   top: 20px;
   right: 20px;
+  font-family: 'Roboto Serif', serif;
+  font-size: 16px;
+  font-weight: bold;
+  letter-spacing: 3px;
+  background: transparent;
+  margin: 0 8px;
+  padding: 6px 12px;
+  color: black;
+  cursor: pointer;
+  border: 2px solid black;
+  border-radius: 50%;
+}
+
+#infoButton.active {
+  background: white;
+}
+
+#infoButton:hover {
+  text-shadow: 0 0px 10px, 0 0 0px, 0 0 0.5em white;
+  box-shadow: 0 0px 100px, 0 0 0px, 0 0 0.5em white;
 }
 
 #infoDropdown {
