@@ -45,3 +45,29 @@ function drawLabel(x, y, label, align = CENTER) {
   text(label, x, y);
   pop();
 }
+
+// Your existing code...
+
+function openInfoWindow() {
+  const infoWindow = window.open("", "Project Information", "width=600, height=400");
+  infoWindow.document.write(`
+    <html>
+      <head>
+        <title>Project Information</title>
+        <style>
+          body { font-family: Arial, sans-serif; }
+        </style>
+      </head>
+      <body>
+        <h1>Irradiance Sampling</h1>
+        <p>
+          It's a technique in computer graphics used to simulate realistic lighting in virtual environments. 
+          In this context, the script represents the sampling of incoming light on the surfaces of two spheres. 
+          The number of samples and their distribution affect the visual outcome, creating a dynamic pattern 
+          that simulates how light interacts with surfaces in a 3D space. This kind of visualization is often used 
+          in computer graphics and game development to achieve more realistic lighting effects.
+        </p>
+      </body>
+    </html>
+  `);
+}
