@@ -30,15 +30,16 @@ function draw() {
     }
   }
 
-  // Draw the vertically flipped sphere below the first one
+  // Draw the vertically flipped sphere below and a bit lower than the first one
+  const yOffset = 30; // Adjust this value for the desired vertical separation
   for (let phi = 0.0; phi < 2.0 * PI; phi += sampleDelta) {
     for (let theta = 0.0; theta < 0.5 * PI; theta += sampleDelta) {
       const x = sin(theta) * cos(phi);
       const y = sin(theta) * sin(phi);
       const z = cos(theta);
 
-      // Adjusted the y-coordinate calculation for the flipped sphere
-      circle(x * radius + cx, cy + (z + y * 0.25) * radius + radius, 2);
+      // Adjusted the y-coordinate calculation for the flipped and lowered sphere
+      circle(x * radius + cx, cy + radius + yOffset - (z + y * 0.25) * radius, 2);
       nSamples++;
     }
   }
