@@ -12,7 +12,13 @@
      <link href="https://fonts.googleapis.com/css2?family=Roboto+Serif:opsz,wght@8..144,300&display=swap" rel="stylesheet">
   </head>
   <body>
-      <button id="infoButton" onclick="openInfoWindow()" style="position: fixed; top: 20px; right: 20px;">❔️</button>
+      <button id="infoButton" onclick="toggleInfo()">Show Info</button>
+      <div id="infoDropdown" class="dropdown-content">
+         <span onclick="closeInfo()" class="close">&times;</span>
+         <h2>Irradiance Sampling</h2>
+         <p>It's a technique in computer graphics used to simulate realistic lighting in virtual environments...</p>
+      </div>
+  
       <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.6.0/p5.min.js" integrity="sha512-3RlxD1bW34eFKPwj9gUXEWtdSMC59QqIqHnD8O/NoTwSJhgxRizdcFVQhUMFyTp5RwLTDL0Lbcqtl8b7bFAzog==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
       <script src="./script.js"></script> 
   </body>
