@@ -26,8 +26,4 @@ Now, what is Irradiance Sampling?
 
 <hr>
 
-"Radiant Reverberations" is a captivating and evocative codename for your project. It conveys a sense of dynamic movement, light interaction, and a visually resonant experience. It aligns well with the visual representation of irradiance sampling and the spheres in your project.
-
-<hr>
-
 "Radiant Reverberations" is a fantastic codename for your project. It combines the concepts of radiance (related to light and illumination) with reverberations (suggesting dynamic, echoing effects). It encapsulates the essence of the project, conveying both the visual and dynamic aspects of the irradiance sampling visualization you've created.
