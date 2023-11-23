@@ -8,10 +8,9 @@ body {
   position: fixed;
   top: 20px;
   right: 20px;
-  font-family: 'Roboto Serif', serif;
+  font-family: 'Inconsolata', monospace;
   font-size: 16px;
   font-weight: bold;
-  letter-spacing: 3px;
   background: transparent;
   margin: 0 8px;
   padding: 6px 12px;
@@ -20,11 +19,9 @@ body {
   border: 2px solid black;
   border-radius: 50%;
 }
-
 #infoButton.active {
   background: white;
 }
-
 #infoButton:hover {
   text-shadow: 0 0px 10px, 0 0 0px, 0 0 0.5em white;
   box-shadow: 0 0px 100px, 0 0 0px, 0 0 0.5em white;
@@ -36,9 +33,11 @@ body {
   top: 60px;
   right: 20px;
   background-color: #f9f9f9;
-  border: 1px solid #ddd;
+  border: 1px solid black;
   padding: 15px;
   max-width: 300px;
+  color: #01af52;
+  font-family: 'Roboto Serif', serif;
 }
 
 .close {
