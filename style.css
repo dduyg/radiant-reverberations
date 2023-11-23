@@ -16,11 +16,8 @@ body {
   padding: 6px 12px;
   color: #01af52;
   cursor: pointer;
-  border: 2px solid black;
+  border: 2px solid #01af52;
   border-radius: 50%;
-}
-#infoButton.active {
-  background: black;
 }
 #infoButton:hover {
   text-shadow: 0 0px 10px, 0 0 0px, 0 0 0.5em white;
@@ -46,11 +43,12 @@ body {
   right: 0;
   padding: 10px;
   cursor: pointer;
+  font-size: 18px;
 }
 
 #fixedFooter {
   position: fixed;
-  bottom: 0;
+  bottom: 20;
   left: 0;
   width: 100%;
   background-color: transparent;
@@ -58,4 +56,5 @@ body {
   font-family: 'Roboto Serif', serif;
   padding: 10px;
   text-align: center;
+  letter-spacing: 1px
 }
