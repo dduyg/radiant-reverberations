@@ -5,7 +5,7 @@ function setup() {
 function draw() {
   background('#d1d6e6');
 
-  const div = pow(2, floor((frameCount % 180) / 40)) * 8;
+  const div = pow(2, floor((frameCount % 190) / 40)) * 8;
 
   const sampleDelta = PI / div;
   let nSamples = 0;
