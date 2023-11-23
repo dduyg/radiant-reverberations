@@ -22,9 +22,13 @@ function draw() {
       const y = sin(theta) * sin(phi);
       const z = cos(theta);
 
-      // Adjusted the y-coordinate calculation
+      // Adjusted the y-coordinate calculation for the first sphere
       circle(x * radius + cx, cy + (z - y * 0.25) * radius, 2);
-      nSamples++;
+
+      // Adjusted the y-coordinate calculation for the vertically flipped sphere
+      circle(x * radius + cx, cy + (z + y * 0.25) * radius, 2);
+      
+      nSamples += 2; // Counting both spheres
     }
   }
 
