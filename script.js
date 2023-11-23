@@ -14,7 +14,7 @@ function draw() {
   const cx = width / 2;
   
   // Move the center of the first sphere higher
-  const cy = height / 2 - radius * 0.8;
+  const cy = height / 2 - radius * 0.7; // Adjust this value for the desired height
 
   noStroke();
   fill(0);
@@ -33,7 +33,7 @@ function draw() {
   }
 
   // Increase the vertical separation between the two spheres
-  const yOffset = 100; // Adjust this value for the desired vertical separation
+  const yOffset = 150; // Adjust this value for the desired vertical separation
 
   // Draw the vertically flipped sphere below and a lot lower than the first one
   for (let phi = 0.0; phi < 2.0 * PI; phi += sampleDelta) {
