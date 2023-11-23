@@ -14,7 +14,7 @@ function draw() {
   const cx = width / 2;
   
   // Move the center of the first sphere higher
-  const cy = height / 2 - radius * 0.7; // Adjust this value for the desired height
+  const cy = height / 2 - radius * 0.8; // Adjust this value for the desired height
 
   noStroke();
   fill(0);
