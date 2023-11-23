@@ -39,7 +39,7 @@ function drawLabel(x, y, label, align = CENTER) {
   strokeWeight(0);
   textFont("monospace");
   textSize(15);
-  textAlign(center);
+  textAlign(align);
   if (align == LEFT) {x += 6;}
   if (align == RIGHT) {x -= 6;}
   text(label, x, y);
