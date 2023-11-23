@@ -38,7 +38,7 @@ function draw() {
       const z = cos(theta);
 
       // Adjusted the y-coordinate calculation for the flipped sphere
-      circle(x * radius + cx, cy + (z + y * 0.25) * radius, 2);
+      circle(x * radius + cx, cy + (z + y * 0.25) * radius + radius, 2);
       nSamples++;
     }
   }
