@@ -16,19 +16,30 @@ function draw() {
 
   noStroke();
   fill(0);
+
+  // Draw the first sphere
   for (let phi = 0.0; phi < 2.0 * PI; phi += sampleDelta) {
     for (let theta = 0.0; theta < 0.5 * PI; theta += sampleDelta) {
       const x = sin(theta) * cos(phi);
       const y = sin(theta) * sin(phi);
       const z = cos(theta);
 
-      // Adjusted the y-coordinate calculation for the first sphere
+      // Adjusted the y-coordinate calculation
       circle(x * radius + cx, cy + (z - y * 0.25) * radius, 2);
+      nSamples++;
+    }
+  }
 
-      // Adjusted the y-coordinate calculation for the vertically flipped sphere
+  // Draw the vertically flipped sphere below the first one
+  for (let phi = 0.0; phi < 2.0 * PI; phi += sampleDelta) {
+    for (let theta = 0.0; theta < 0.5 * PI; theta += sampleDelta) {
+      const x = sin(theta) * cos(phi);
+      const y = sin(theta) * sin(phi);
+      const z = cos(theta);
+
+      // Adjusted the y-coordinate calculation for the flipped sphere
       circle(x * radius + cx, cy + (z + y * 0.25) * radius, 2);
-      
-      nSamples += 2; // Counting both spheres
+      nSamples++;
     }
   }
 
