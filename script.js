@@ -12,7 +12,9 @@ function draw() {
 
   const radius = min(width, height) * 0.4;
   const cx = width / 2;
-  const cy = height / 2 - radius * 0.5; // Adjusted to move the center above the middle
+  
+  // Move the center of the first sphere higher
+  const cy = height / 2 - radius * 0.8;
 
   noStroke();
   fill(0);
@@ -30,21 +32,18 @@ function draw() {
     }
   }
 
-  // Draw the vertically flipped sphere below and lower than the first one
-  const yOffsetFirst = 50; // Adjust this value for the desired vertical separation for the first sphere
-  const yOffsetSecond = 100; // Adjust this value for the desired vertical separation for the second sphere
+  // Increase the vertical separation between the two spheres
+  const yOffset = 100; // Adjust this value for the desired vertical separation
+
+  // Draw the vertically flipped sphere below and a lot lower than the first one
   for (let phi = 0.0; phi < 2.0 * PI; phi += sampleDelta) {
     for (let theta = 0.0; theta < 0.5 * PI; theta += sampleDelta) {
       const x = sin(theta) * cos(phi);
       const y = sin(theta) * sin(phi);
       const z = cos(theta);
 
-      // Adjusted the y-coordinate calculation for the first sphere
-      circle(x * radius + cx, cy - yOffsetFirst + (z - y * 0.25) * radius, 2);
-      nSamples++;
-
-      // Adjusted the y-coordinate calculation for the second sphere
-      circle(x * radius + cx, cy + yOffsetSecond + (z + y * 0.25) * radius, 2);
+      // Adjusted the y-coordinate calculation for the flipped and lowered sphere
+      circle(x * radius + cx, cy + radius + yOffset - (z + y * 0.25) * radius, 2);
       nSamples++;
     }
   }
