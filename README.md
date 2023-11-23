@@ -1,6 +1,6 @@
 # Irradiance Sampling
 
-[https://codepen.io/kynd/pen/mdGvzgq](https://codepen.io/kynd/pen/mdGvzgq)
+[codepen](https://codepen.io/kynd/pen/mdGvzgq)
 
 This script uses the p5.js library to visually represent irradiance sampling. Here's a breakdown:
 
@@ -33,3 +33,15 @@ Now, what is Irradiance Sampling?
 Irradiance sampling in computer graphics refers to the process of estimating the amount of light arriving at a particular point on a surface within a scene. This is crucial for realistic rendering, as it contributes to the accurate portrayal of lighting effects. Instead of calculating the exact irradiance at every point, which can be computationally intensive, sampling involves taking representative points and averaging their irradiance values. This helps strike a balance between computational efficiency and visual fidelity.
 
 In simpler terms, imagine you want to know how much light is hitting a pixel on a virtual object. Rather than meticulously calculating every photon's contribution, irradiance sampling allows the renderer to approximate this by analyzing a subset of relevant light interactions. This approach is fundamental in creating visually appealing and computationally feasible graphics in various applications, from video games to architectural visualization.
+
+<hr>
+
+Irradiance sampling is a technique used in computer graphics to simulate realistic lighting in virtual environments. It involves sampling the incoming light at different points on a surface to calculate the total illumination. It's crucial for creating visually accurate scenes in things like CGI or game development.
+
+<hr>
+
+This CodePen project is a visualization of irradiance sampling using the p5.js library. It creates a dynamic pattern of circles on a canvas to represent the sampling of incoming light on a surface. The number of samples increases as the animation progresses.
+
+The `setup` function initializes the canvas, and the `draw` function generates the pattern by sampling points on a sphere. The `drawLabel` function is used to display information about the number of samples.
+
+In summary, it's a visual representation of irradiance sampling, a concept in computer graphics related to simulating realistic lighting. The code combines mathematical calculations with p5.js for rendering.
