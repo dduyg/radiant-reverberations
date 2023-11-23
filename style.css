@@ -4,6 +4,14 @@ body {
   overflow: hidden;
 }
 
+h1,
+h2,
+h3,
+h4,
+h5 {
+ letter-spacing: 3px;
+}
+
 #infoButton {
   position: fixed;
   top: 20px;
@@ -55,5 +63,4 @@ body {
   font-family: 'Roboto Serif', serif;
   padding: 15px;
   text-align: center;
-  letter-spacing: 3px;
 }
