@@ -10,7 +10,7 @@ h3,
 h4,
 h5 {
  font-weight: normal;
- letter-spacing: 3px;
+ letter-spacing: 2px;
 }
 
 #infoButton {
@@ -41,7 +41,7 @@ h5 {
   background-color: #d1d6e6;
   border: 1px solid black;
   padding: 15px;
-  max-width: 450px;
+  max-width: 400px;
   color: #01af52;
   font-family: 'Roboto Serif', serif;
 }
@@ -64,4 +64,5 @@ h5 {
   font-family: 'Roboto Serif', serif;
   padding: 15px;
   text-align: center;
+  letter-spacing: 3px;
 }
