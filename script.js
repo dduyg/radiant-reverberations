@@ -38,8 +38,8 @@ function drawLabel(x, y, label, align = CENTER) {
   push();
   strokeWeight(0);
   textFont("monospace");
-  textSize(14);
-  textAlign(align);
+  textSize(15);
+  textAlign(center);
   if (align == LEFT) {x += 6;}
   if (align == RIGHT) {x -= 6;}
   text(label, x, y);
