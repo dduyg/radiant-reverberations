@@ -48,8 +48,7 @@ body {
 
 #fixedFooter {
   position: fixed;
-  bottom: 5;
-  left: 0;
+  bottom: 10%;
   width: 100%;
   background-color: transparent;
   color: #01af52;
