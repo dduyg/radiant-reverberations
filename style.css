@@ -9,18 +9,18 @@ body {
   top: 20px;
   right: 20px;
   font-family: 'Inconsolata', monospace;
-  font-size: 20px;
+  font-size: 24px;
   font-weight: bolder;
   background: transparent;
   margin: 0 8px;
   padding: 6px 12px;
-  color: black;
+  color: #01af52;
   cursor: pointer;
   border: 2px solid black;
   border-radius: 50%;
 }
 #infoButton.active {
-  background: white;
+  background: black;
 }
 #infoButton:hover {
   text-shadow: 0 0px 10px, 0 0 0px, 0 0 0.5em white;
@@ -55,7 +55,7 @@ body {
   width: 100%;
   background-color: transparent;
   color: #01af52;
-  font-family: 'Inconsolata', monospace;
+  font-family: 'Roboto Serif', serif;
   padding: 10px;
   text-align: center;
 }
