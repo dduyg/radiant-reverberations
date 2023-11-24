@@ -10,7 +10,7 @@ function draw() {
   background('#d1d6e6');
 
   // Control the pattern parameters with frameCount
-  const div = pow(2, floor((frameCount % 160) / 40)) * 8;
+  const div = pow(2, floor((frameCount % 190) / 40)) * 8;
 
   // Calculate the angular step for sampling
   const sampleDelta = PI / div;
@@ -21,7 +21,7 @@ function draw() {
   const cx = width / 2; // Center x-coordinate
 
   // Move the center of the first sphere relative to the canvas size
-  const cy = height / 2 - radius * 0.8; // Adjust this value for the desired height
+  const cy = height / 2 - radius * 0.9; // Adjust this value for the desired height
 
   // No stroke for circles, fill with black
   noStroke();
@@ -57,11 +57,11 @@ function draw() {
   }
 
   // Display the number of samples
-  drawLabel(8, 32, "Number of samples " + nSamples, LEFT);
+  drawLabel(8, 32, "Number of samples ", nSamples, LEFT);
 }
 
 // Function to draw a labeled text
-function drawLabel(x, y, label, align = CENTER) {
+function drawLabel(x, y, label, value, align = CENTER) {
   push();
   strokeWeight(0);
   textFont("monospace");
@@ -73,8 +73,19 @@ function drawLabel(x, y, label, align = CENTER) {
   if (align == RIGHT) {
     x -= 6;
   }
-  // Adjusted the y-coordinate to move the label lower
-  text(label, x, y + 60);
+  
+  // Set color for the static label
+  fill('#01af52'); // Change this to the desired color
+  
+  // Draw the static label
+  text(label, x, y + 60); // Adjust the value to move the label lower
+  
+  // Set color for the dynamic value
+  fill(0); // Keep this as black
+  
+  // Draw the dynamic value
+  text(value, x + textWidth(label + ' '), y + 40);
+  
   pop();
 }
 
