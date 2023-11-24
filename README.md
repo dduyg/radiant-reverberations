@@ -1,6 +1,4 @@
-## Irradiance Sampling
-
-[codepen](https://codepen.io/kynd/pen/mdGvzgq)
+## [Irradiance Sampling](https://codepen.io/kynd/pen/mdGvzgq)
 
 This script uses the p5.js library to visually represent irradiance sampling. Here's a breakdown:
 
