@@ -76,12 +76,12 @@ function drawLabel(x, y, label, value, align = CENTER) {
   
   // Draw the static label & set color for the static label
   fill('#01af52'); // Change this to the desired color
-  // Adjust the value to move the label lower
-  text(label, x, y + 60);
+  // Adjust the value to move the label lower/higher
+  text(label, x, y + 45);
   // Set color for the dynamic value
   fill(0); // Keep this as black
   // Draw the dynamic value
-  text(value, x + textWidth(label + ' '), y + 60); // Adjust the value to move the label lower
+  text(value, x + textWidth(label + ' '), y + 45); // Adjust the value to move the label lower/higher
   
   pop();
 }
