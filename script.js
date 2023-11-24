@@ -10,7 +10,7 @@ function draw() {
   background('#d1d6e6');
 
   // Control the pattern parameters with frameCount
-  const div = pow(2, floor((frameCount % 190) / 40)) * 5;
+  const div = pow(2, floor((frameCount % 200) / 40)) * 7;
 
   // Calculate the angular step for sampling
   const sampleDelta = PI / div;
