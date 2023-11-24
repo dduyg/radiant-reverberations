@@ -21,7 +21,7 @@ function draw() {
   const cx = width / 2; // Center x-coordinate
 
   // Move the center of the first sphere relative to the canvas size
-  const cy = height / 2 - radius * 0.5; // Adjust this value for the desired height
+  const cy = height / 2 - radius * 0.8; // Adjust this value for the desired height
 
   // No stroke for circles, fill with black
   noStroke();
@@ -74,7 +74,7 @@ function drawLabel(x, y, label, align = CENTER) {
     x -= 6;
   }
   // Adjusted the y-coordinate to move the label lower
-  text(label, x, y + 40);
+  text(label, x, y + 60);
   pop();
 }
 
