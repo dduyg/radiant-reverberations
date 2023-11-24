@@ -89,13 +89,15 @@ function drawLabel(x, y, label, value, align = CENTER) {
   pop();
 }
 
-// Function to toggle the visibility of additional information
+/***********************************
+ *           infoDropdown          *
+ ***********************************/
 function toggleInfo() {
   const dropdown = document.getElementById("infoDropdown");
   dropdown.style.display = (dropdown.style.display === "block") ? "none" : "block";
 }
 
-// Function to close the additional information dropdown
 function closeInfo() {
   document.getElementById("infoDropdown").style.display = "none";
 }
+/***********************************/
