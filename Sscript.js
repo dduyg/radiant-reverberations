@@ -1,17 +1,16 @@
-// Set up the canvas
+// Set up the canvas using p5.js
 function setup() {
   // Use percentages for canvas size to make it responsive
   const canvas = createCanvas(windowWidth * 0.9, windowHeight * 0.9);
 }
 
-// Draw function, called continuously
+// Draw function to create the visual representation
 function draw() {
-  // Set background color
   background('#d1d6e6');
 
   // Control the pattern parameters with frameCount
   const div = pow(2, floor((frameCount % 200) / 40)) * 9;
-
+  
   // Calculate the angular step for sampling
   const sampleDelta = PI / div;
   let nSamples = 0;
@@ -23,11 +22,9 @@ function draw() {
   // Move the center of the first sphere relative to the canvas size
   const cy = height / 2 - radius * 0.9; // Adjust this value for the desired height
 
-  // No stroke for circles, fill with black
+  // Draw upper hemisphere
   noStroke();
   fill(0);
-
-  // Draw the first sphere
   for (let phi = 0.0; phi < 2.0 * PI; phi += sampleDelta) {
     for (let theta = 0.0; theta < 0.5 * PI; theta += sampleDelta) {
       const x = sin(theta) * cos(phi);
@@ -40,17 +37,17 @@ function draw() {
     }
   }
 
-  // Increase the vertical separation between the two spheres relative to the canvas size
-  const yOffset = height * 0.3; // Adjust this value for the desired vertical separation
+  // Adjust this value for the desired vertical separation between the two spheres relative to the canvas size
+  const yOffset = height * 0.3;
 
-  // Draw the vertically flipped sphere below and a lot lower than the first one
+  // Draw lower hemisphere
   for (let phi = 0.0; phi < 2.0 * PI; phi += sampleDelta) {
     for (let theta = 0.0; theta < 0.5 * PI; theta += sampleDelta) {
       const x = sin(theta) * cos(phi);
       const y = sin(theta) * sin(phi);
       const z = cos(theta);
 
-      // Calculate and draw each circle for the second sphere
+      // Calculate and draw each circle for the lower hemisphere
       circle(x * radius + cx, cy + radius + yOffset - (z + y * 0.25) * radius, 2);
       nSamples++;
     }
@@ -60,7 +57,7 @@ function draw() {
   drawLabel(8, 32, "Number of samples ", nSamples, LEFT);
 }
 
-// Function to draw a labeled text
+// Function to draw a label with specified position, label text, value, and alignment
 function drawLabel(x, y, label, value, align = CENTER) {
   push();
   strokeWeight(0);
@@ -74,27 +71,12 @@ function drawLabel(x, y, label, value, align = CENTER) {
     x -= 6;
   }
   
-  // Draw the static label & set color for the static label
-  fill('#01af52'); // Change this to the desired color
-  // Adjust the value to move the label lower/higher
-  text(label, x, y + 45);
-  // Set color for the dynamic value
-  fill(0); // Keep this as black
-  // Draw the dynamic value
-  text(value, x + textWidth(label + ' '), y + 45); // Adjust the value to move the label lower/higher
+  // Set label color and draw label
+  fill('#01af52');
+  text(label, x, y + 45); // Adjust value to position label
+  // Set value color and draw value
+  fill(0);
+  text(value, x + textWidth(label + ' '), y + 45); // Adjust value to position label
   
   pop();
 }
-
-/***********************************
- *           infoDropdown          *
- ***********************************/
-function toggleInfo() {
-  const dropdown = document.getElementById("infoDropdown");
-  dropdown.style.display = (dropdown.style.display === "block") ? "none" : "block";
-}
-
-function closeInfo() {
-  document.getElementById("infoDropdown").style.display = "none";
-}
-/***********************************/
