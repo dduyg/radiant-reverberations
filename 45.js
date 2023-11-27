@@ -79,13 +79,17 @@ function drawSamplePoint(phi, theta, radius, cx, cy, sampleDelta, nSamples) {
   return nSamples + 1;
 }
 
-// Function to display a label with a value
+// Function to display a labeled text
 function drawLabel(x, y, label, value, align = CENTER) {
   push();
+  
+  // Set the drawing style for the label
   strokeWeight(0);
   textFont("monospace");
   textSize(15);
   textAlign(align);
+
+  // Adjust x position based on alignment
   if (align == LEFT) {
     x += 6;
   }
@@ -93,12 +97,12 @@ function drawLabel(x, y, label, value, align = CENTER) {
     x -= 6;
   }
   
-  // Draw the label in green
+  // Set label color and draw the label
   fill('#01af52');
-  text(label, x, y + 45);
-  // Draw the value in black
-  fill(0);
-  text(value, x + textWidth(label + ' '), y + 45);
+  text(label, x, y + 45); // Adjust value to position the label
   
+  // Draw the dynamic value with default black color
+  fill(0);
+  text(value, x + textWidth(label + ' '), y + 45); // Adjust value to position the label
   pop();
 }
