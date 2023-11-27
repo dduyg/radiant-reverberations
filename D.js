@@ -7,7 +7,7 @@ const VERTICAL_SEPARATION_PERCENTAGE = 0.3;
 const CENTER_Y_ADJUSTMENT = 0.9;
 const Y_OFFSET_PERCENTAGE = 0.3;
 
-// Set up canvas with a size based on the window dimensions
+// Set up the canvas based on window dimensions
 function setup() {
   try {
     createCanvas(windowWidth * CANVAS_PERCENTAGE, windowHeight * CANVAS_PERCENTAGE);
@@ -16,7 +16,7 @@ function setup() {
   }
 }
 
-// Main drawing function
+// Main draw function responsible for rendering the irradiance sampling simulation
 function draw() {
   background('#d1d6e6');
 
