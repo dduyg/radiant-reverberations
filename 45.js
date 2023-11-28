@@ -1,3 +1,5 @@
+// main.js
+
 // Constants defining various parameters
 const CANVAS_PERCENTAGE = 0.9;
 const FRAME_MODIFIER = 200;
@@ -10,8 +12,10 @@ const Y_OFFSET_PERCENTAGE = 0.3;
 // Setup function to create the canvas
 function setup() {
   try {
+    // Attempt to create a canvas with dimensions based on the window size
     createCanvas(windowWidth * CANVAS_PERCENTAGE, windowHeight * CANVAS_PERCENTAGE);
   } catch (error) {
+    // Handle potential errors during canvas creation
     console.error("Error creating canvas:", error.message);
   }
 }
@@ -27,39 +31,38 @@ function draw() {
   let nSamples = 0;
 
   // Parameters for the sphere's geometry
-  const radius = min(width, height) * SPHERE_RADIUS_PERCENTAGE;
-  const cx = width / 2;
-  const cy = height / 2 - radius * CENTER_Y_ADJUSTMENT;
+  const sphereRadius = min(width, height) * SPHERE_RADIUS_PERCENTAGE;
+  const centerX = width / 2;
+  const centerY = height / 2 - sphereRadius * CENTER_Y_ADJUSTMENT;
 
   // Rendering samples on the upper hemisphere
-  renderSphereSamples(radius, cx, cy, sampleDelta, nSamples);
+  renderSphereSamples(sphereRadius, centerX, centerY, sampleDelta, nSamples);
 
   // Offset for rendering samples on the lower hemisphere
   const yOffset = height * Y_OFFSET_PERCENTAGE;
 
   // Rendering samples on the lower hemisphere
-  renderSphereSamples(radius, cx, cy + radius + yOffset, sampleDelta, nSamples);
+  renderSphereSamples(sphereRadius, centerX, centerY + sphereRadius + yOffset, sampleDelta, nSamples);
 
   // Drawing a label with the number of samples
   drawLabel(8, 32, "Number of samples ", nSamples, LEFT);
 }
 
 // Function to render samples on a sphere's surface
-function renderSphereSamples(radius, cx, cy, sampleDelta, nSamples) {
+function renderSphereSamples(radius, centerX, centerY, sampleDelta, nSamples) {
   noStroke();
   fill(0);
 
-  // Loop for phi (azimuthal angle)
+  // Loop through phi and theta angles to distribute samples on the sphere
   for (let phi = 0.0; phi < 2.0 * PI; phi += sampleDelta) {
-    // Loop for theta (polar angle)
     for (let theta = 0.0; theta < 0.5 * PI; theta += sampleDelta) {
-      // Spherical to Cartesian coordinates conversion
+      // Convert spherical coordinates to Cartesian coordinates
       const x = sin(theta) * cos(phi);
       const y = sin(theta) * sin(phi);
       const z = cos(theta);
 
       // Rendering a sample point on the sphere's surface
-      circle(x * radius + cx, cy + (z - y * 0.25) * radius, 2);
+      circle(x * radius + centerX, centerY + (z - y * 0.25) * radius, 2);
       nSamples++;
     }
   }
@@ -72,6 +75,8 @@ function drawLabel(x, y, label, value, align = CENTER) {
   textFont("monospace");
   textSize(15);
   textAlign(align);
+
+  // Adjust x position based on alignment
   if (align == LEFT) {
     x += 6;
   }
@@ -79,20 +84,23 @@ function drawLabel(x, y, label, value, align = CENTER) {
     x -= 6;
   }
 
+  // Draw label text in green color
   fill('#01af52');
   text(label, x, y + 45);
+  
+  // Draw value text in black color
   fill(0);
   text(value, x + textWidth(label + ' '), y + 45);
-  
+
   pop();
 }
 
-// Function to handle window resizing
+// Function to handle window resizing and update canvas size
 function windowResized() {
   try {
     resizeCanvas(windowWidth * CANVAS_PERCENTAGE, windowHeight * CANVAS_PERCENTAGE);
-    redraw();
   } catch (error) {
+    // Handle potential errors during canvas resizing
     console.error("Error resizing canvas:", error.message);
   }
 }
