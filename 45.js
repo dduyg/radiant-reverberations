@@ -12,7 +12,6 @@ const Y_OFFSET_PERCENTAGE = 0.3;
 // Setup function to create the canvas
 function setup() {
   try {
-    // Attempt to create a canvas with dimensions based on the window size
     createCanvas(windowWidth * CANVAS_PERCENTAGE, windowHeight * CANVAS_PERCENTAGE);
   } catch (error) {
     // Handle potential errors during canvas creation
@@ -53,7 +52,7 @@ function renderSphereSamples(radius, centerX, centerY, sampleDelta, nSamples) {
   noStroke();
   fill(0);
 
-  // Loop through phi and theta angles to distribute samples on the sphere
+  // Explanation for the nested loops: Iterate over spherical coordinates to cover the entire surface
   for (let phi = 0.0; phi < 2.0 * PI; phi += sampleDelta) {
     for (let theta = 0.0; theta < 0.5 * PI; theta += sampleDelta) {
       // Convert spherical coordinates to Cartesian coordinates
@@ -75,8 +74,6 @@ function drawLabel(x, y, label, value, align = CENTER) {
   textFont("monospace");
   textSize(15);
   textAlign(align);
-
-  // Adjust x position based on alignment
   if (align == LEFT) {
     x += 6;
   }
@@ -84,23 +81,16 @@ function drawLabel(x, y, label, value, align = CENTER) {
     x -= 6;
   }
 
-  // Draw label text in green color
   fill('#01af52');
   text(label, x, y + 45);
-  
-  // Draw value text in black color
   fill(0);
   text(value, x + textWidth(label + ' '), y + 45);
 
   pop();
 }
 
-// Function to handle window resizing and update canvas size
+// Responsive canvas resizing on window resize event
 function windowResized() {
-  try {
-    resizeCanvas(windowWidth * CANVAS_PERCENTAGE, windowHeight * CANVAS_PERCENTAGE);
-  } catch (error) {
-    // Handle potential errors during canvas resizing
-    console.error("Error resizing canvas:", error.message);
-  }
+  resizeCanvas(windowWidth * CANVAS_PERCENTAGE, windowHeight * CANVAS_PERCENTAGE);
+  redraw();
 }
