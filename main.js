@@ -23,68 +23,62 @@ const UPPER_HEMISPHERE_VERTICAL_ADJUSTMENT = 0.9;
 // Vertical adjustment for the center of the lower hemisphere (experiment to change its position)
 const LOWER_HEMISPHERE_VERTICAL_ADJUSTMENT = 0.3;
 
-// Fill color for circles (experiment with different colors)
-const CIRCLE_FILL_COLOR = 0; // Black
+// Fill color for points (experiment with different colors)
+const POINT_FILL_COLOR = 0; // Black
 /***********************************/
 
-// Set up the canvas
+// Function to set up the canvas
 function setup() {
   const canvas = createCanvas(windowWidth * CANVAS_PERCENTAGE, windowHeight * CANVAS_PERCENTAGE);
 }
 
-// Draw function, called continuously
+// Function to draw the irradiance sampling simulation
 function draw() {
   // Set background color
   background('#d1d6e6');
 
-  // Control the pattern parameters with frameCount
+  // Parameters influencing sample distribution
   const div = pow(2, floor((frameCount % FRAME_MODIFIER) / SAMPLE_DIVIDER)) * 9;
-
-  // Calculate the angular step for sampling
   const sampleDelta = PI / div;
   let nSamples = 0;
 
-  // Set the radius of the spheres relative to the canvas size
+  // Sphere properties
   const radius = min(width, height) * SPHERE_RADIUS_PERCENTAGE;
-  const cx = width / 2; // Center x-coordinate
+  const cx = width / 2;
 
-  // Move the center of the upper hemisphere relative to the canvas size
+  // Vertical separation adjustment
   const cyUpper = height / 2 - radius * UPPER_HEMISPHERE_VERTICAL_ADJUSTMENT;
+  const cyLower = height / 2 + radius * LOWER_HEMISPHERE_VERTICAL_ADJUSTMENT;
 
-  // Move the center of the lower hemisphere relative to the canvas size
-  const cyLower = height / 2 - radius * LOWER_HEMISPHERE_VERTICAL_ADJUSTMENT + radius * VERTICAL_SEPARATION_PERCENTAGE;
-
-  // No stroke for circles, fill with black
+  // Draw samples on the upper hemisphere
   noStroke();
-  fill(CIRCLE_FILL_COLOR);
-
-  // Draw the upper hemisphere
+  fill(POINT_FILL_COLOR);
   for (let phi = 0.0; phi < 2.0 * PI; phi += sampleDelta) {
     for (let theta = 0.0; theta < 0.5 * PI; theta += sampleDelta) {
       const x = sin(theta) * cos(phi);
       const y = sin(theta) * sin(phi);
       const z = cos(theta);
 
-      // Calculate and draw each circle for the upper hemisphere
+      // Visualize samples
       circle(x * radius + cx, cyUpper + (z - y * 0.25) * radius, 2);
       nSamples++;
     }
   }
 
-  // Draw the lower hemisphere
+  // Draw samples on the lower hemisphere
   for (let phi = 0.0; phi < 2.0 * PI; phi += sampleDelta) {
     for (let theta = 0.0; theta < 0.5 * PI; theta += sampleDelta) {
       const x = sin(theta) * cos(phi);
       const y = sin(theta) * sin(phi);
       const z = cos(theta);
 
-      // Calculate and draw each circle for the lower hemisphere
-      circle(x * radius + cx, cyLower + (z + y * 0.25) * radius, 2);
+      // Visualize samples
+      circle(x * radius + cx, cyLower - (z + y * 0.25) * radius, 2);
       nSamples++;
     }
   }
 
-  // Display the number of samples
+  // Draw label for the number of samples
   drawLabel(8, 32, "Number of samples ", nSamples, LEFT);
 }
 
@@ -102,14 +96,13 @@ function drawLabel(x, y, label, value, align = CENTER) {
     x -= 6;
   }
 
-  // Draw the static label & set color for the static label
-  fill('#01af52'); // Change this to the desired color
-  // Adjust the value to move the label lower/higher
+  // Label in green
+  fill('#01af52');
   text(label, x, y + 45);
-  // Set color for the dynamic value
-  fill(0); // Keep this as black
-  // Draw the dynamic value
-  text(value, x + textWidth(label + ' '), y + 45); // Adjust the value to move the label lower/higher
+
+  // Value in black
+  fill(0);
+  text(value, x + textWidth(label + ' '), y + 45);
 
   pop();
 }
