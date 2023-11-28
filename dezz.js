@@ -28,7 +28,7 @@ function draw() {
   const sampleDelta = PI / sampleDivisions;
   let totalSamples = 0;
 
-  // Set up initial sphere parameters
+  // Set up initial sphere properties
   const sphereRadius = min(width, height) * SPHERE_RADIUS_PERCENTAGE;
   const centerX = width / 2;
   const centerY = height / 2 - sphereRadius * CENTER_Y_ADJUSTMENT;
