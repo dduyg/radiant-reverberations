@@ -15,7 +15,7 @@ const SAMPLE_DIVIDER = 40;
 const SPHERE_RADIUS_PERCENTAGE = 0.4;
 
 // Vertical separation percentage (controls the distance between the upper and lower hemispheres)
-const VERTICAL_SEPARATION_PERCENTAGE = 0.3;
+const VERTICAL_SEPARATION_PERCENTAGE = 0.4;
 
 // Vertical adjustment for the center of the upper hemisphere (experiment to change its position)
 const UPPER_HEMISPHERE_VERTICAL_ADJUSTMENT = 0.9;
