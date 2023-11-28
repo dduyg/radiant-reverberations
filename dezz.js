@@ -21,7 +21,7 @@ function setup() {
 function draw() {
   background('#d1d6e6');
 
-  // Calculate the number of sample divisions based on frame count
+  // Calculate the number of samples based on frame count
   const sampleDivisions = pow(2, floor((frameCount % FRAME_MODIFIER) / SAMPLE_DIVIDER)) * 9;
 
   // Calculate angular separation between samples
