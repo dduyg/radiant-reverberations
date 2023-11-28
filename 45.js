@@ -1,5 +1,3 @@
-// main.js
-
 // Constants defining various parameters
 const CANVAS_PERCENTAGE = 0.9;
 const FRAME_MODIFIER = 200;
