@@ -89,8 +89,14 @@ function drawLabel(x, y, label, value, align = CENTER) {
   pop();
 }
 
-// Responsive canvas resizing on window resize event
+// Function to handle window resizing
 function windowResized() {
-  resizeCanvas(windowWidth * CANVAS_PERCENTAGE, windowHeight * CANVAS_PERCENTAGE);
-  redraw();
+  try {
+    // Resize the canvas to fit the new window dimensions
+    resizeCanvas(windowWidth * CANVAS_PERCENTAGE, windowHeight * CANVAS_PERCENTAGE);
+    // Redraw the simulation
+    draw();
+  } catch (error) {
+    console.error("Window resizing failed:", error);
+  }
 }
