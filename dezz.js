@@ -21,10 +21,10 @@ function setup() {
 function draw() {
   background('#d1d6e6');
 
-  // Calculate the number of samples based on frame count
+  // Calculating the number of samples based on frame count
   const sampleDivisions = pow(2, floor((frameCount % FRAME_MODIFIER) / SAMPLE_DIVIDER)) * 9;
 
-  // Calculate angular separation between samples
+  // Calculating the angular separation between samples
   const sampleDelta = PI / sampleDivisions;
   let totalSamples = 0;
 
@@ -36,7 +36,7 @@ function draw() {
   // Draw samples on the upper hemisphere
   totalSamples += drawSphereSamples(centerX, centerY, sphereRadius, sampleDelta);
 
-  // Adjusted yOffset for the lower hemisphere
+  // Adjusting for vertical separation between spheres
   const yOffset = height * Y_OFFSET_PERCENTAGE;
 
   // Draw samples on the lower hemisphere
