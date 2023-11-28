@@ -1,4 +1,5 @@
 // Constants for controlling various aspects of the simulation
+// Set constants for canvas size, frame count modification, sample division, sphere properties, and positioning
 const CANVAS_PERCENTAGE = 0.9;
 const FRAME_MODIFIER = 200;
 const SAMPLE_DIVIDER = 40;
@@ -16,7 +17,7 @@ function setup() {
   }
 }
 
-// Main draw function responsible for rendering the irradiance sampling simulation
+// Draw function to render the simulation
 function draw() {
   background('#d1d6e6');
 
@@ -68,13 +69,17 @@ function drawSphereSamples(centerX, centerY, radius, sampleDelta) {
   return sampleCount;
 }
 
-// Function to draw a label with a value on the canvas
+// Display samplelabel with specified position, label text, value, and alignment
 function drawLabel(x, y, label, value, align = CENTER) {
   push();
+  
+  // Set the style for the label
   strokeWeight(0);
   textFont("monospace");
   textSize(15);
   textAlign(align);
+
+  // Adjust label position for LEFT and RIGHT alignment
   if (align == LEFT) {
     x += 6;
   }
@@ -84,9 +89,11 @@ function drawLabel(x, y, label, value, align = CENTER) {
   
   // Set label color and draw label text
   fill('#01af52');
-  text(label, x, y + 45);
+  text(label, x, y + 45); // Adjust value to position the label
+  
+  // Draw the dynamic value with default black color
   fill(0);
-  text(value, x + textWidth(label + ' '), y + 45);
+  text(value, x + textWidth(label + ' '), y + 45); // Adjust value to position the label
   
   pop();
 }
