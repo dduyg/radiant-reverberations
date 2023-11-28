@@ -79,7 +79,7 @@ function drawLabel(x, y, label, value, align = CENTER) {
   textSize(15);
   textAlign(align);
 
-  // Adjust label position for LEFT and RIGHT alignment
+  // Adjusting label position for LEFT and RIGHT alignment
   if (align == LEFT) {
     x += 6;
   }
@@ -87,11 +87,11 @@ function drawLabel(x, y, label, value, align = CENTER) {
     x -= 6;
   }
   
-  // Set label color and text
+  // Setting label color and text
   fill('#01af52');
   text(label, x, y + 45); // Adjust value to position the label
   
-  // Draw the dynamic value with default black color
+  // Drawing the dynamic value with default black color
   fill(0);
   text(value, x + textWidth(label + ' '), y + 45); // Adjust value to position the label
   
