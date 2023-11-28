@@ -13,11 +13,12 @@ function setup() {
   try {
     createCanvas(windowWidth * CANVAS_PERCENTAGE, windowHeight * CANVAS_PERCENTAGE);
   } catch (error) {
+    // Handle potential errors during canvas creation
     console.error("Error creating canvas:", error.message);
   }
 }
 
-// Draw function to render the simulation
+// Draw function to render simulation
 function draw() {
   background('#d1d6e6');
 
@@ -26,33 +27,32 @@ function draw() {
 
   // Calculating the angular separation between samples
   const sampleDelta = PI / sampleDivisions;
-  let totalSamples = 0;
+  let nSamples = 0;
 
   // Set up initial sphere properties
   const sphereRadius = min(width, height) * SPHERE_RADIUS_PERCENTAGE;
   const centerX = width / 2;
   const centerY = height / 2 - sphereRadius * CENTER_Y_ADJUSTMENT;
 
-  // Draw samples on the upper hemisphere
-  totalSamples += drawSphereSamples(centerX, centerY, sphereRadius, sampleDelta);
+  // Rendering samples on the upper hemisphere
+  renderSphereSamples(sphereRadius, centerX, centerY, sampleDelta, nSamples);
 
   // Adjusting for vertical separation between spheres
   const yOffset = height * Y_OFFSET_PERCENTAGE;
 
-  // Draw samples on the lower hemisphere
-  totalSamples += drawSphereSamples(centerX, centerY + sphereRadius + yOffset, sphereRadius, sampleDelta);
+  // Rendering samples on the lower hemisphere
+  renderSphereSamples(sphereRadius, centerX, centerY + sphereRadius + yOffset, sampleDelta, nSamples);
 
   // Display the number of samples taken in the simulation
-  drawLabel(8, 32, "Number of samples ", totalSamples, LEFT);
+  drawLabel(8, 32, "Number of samples ", nSamples, LEFT);
 }
 
 // Function to draw samples on a sphere's surface and return the count
-function drawSphereSamples(centerX, centerY, radius, sampleDelta) {
-  let sampleCount = 0;
+function renderSphereSamples(radius, centerX, centerY, sampleDelta, nSamples) {
   noStroke();
   fill(0);
 
-  // Nested loops to cover the entire sphere surface
+  // Iterate to cover the entire sphere surface
   for (let phi = 0.0; phi < 2.0 * PI; phi += sampleDelta) {
     for (let theta = 0.0; theta < 0.5 * PI; theta += sampleDelta) {
       // Convert spherical coordinates to Cartesian coordinates
@@ -60,52 +60,37 @@ function drawSphereSamples(centerX, centerY, radius, sampleDelta) {
       const y = sin(theta) * sin(phi);
       const z = cos(theta);
 
-      // Adjust and draw a sample point on the sphere's surface
+      // Rendering a sample point on the sphere's surface
       circle(x * radius + centerX, centerY + (z - y * 0.25) * radius, 2);
-      sampleCount++;
+      nSamples++;
     }
   }
-
-  return sampleCount;
 }
 
-// Display samplelabel with specified position, label text, value, and alignment
+// Display label with specified styling, position, label text, value, and alignment
 function drawLabel(x, y, label, value, align = CENTER) {
   push();
-  
-  // Styling the label
   strokeWeight(0);
   textFont("monospace");
   textSize(15);
   textAlign(align);
-
-  // Adjusting label position for LEFT and RIGHT alignment
   if (align == LEFT) {
     x += 6;
   }
   if (align == RIGHT) {
     x -= 6;
   }
-  
-  // Setting label color and text
+
   fill('#01af52');
   text(label, x, y + 45); // Adjust value to position the label
-  
-  // Drawing the dynamic value with default black color
   fill(0);
   text(value, x + textWidth(label + ' '), y + 45); // Adjust value to position the label
-  
+
   pop();
 }
 
-// Function to handle window resizing
+// Responsive canvas resizing on window resize event
 function windowResized() {
-  try {
-    // Resize the canvas to fit the new window dimensions
-    resizeCanvas(windowWidth * CANVAS_PERCENTAGE, windowHeight * CANVAS_PERCENTAGE);
-    // Redraw the simulation
-    draw();
-  } catch (error) {
-    console.error("Window resizing failed:", error);
-  }
+  resizeCanvas(windowWidth * CANVAS_PERCENTAGE, windowHeight * CANVAS_PERCENTAGE);
+  redraw();
 }
