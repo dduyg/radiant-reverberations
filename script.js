@@ -41,7 +41,7 @@ function draw() {
   // Draw samples on the lower hemisphere
   totalSamples += drawSphereSamples(centerX, centerY + sphereRadius + yOffset, sphereRadius, sampleDelta);
 
-  // Display the number of samples
+  // Display the number of samples taken in the simulation
   drawLabel(8, 32, "Number of samples ", totalSamples, LEFT);
 }
 
