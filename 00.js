@@ -80,7 +80,7 @@ function drawLabel(x, y, label, value, align = CENTER) {
   if (align == RIGHT) {
     x -= 6;
   }
-
+  // Setting static label color and dynamic value label color (fill:0 black)
   fill('#01af52');
   text(label, x, y + 45); // Adjust value to position the label
   fill(0);
