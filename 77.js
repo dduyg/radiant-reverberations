@@ -1,11 +1,7 @@
-/*
- * Irradiance Sampling Visualization
- *
- * This script generates a dynamic pattern simulating irradiance sampling on two spheres.
- * The number of samples and their distribution are controlled by various parameters.
- * Experiment with these constants to observe their effects on the visualization.
+/***********************************
+ * Constants for controlling various aspects of the simulation
+ * ----------------------------------------------------------
  */
-
 // Canvas size percentage (adjust to observe responsiveness)
 const CANVAS_PERCENTAGE = 0.9;
 
@@ -29,6 +25,7 @@ const LOWER_HEMISPHERE_VERTICAL_ADJUSTMENT = 0.3;
 
 // Fill color for circles (experiment with different colors)
 const CIRCLE_FILL_COLOR = 0; // Black
+/***********************************/
 
 // Set up the canvas
 function setup() {
