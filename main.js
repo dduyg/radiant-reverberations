@@ -29,23 +29,32 @@ const CIRCLE_FILL_COLOR = 0; // Black
 
 // Set up the canvas
 function setup() {
-  createCanvas(windowWidth * CANVAS_PERCENTAGE, windowHeight * CANVAS_PERCENTAGE);
+  const canvas = createCanvas(windowWidth * CANVAS_PERCENTAGE, windowHeight * CANVAS_PERCENTAGE);
 }
 
 // Draw function, called continuously
 function draw() {
+  // Set background color
   background('#d1d6e6');
 
+  // Control the pattern parameters with frameCount
   const div = pow(2, floor((frameCount % FRAME_MODIFIER) / SAMPLE_DIVIDER)) * 9;
+
+  // Calculate the angular step for sampling
   const sampleDelta = PI / div;
   let nSamples = 0;
 
+  // Set the radius of the spheres relative to the canvas size
   const radius = min(width, height) * SPHERE_RADIUS_PERCENTAGE;
   const cx = width / 2; // Center x-coordinate
 
+  // Move the center of the upper hemisphere relative to the canvas size
   const cyUpper = height / 2 - radius * UPPER_HEMISPHERE_VERTICAL_ADJUSTMENT;
-  const cyLower = height / 2 + radius * LOWER_HEMISPHERE_VERTICAL_ADJUSTMENT;
 
+  // Move the center of the lower hemisphere relative to the canvas size
+  const cyLower = height / 2 - radius * LOWER_HEMISPHERE_VERTICAL_ADJUSTMENT + radius * VERTICAL_SEPARATION_PERCENTAGE;
+
+  // No stroke for circles, fill with black
   noStroke();
   fill(CIRCLE_FILL_COLOR);
 
@@ -56,6 +65,7 @@ function draw() {
       const y = sin(theta) * sin(phi);
       const z = cos(theta);
 
+      // Calculate and draw each circle for the upper hemisphere
       circle(x * radius + cx, cyUpper + (z - y * 0.25) * radius, 2);
       nSamples++;
     }
@@ -68,7 +78,8 @@ function draw() {
       const y = sin(theta) * sin(phi);
       const z = cos(theta);
 
-      circle(x * radius + cx, cyLower - (z - y * 0.25) * radius, 2);
+      // Calculate and draw each circle for the lower hemisphere
+      circle(x * radius + cx, cyLower + (z + y * 0.25) * radius, 2);
       nSamples++;
     }
   }
@@ -90,7 +101,7 @@ function drawLabel(x, y, label, value, align = CENTER) {
   if (align == RIGHT) {
     x -= 6;
   }
-  
+
   // Draw the static label & set color for the static label
   fill('#01af52'); // Change this to the desired color
   // Adjust the value to move the label lower/higher
@@ -99,6 +110,6 @@ function drawLabel(x, y, label, value, align = CENTER) {
   fill(0); // Keep this as black
   // Draw the dynamic value
   text(value, x + textWidth(label + ' '), y + 45); // Adjust the value to move the label lower/higher
-  
+
   pop();
 }
