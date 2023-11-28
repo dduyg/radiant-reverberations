@@ -28,7 +28,7 @@ function draw() {
   const sampleDelta = PI / sampleDivisions;
   let totalSamples = 0;
 
-  // Set up initial sphere properties
+  // Set up initial sphere parameters
   const sphereRadius = min(width, height) * SPHERE_RADIUS_PERCENTAGE;
   const centerX = width / 2;
   const centerY = height / 2 - sphereRadius * CENTER_Y_ADJUSTMENT;
@@ -73,7 +73,7 @@ function drawSphereSamples(centerX, centerY, radius, sampleDelta) {
 function drawLabel(x, y, label, value, align = CENTER) {
   push();
   
-  // Set the style for the label
+  // Styling the label
   strokeWeight(0);
   textFont("monospace");
   textSize(15);
@@ -87,7 +87,7 @@ function drawLabel(x, y, label, value, align = CENTER) {
     x -= 6;
   }
   
-  // Set label color and draw label text
+  // Set label color and text
   fill('#01af52');
   text(label, x, y + 45); // Adjust value to position the label
   
