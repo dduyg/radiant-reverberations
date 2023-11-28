@@ -18,7 +18,7 @@ const SPHERE_RADIUS_PERCENTAGE = 0.4;
 const VERTICAL_SEPARATION_PERCENTAGE = 0.3;
 
 // Vertical adjustment for the center of the upper hemisphere (experiment to change its position)
-const UPPER_HEMISPHERE_VERTICAL_ADJUSTMENT = 0.7;
+const UPPER_HEMISPHERE_VERTICAL_ADJUSTMENT = 0.8;
 
 // Vertical adjustment for the center of the lower hemisphere (experiment to change its position)
 const LOWER_HEMISPHERE_VERTICAL_ADJUSTMENT = 1.3;
