@@ -2,7 +2,7 @@
  ** Parameters for controlling various aspects of the simulation ~~
  ** ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ ~~
  */
-// Canvas size percentage (adjust to observe responsiveness)
+// Canvas size percentage to make it responsive
 let canvasPercentage = 0.9;
 
 // Frame count modifier (controls the variation speed)
@@ -46,10 +46,11 @@ function draw() {
   const upperHemisphereCenterY = height / 2 - sphereRadius * upperHemisphereVerticalAdjustment;
   const lowerHemisphereCenterY = height / 2 + sphereRadius * lowerHemisphereVerticalAdjustment;
 
-  // Rendering samples on the upper hemisphere
+  // Rendering the upper hemisphere
   noStroke();
   fill(pointFillColor);
-  // Iterate to cover the entire sphere surface
+  
+  // Iterate to cover the entire sphere surface with samples
   for (let phi = 0.0; phi < 2.0 * PI; phi += sampleAngularDelta) {
     for (let theta = 0.0; theta < 0.5 * PI; theta += sampleAngularDelta) {
       // Derive 3D coordinates from spherical angles for incoming light directions
@@ -61,16 +62,15 @@ function draw() {
       const sampleX = x * sphereRadius + sphereCenterX;
       const sampleY = upperHemisphereCenterY + (z - y * 0.25) * sphereRadius;
 
-      // Render the sample point
+      // Render each sample point for the upper hemisphere
       circle(sampleX, sampleY, 2);
-
-      // Increment the count of samples
       nSamples++;
     }
   }
 
-  // Rendering samples on the lower hemisphere
-  // Iterate to cover the entire sphere surface
+  // Rendering the lower hemisphere
+  
+  // Iterate to cover the entire sphere surface with samples
   for (let phi = 0.0; phi < 2.0 * PI; phi += sampleAngularDelta) {
     for (let theta = 0.0; theta < 0.5 * PI; theta += sampleAngularDelta) {
       // Derive 3D coordinates from spherical angles for incoming light directions
@@ -82,10 +82,8 @@ function draw() {
       const sampleX = x * sphereRadius + sphereCenterX;
       const sampleY = lowerHemisphereCenterY - (z + y * 0.25) * sphereRadius;
 
-      // Render the sample point
+      // Render each sample point for the lower hemisphere
       circle(sampleX, sampleY, 2);
-
-      // Increment the count of samples
       nSamples++;
     }
   }
@@ -94,7 +92,7 @@ function draw() {
   drawLabel(8, 32, "Number of samples ", nSamples, LEFT);
 }
 
-// Display label with specified styling, position, label text, value, and alignment
+// Set labels with specified styling, position, label text, value, and alignment
 function drawLabel(x, y, label, value, align = CENTER) {
   push();
   strokeWeight(0);
