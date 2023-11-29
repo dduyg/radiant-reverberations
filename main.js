@@ -1,27 +1,27 @@
 /*****************************************************************
- ** Constants for controlling various aspects of the simulation ~~
+ ** Parameters for controlling various aspects of the simulation ~~
  ** ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ ~~
  */
 // Canvas size percentage (adjust to observe responsiveness)
-const CANVAS_PERCENTAGE = 0.9;
+let CANVAS_PERCENTAGE = 0.9;
 
 // Frame count modifier (controls the variation speed)
-const FRAME_MODIFIER = 200;
+let FRAME_MODIFIER = 200;
 
 // Sample divider (affects the number of samples)
-const SAMPLE_DIVIDER = 40;
+let SAMPLE_DIVIDER = 40;
 
 // Sphere radius percentage (adjust to change the size of the spheres)
-const SPHERE_RADIUS_PERCENTAGE = 0.4;
+let SPHERE_RADIUS_PERCENTAGE = 0.4;
 
 // Vertical adjustment for the center of the upper hemisphere (experiment to change its position)
-const UPPER_HEMISPHERE_VERTICAL_ADJUSTMENT = 0.95;
+let UPPER_HEMISPHERE_VERTICAL_ADJUSTMENT = 0.95;
 
 // Vertical adjustment for the center of the lower hemisphere (experiment to change its position)
-const LOWER_HEMISPHERE_VERTICAL_ADJUSTMENT = 1.6;
+let LOWER_HEMISPHERE_VERTICAL_ADJUSTMENT = 1.7;
 
 // Fill color for points (experiment with different colors)
-const POINT_FILL_COLOR = 0; // Black
+let POINT_FILL_COLOR = 0; // Black
 /*****************************************************************/
 
 // Function to set up the canvas
