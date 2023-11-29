@@ -18,7 +18,7 @@ const SPHERE_RADIUS_PERCENTAGE = 0.4;
 const UPPER_HEMISPHERE_VERTICAL_ADJUSTMENT = 0.95;
 
 // Vertical adjustment for the center of the lower hemisphere (experiment to change its position)
-const LOWER_HEMISPHERE_VERTICAL_ADJUSTMENT = 1.55;
+const LOWER_HEMISPHERE_VERTICAL_ADJUSTMENT = 1.6;
 
 // Fill color for points (experiment with different colors)
 const POINT_FILL_COLOR = 0; // Black
