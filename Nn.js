@@ -108,11 +108,11 @@ function drawLabel(x, y, label, value, align = CENTER) {
     x -= 6;
   }
 
-  // Label in green
+  // Set up the static label with color
   fill('#01af52');
   text(label, x, y + 45); // Adjust value to position the label
 
-  // Value in black
+  // Set up the dynamic value with color; currently set to black
   fill(0);
   text(value, x + textWidth(label + ' '), y + 45); // Adjust value to position the label
 
