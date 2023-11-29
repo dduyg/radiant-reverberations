@@ -14,14 +14,11 @@ const SAMPLE_DIVIDER = 40;
 // Sphere radius percentage (adjust to change the size of the spheres)
 const SPHERE_RADIUS_PERCENTAGE = 0.4;
 
-// Vertical separation percentage (controls the distance between the upper and lower hemispheres)
-const VERTICAL_SEPARATION_PERCENTAGE = 0.6;
-
 // Vertical adjustment for the center of the upper hemisphere (experiment to change its position)
-const UPPER_HEMISPHERE_VERTICAL_ADJUSTMENT = 0.95; // Adjusted for better alignment
+const UPPER_HEMISPHERE_VERTICAL_ADJUSTMENT = 0.95;
 
 // Vertical adjustment for the center of the lower hemisphere (experiment to change its position)
-const LOWER_HEMISPHERE_VERTICAL_ADJUSTMENT = 1.55; // Adjusted for better alignment
+const LOWER_HEMISPHERE_VERTICAL_ADJUSTMENT = 1.55;
 
 // Fill color for points (experiment with different colors)
 const POINT_FILL_COLOR = 0; // Black
