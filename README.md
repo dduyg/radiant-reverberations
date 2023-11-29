@@ -5,3 +5,11 @@ In a 3D space, light interacts with surfaces in various ways—reflection, refra
 
 
 ### Understanding Irradiance Sampling
+
+The purpose of irradiance sampling is to replicate how light interacts with surfaces in the real world, accounting for reflections, refractions, and shadows. By capturing the distribution of incoming light, it contributes to more accurate and immersive simulations.
+
+Okay, but what exactly is irradiance sampling? Irradiance refers to the amount of radiant energy per unit area, essentially the brightness or intensity of light falling onto a surface. Instead of computing this value at every pixel, which can be computationally intensive, sampling involves strategically selecting specific points on surfaces to calculate the incoming light.
+
+These points, often referred to as "samples," represent a subset of the surface. By sampling irradiance at these representative points, the renderer can estimate the overall lighting conditions more efficiently. This helps optimize computational resources while maintaining visual accuracy.
+
+So essentially, the basic idea behind irradiance sampling is to estimate the amount of incoming light at a specific point on a surface by sampling multiple directions around that point and calculating the average irradiance.
