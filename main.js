@@ -1,6 +1,6 @@
-/*****************************************************************
+/******************************************************************
  ** Parameters for controlling various aspects of the simulation ~~
- ** ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ ~~
+ ** ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ ~~
  */
 // Canvas size percentage (adjust to observe responsiveness)
 let CANVAS_PERCENTAGE = 0.9;
@@ -22,7 +22,7 @@ let LOWER_HEMISPHERE_VERTICAL_ADJUSTMENT = 1.7;
 
 // Fill color for points (experiment with different colors)
 let POINT_FILL_COLOR = 0; // Black
-/*****************************************************************/
+/******************************************************************/
 
 // Function to set up the canvas
 function setup() {
