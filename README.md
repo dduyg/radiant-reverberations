@@ -12,4 +12,4 @@ Okay, but what exactly is irradiance sampling? Irradiance refers to the amount o
 
 These points, often referred to as "samples," represent a subset of the surface. By sampling irradiance at these representative points, the renderer can estimate the overall lighting conditions more efficiently. This helps optimize computational resources while maintaining visual accuracy.
 
-So essentially, the basic idea behind irradiance sampling is to estimate the amount of incoming light at a specific point on a surface by sampling multiple directions around that point and calculating the average irradiance.
+So basically, the idea behind irradiance sampling is to estimate the amount of incoming light at a specific point on a surface by sampling multiple directions around that point and calculating the average irradiance.
