@@ -1,70 +1,97 @@
-// Constants for controlling various aspects of the simulation
-// Set constants for canvas size, frame count modification, sample division, sphere properties, and positioning
-const CANVAS_PERCENTAGE = 0.9;
-const FRAME_MODIFIER = 200;
-const SAMPLE_DIVIDER = 40;
-const SPHERE_RADIUS_PERCENTAGE = 0.4;
-const VERTICAL_SEPARATION_PERCENTAGE = 0.3;
-const CENTER_Y_ADJUSTMENT = 0.9;
-const Y_OFFSET_PERCENTAGE = 0.3;
+/******************************************************************
+ ** Parameters for controlling various aspects of the simulation ~~
+ ** ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ ~~
+ */
+// Canvas size percentage (adjust to observe responsiveness)
+let canvasPercentage = 0.9;
+
+// Frame count modifier (controls the variation speed)
+let frameModifier = 200;
+
+// Sample density modifier (affects the number of samples)
+let sampleDensityModifier = 40;
+
+// Sphere radius percentage (adjust to change the size of the spheres)
+let sphereRadiusPercentage = 0.4;
+
+// Vertical adjustment for the center of the upper hemisphere (experiment to change its position)
+let upperHemisphereVerticalAdjustment = 0.95;
+
+// Vertical adjustment for the center of the lower hemisphere (experiment to change its position)
+let lowerHemisphereVerticalAdjustment = 1.35;
+
+// Fill color for points (modifies point color; currently set to black)
+let pointFillColor = 0;
+/******************************************************************/
 
 // Set up the canvas based on window dimensions
 function setup() {
-  try {
-    createCanvas(windowWidth * CANVAS_PERCENTAGE, windowHeight * CANVAS_PERCENTAGE);
-  } catch (error) {
-    // Handle potential errors during canvas creation
-    console.error("Error creating canvas:", error.message);
-  }
+  createCanvas(windowWidth * canvasPercentage, windowHeight * canvasPercentage);
 }
 
 // Draw function to render simulation
 function draw() {
   background('#d1d6e6');
 
-  // Calculating the number of samples based on frame count
-  const sampleDivisions = pow(2, floor((frameCount % FRAME_MODIFIER) / SAMPLE_DIVIDER)) * 9;
-
-  // Calculating the angular separation between samples
-  const sampleDelta = PI / sampleDivisions;
+  // Parameters influencing sample distribution
+  const samplesPerFrame = pow(2, floor((frameCount % frameModifier) / sampleDensityModifier)) * 9;
+  const sampleAngularDelta = PI / samplesPerFrame;
   let nSamples = 0;
 
-  // Set up initial sphere properties
-  const sphereRadius = min(width, height) * SPHERE_RADIUS_PERCENTAGE;
-  const centerX = width / 2;
-  const centerY = height / 2 - sphereRadius * CENTER_Y_ADJUSTMENT;
-
-  // Rendering samples on the upper hemisphere
-  renderSphereSamples(sphereRadius, centerX, centerY, sampleDelta, nSamples);
+  // Set up sphere properties
+  const sphereRadius = min(width, height) * sphereRadiusPercentage;
+  const sphereCenterX = width / 2;
 
   // Adjusting for vertical separation between spheres
-  const yOffset = height * Y_OFFSET_PERCENTAGE;
+  const upperHemisphereCenterY = height / 2 - sphereRadius * upperHemisphereVerticalAdjustment;
+  const lowerHemisphereCenterY = height / 2 + sphereRadius * lowerHemisphereVerticalAdjustment;
 
-  // Rendering samples on the lower hemisphere
-  renderSphereSamples(sphereRadius, centerX, centerY + sphereRadius + yOffset, sampleDelta, nSamples);
-
-  // Display the number of samples taken in the simulation
-  drawLabel(8, 32, "Number of samples ", nSamples, LEFT);
-}
-
-// Function to draw samples on a sphere's surface and return the count
-function renderSphereSamples(radius, centerX, centerY, sampleDelta, nSamples) {
+  // Rendering samples on the upper hemisphere
   noStroke();
-  fill(0);
-
+  fill(pointFillColor);
   // Iterate to cover the entire sphere surface
-  for (let phi = 0.0; phi < 2.0 * PI; phi += sampleDelta) {
-    for (let theta = 0.0; theta < 0.5 * PI; theta += sampleDelta) {
-      // Convert spherical coordinates to Cartesian coordinates
+  for (let phi = 0.0; phi < 2.0 * PI; phi += sampleAngularDelta) {
+    for (let theta = 0.0; theta < 0.5 * PI; theta += sampleAngularDelta) {
+      // Derive 3D coordinates from spherical angles for incoming light directions
       const x = sin(theta) * cos(phi);
       const y = sin(theta) * sin(phi);
       const z = cos(theta);
 
-      // Rendering a sample point on the sphere's surface
-      circle(x * radius + centerX, centerY + (z - y * 0.25) * radius, 2);
+      // Calculate the position of each sample point on the upper hemisphere
+      const sampleX = x * sphereRadius + sphereCenterX;
+      const sampleY = upperHemisphereCenterY + (z - y * 0.25) * sphereRadius;
+
+      // Render the sample point
+      circle(sampleX, sampleY, 2);
+
+      // Increment the count of samples
       nSamples++;
     }
   }
+
+  // Rendering samples on the lower hemisphere
+  // Iterate to cover the entire sphere surface
+  for (let phi = 0.0; phi < 2.0 * PI; phi += sampleAngularDelta) {
+    for (let theta = 0.0; theta < 0.5 * PI; theta += sampleAngularDelta) {
+      // Derive 3D coordinates from spherical angles for incoming light directions
+      const x = sin(theta) * cos(phi);
+      const y = sin(theta) * sin(phi);
+      const z = cos(theta);
+
+      // Calculate the position of each sample point on the lower hemisphere
+      const sampleX = x * sphereRadius + sphereCenterX;
+      const sampleY = lowerHemisphereCenterY - (z + y * 0.25) * sphereRadius;
+
+      // Render the sample point
+      circle(sampleX, sampleY, 2);
+
+      // Increment the count of samples
+      nSamples++;
+    }
+  }
+
+  // Display the number of samples taken in the simulation
+  drawLabel(8, 32, "Number of samples ", nSamples, LEFT);
 }
 
 // Display label with specified styling, position, label text, value, and alignment
@@ -80,9 +107,12 @@ function drawLabel(x, y, label, value, align = CENTER) {
   if (align == RIGHT) {
     x -= 6;
   }
-  // Setting static label color and dynamic value label color (fill:0 black)
+
+  // Label in green
   fill('#01af52');
   text(label, x, y + 45); // Adjust value to position the label
+
+  // Value in black
   fill(0);
   text(value, x + textWidth(label + ' '), y + 45); // Adjust value to position the label
 
@@ -90,13 +120,7 @@ function drawLabel(x, y, label, value, align = CENTER) {
 }
 
 // Function to handle window resizing
+// Resize the canvas to fit the new window dimensions
 function windowResized() {
-  try {
-    // Resize the canvas to fit the new window dimensions
-    resizeCanvas(windowWidth * CANVAS_PERCENTAGE, windowHeight * CANVAS_PERCENTAGE);
-    // Redraw the simulation
-    draw();
-  } catch (error) {
-    console.error("Window resizing failed:", error);
-  }
+  resizeCanvas(windowWidth * canvasPercentage, windowHeight * canvasPercentage);
 }
