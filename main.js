@@ -22,7 +22,7 @@ const LOWER_HEMISPHERE_VERTICAL_ADJUSTMENT = 1.55;
 
 // Fill color for points (experiment with different colors)
 const POINT_FILL_COLOR = 0; // Black
-/***********************************/
+/*****************************************************************/
 
 // Function to set up the canvas
 function setup() {
