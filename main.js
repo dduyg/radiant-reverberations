@@ -3,30 +3,30 @@
  ** ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ ~~
  */
 // Canvas size percentage (adjust to observe responsiveness)
-let CANVAS_PERCENTAGE = 0.9;
+let canvasPercentage = 0.9;
 
 // Frame count modifier (controls the variation speed)
-let FRAME_MODIFIER = 200;
+let frameModifier = 200;
 
-// Sample divider (affects the number of samples)
-let SAMPLE_DIVIDER = 40;
+// Sample density modifier (affects the number of samples)
+let sampleDensityModifier = 40;
 
 // Sphere radius percentage (adjust to change the size of the spheres)
-let SPHERE_RADIUS_PERCENTAGE = 0.4;
+let sphereRadiusPercentage = 0.4;
 
 // Vertical adjustment for the center of the upper hemisphere (experiment to change its position)
-let UPPER_HEMISPHERE_VERTICAL_ADJUSTMENT = 0.95;
+let upperHemisphereVerticalAdjustment = 0.95;
 
 // Vertical adjustment for the center of the lower hemisphere (experiment to change its position)
-let LOWER_HEMISPHERE_VERTICAL_ADJUSTMENT = 1.35;
+let lowerHemisphereVerticalAdjustment = 1.35;
 
 // Fill color for points (modifies point color; currently set to black)
-let POINT_FILL_COLOR = 0;
+let pointFillColor = 0;
 /******************************************************************/
 
 // Function to set up the canvas
 function setup() {
-  const canvas = createCanvas(windowWidth * CANVAS_PERCENTAGE, windowHeight * CANVAS_PERCENTAGE);
+  createCanvas(windowWidth * canvasPercentage, windowHeight * canvasPercentage);
 }
 
 // Function to draw the irradiance sampling simulation
@@ -35,42 +35,56 @@ function draw() {
   background('#d1d6e6');
 
   // Parameters influencing sample distribution
-  const div = pow(2, floor((frameCount % FRAME_MODIFIER) / SAMPLE_DIVIDER)) * 9;
-  const sampleDelta = PI / div;
+  const samplesPerFrame = pow(2, floor((frameCount % frameModifier) / sampleDensityModifier)) * 9;
+  const sampleAngularDelta = PI / samplesPerFrame;
   let nSamples = 0;
 
   // Sphere properties
-  const radius = min(width, height) * SPHERE_RADIUS_PERCENTAGE;
-  const cx = width / 2;
+  const sphereRadius = min(width, height) * sphereRadiusPercentage;
+  const sphereCenterX = width / 2;
 
   // Vertical separation adjustment
-  const cyUpper = height / 2 - radius * UPPER_HEMISPHERE_VERTICAL_ADJUSTMENT;
-  const cyLower = height / 2 + radius * LOWER_HEMISPHERE_VERTICAL_ADJUSTMENT;
+  const upperHemisphereCenterY = height / 2 - sphereRadius * upperHemisphereVerticalAdjustment;
+  const lowerHemisphereCenterY = height / 2 + sphereRadius * lowerHemisphereVerticalAdjustment;
 
   // Draw samples on the upper hemisphere
   noStroke();
-  fill(POINT_FILL_COLOR);
-  for (let phi = 0.0; phi < 2.0 * PI; phi += sampleDelta) {
-    for (let theta = 0.0; theta < 0.5 * PI; theta += sampleDelta) {
+  fill(pointFillColor);
+  for (let phi = 0.0; phi < 2.0 * PI; phi += sampleAngularDelta) {
+    for (let theta = 0.0; theta < 0.5 * PI; theta += sampleAngularDelta) {
+      // Derive 3D coordinates from spherical angles for incoming light directions
       const x = sin(theta) * cos(phi);
       const y = sin(theta) * sin(phi);
       const z = cos(theta);
 
-      // Visualize samples
-      circle(x * radius + cx, cyUpper + (z - y * 0.25) * radius, 2);
+      // Calculate the position of each sample point on the upper hemisphere
+      const sampleX = x * sphereRadius + sphereCenterX;
+      const sampleY = upperHemisphereCenterY + (z - y * 0.25) * sphereRadius;
+
+      // Render (draw) the sample point
+      circle(sampleX, sampleY, 2);
+
+      // Increment the count of samples
       nSamples++;
     }
   }
 
   // Draw samples on the lower hemisphere
-  for (let phi = 0.0; phi < 2.0 * PI; phi += sampleDelta) {
-    for (let theta = 0.0; theta < 0.5 * PI; theta += sampleDelta) {
+  for (let phi = 0.0; phi < 2.0 * PI; phi += sampleAngularDelta) {
+    for (let theta = 0.0; theta < 0.5 * PI; theta += sampleAngularDelta) {
+      // Derive 3D coordinates from spherical angles for incoming light directions
       const x = sin(theta) * cos(phi);
       const y = sin(theta) * sin(phi);
       const z = cos(theta);
 
-      // Visualize samples
-      circle(x * radius + cx, cyLower - (z + y * 0.25) * radius, 2);
+      // Calculate the position of each sample point on the lower hemisphere
+      const sampleX = x * sphereRadius + sphereCenterX;
+      const sampleY = lowerHemisphereCenterY - (z + y * 0.25) * sphereRadius;
+
+      // Render (draw) the sample point
+      circle(sampleX, sampleY, 2);
+
+      // Increment the count of samples
       nSamples++;
     }
   }
@@ -102,4 +116,9 @@ function drawLabel(x, y, label, value, align = CENTER) {
   text(value, x + textWidth(label + ' '), y + 45);
 
   pop();
+}
+
+// Function to handle window resizing
+function windowResized() {
+  resizeCanvas(windowWidth * canvasPercentage, windowHeight * canvasPercentage);
 }
