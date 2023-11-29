@@ -18,10 +18,10 @@ let SPHERE_RADIUS_PERCENTAGE = 0.4;
 let UPPER_HEMISPHERE_VERTICAL_ADJUSTMENT = 0.95;
 
 // Vertical adjustment for the center of the lower hemisphere (experiment to change its position)
-let LOWER_HEMISPHERE_VERTICAL_ADJUSTMENT = 1.4;
+let LOWER_HEMISPHERE_VERTICAL_ADJUSTMENT = 1.2;
 
 // Fill color for points (experiment with different colors)
-let POINT_FILL_COLOR = 0; // Black
+let POINT_FILL_COLOR = '#01af52'; // Black
 /******************************************************************/
 
 // Function to set up the canvas
