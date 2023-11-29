@@ -1,6 +1,7 @@
 /***********************************
- * Constants for controlling various aspects of the simulation
- * ----------------------------------------------------------
+ * Constants for controlling various
+ * aspects of the simulation
+ * ===================================
  */
 // Canvas size percentage (adjust to observe responsiveness)
 const CANVAS_PERCENTAGE = 0.9;
