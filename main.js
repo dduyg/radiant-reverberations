@@ -20,8 +20,8 @@ let UPPER_HEMISPHERE_VERTICAL_ADJUSTMENT = 0.95;
 // Vertical adjustment for the center of the lower hemisphere (experiment to change its position)
 let LOWER_HEMISPHERE_VERTICAL_ADJUSTMENT = 1.3;
 
-// Fill color for points (experiment with different colors)
-let POINT_FILL_COLOR = '#01af52'; // Black
+// Fill color for points (modifies point color; currently set to black)
+let POINT_FILL_COLOR = 0;
 /******************************************************************/
 
 // Function to set up the canvas
