@@ -35,7 +35,7 @@ function draw() {
 
   // Parameters influencing sample distribution
   const samplesPerFrame = pow(2, floor((frameCount % frameModifier) / sampleDensityModifier)) * 9;
-  const sampleAngularDelta = PI / samplesPerFrame;
+  const sampleAngularDelta = PI / samplesPerFrame; // Calculates the angular separation between samples
   let nSamples = 0;
 
   // Set up sphere properties
