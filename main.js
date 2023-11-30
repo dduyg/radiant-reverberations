@@ -24,7 +24,7 @@ let lowerHemisphereVerticalAdjustment = 1.35;
 let pointFillColor = 0;
 /******************************************************************/
 
-// Set up the canvas based on window dimensions
+// Set up canvas based on window dimensions
 function setup() {
   createCanvas(windowWidth * canvasPercentage, windowHeight * canvasPercentage);
 }
@@ -109,7 +109,7 @@ function drawLabel(x, y, label, value, align = CENTER) {
   fill('#01af52');
   text(label, x, y + 45); // Adjust value to position the label
 
-  // Set up the dynamic value with color; currently set to black
+  // Set up the dynamic label with color; currently set to black
   fill(0);
   text(value, x + textWidth(label + ' '), y + 45); // Adjust value to position the label
 
