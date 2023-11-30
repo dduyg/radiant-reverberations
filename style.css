@@ -70,4 +70,5 @@ border-top: 1px black solid;
   font-family: 'Space Mono', monospace;
   padding: 10px;
   text-align: center;
+  z-index: -1;
 }
