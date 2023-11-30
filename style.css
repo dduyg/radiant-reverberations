@@ -12,6 +12,7 @@ h4,
 h5 {
  font-weight: normal;
  letter-spacing: 1px;
+ font-family: 'Space Mono', monospace;
 }
 
 hr { 
@@ -48,7 +49,7 @@ border-top: 1px black solid;
   padding: 15px;
   max-width: 300px;
   color: #01af52;
-  font-family: 'Roboto Serif', serif;
+  font-family: 'Red Hat Mono', monospace;
 }
 
 .close {
@@ -66,7 +67,7 @@ border-top: 1px black solid;
   width: 100%;
   background-color: transparent;
   color: #01af52;
-  font-family: 'Roboto Serif', serif;
+  font-family: 'Space Mono', monospace;
   padding: 10px;
   text-align: center;
 }
