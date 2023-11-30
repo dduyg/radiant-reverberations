@@ -62,7 +62,7 @@ function draw() {
       const sampleX = x * sphereRadius + sphereCenterX;
       const sampleY = upperHemisphereCenterY + (z - y * 0.25) * sphereRadius;
 
-      // Render each sample point for the upper hemisphere
+      // Draw the sample point
       circle(sampleX, sampleY, 2);
       nSamples++;
     }
@@ -81,7 +81,7 @@ function draw() {
       const sampleX = x * sphereRadius + sphereCenterX;
       const sampleY = lowerHemisphereCenterY - (z + y * 0.25) * sphereRadius;
 
-      // Render each sample point for the lower hemisphere
+      // Draw the sample point
       circle(sampleX, sampleY, 2);
       nSamples++;
     }
