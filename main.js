@@ -2,7 +2,7 @@
  ** Parameters for controlling various aspects of the simulation ~~
  ** ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ ~~
  */
-// Canvas size percentage (adjust to observe responsiveness)
+// Canvas size percentage to make it responsive
 let canvasPercentage = 0.9;
 
 // Frame count modifier (controls the variation speed)
@@ -24,32 +24,33 @@ let lowerHemisphereVerticalAdjustment = 1.35;
 let pointFillColor = 0;
 /******************************************************************/
 
-// Function to set up the canvas
+// Set up the canvas based on window dimensions
 function setup() {
   createCanvas(windowWidth * canvasPercentage, windowHeight * canvasPercentage);
 }
 
-// Function to draw the irradiance sampling simulation
+// Draw function to render simulation
 function draw() {
-  // Set background color
   background('#d1d6e6');
 
   // Parameters influencing sample distribution
   const samplesPerFrame = pow(2, floor((frameCount % frameModifier) / sampleDensityModifier)) * 9;
-  const sampleAngularDelta = PI / samplesPerFrame;
+  const sampleAngularDelta = PI / samplesPerFrame; // Calculates the angular separation between samples
   let nSamples = 0;
 
-  // Sphere properties
+  // Set up sphere properties
   const sphereRadius = min(width, height) * sphereRadiusPercentage;
   const sphereCenterX = width / 2;
 
-  // Vertical separation adjustment
+  // Adjusting for vertical separation between spheres
   const upperHemisphereCenterY = height / 2 - sphereRadius * upperHemisphereVerticalAdjustment;
   const lowerHemisphereCenterY = height / 2 + sphereRadius * lowerHemisphereVerticalAdjustment;
 
-  // Draw samples on the upper hemisphere
+  // Rendering the upper hemisphere
   noStroke();
   fill(pointFillColor);
+  
+  // Iterate to cover the entire sphere surface with samples
   for (let phi = 0.0; phi < 2.0 * PI; phi += sampleAngularDelta) {
     for (let theta = 0.0; theta < 0.5 * PI; theta += sampleAngularDelta) {
       // Derive 3D coordinates from spherical angles for incoming light directions
@@ -61,15 +62,14 @@ function draw() {
       const sampleX = x * sphereRadius + sphereCenterX;
       const sampleY = upperHemisphereCenterY + (z - y * 0.25) * sphereRadius;
 
-      // Render (draw) the sample point
+      // Draw the sample point
       circle(sampleX, sampleY, 2);
-
-      // Increment the count of samples
       nSamples++;
     }
   }
 
-  // Draw samples on the lower hemisphere
+  // Rendering the lower hemisphere
+  // Iterate to cover the entire sphere surface with samples
   for (let phi = 0.0; phi < 2.0 * PI; phi += sampleAngularDelta) {
     for (let theta = 0.0; theta < 0.5 * PI; theta += sampleAngularDelta) {
       // Derive 3D coordinates from spherical angles for incoming light directions
@@ -81,19 +81,17 @@ function draw() {
       const sampleX = x * sphereRadius + sphereCenterX;
       const sampleY = lowerHemisphereCenterY - (z + y * 0.25) * sphereRadius;
 
-      // Render (draw) the sample point
+      // Draw the sample point
       circle(sampleX, sampleY, 2);
-
-      // Increment the count of samples
       nSamples++;
     }
   }
 
-  // Draw label for the number of samples
+  // Display the number of samples taken in the simulation
   drawLabel(8, 32, "Number of samples ", nSamples, LEFT);
 }
 
-// Function to draw a labeled text
+// Set labels with specified styling, position, label text, value, and alignment
 function drawLabel(x, y, label, value, align = CENTER) {
   push();
   strokeWeight(0);
@@ -107,18 +105,19 @@ function drawLabel(x, y, label, value, align = CENTER) {
     x -= 6;
   }
 
-  // Label in green
+  // Set up the static label with color
   fill('#01af52');
-  text(label, x, y + 45);
+  text(label, x, y + 45); // Adjust value to position the label
 
-  // Value in black
+  // Set up the dynamic value with color; currently set to black
   fill(0);
-  text(value, x + textWidth(label + ' '), y + 45);
+  text(value, x + textWidth(label + ' '), y + 45); // Adjust value to position the label
 
   pop();
 }
 
 // Function to handle window resizing
+// Resize the canvas to fit the new window dimensions
 function windowResized() {
   resizeCanvas(windowWidth * canvasPercentage, windowHeight * canvasPercentage);
 }
