@@ -96,7 +96,11 @@ function drawLabel(x, y, label, value, align = CENTER) {
   push();
   strokeWeight(0);
   textFont("monospace");
-  textSize(15);
+
+  // Calculate responsive textSize based on the canvas width
+  const responsiveTextSize = width < 600 ? 16 : 28;
+
+  textSize(responsiveTextSize);
   textAlign(align);
   if (align == LEFT) {
     x += 6;
