@@ -12,7 +12,6 @@ h4,
 h5 {
  font-weight: normal;
  letter-spacing: 1px;
- font-family: 'Space Mono', monospace;
 }
 
 hr { 
@@ -49,7 +48,8 @@ border-top: 1px black solid;
   padding: 15px;
   max-width: 300px;
   color: #01af52;
-  font-family: 'Red Hat Mono', monospace;
+  font-family: 'Hedvig Letters Serif', serif;
+  z-index: 2;
 }
 
 .close {
@@ -59,6 +59,7 @@ border-top: 1px black solid;
   padding: 15px;
   cursor: pointer;
   font-size: 24px;
+  z-index: 2;
 }
 
 #fixedFooter {
@@ -67,8 +68,7 @@ border-top: 1px black solid;
   width: 100%;
   background-color: transparent;
   color: #01af52;
-  font-family: 'Space Mono', monospace;
+  font-family: 'Hedvig Letters Serif', serif;
   padding: 10px;
   text-align: center;
-  z-index: -1;
 }
