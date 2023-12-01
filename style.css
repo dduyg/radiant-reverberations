@@ -1,6 +1,7 @@
 body {
-  margin: 0px; 
-  padding: 1em; 
+  max-width: 100%;
+  margin: 1 auto;
+  padding: 0px; 
   overflow: hidden;
   background-color: #d1d6e6;
   line-height: 1.4;
