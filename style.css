@@ -30,7 +30,7 @@ h5 {
   cursor: pointer;
   border: 2px solid #01af52;
   border-radius: 50%;
-  z-index: 3;
+  z-index: 2;
 }
 #infoButton:hover {
   text-shadow: 0 0px 10px, 0 0 0px, 0 0 0.5em white;
@@ -48,7 +48,7 @@ h5 {
   max-width: 300px;
   color: #01af52;
   font-family: 'Inter', sans-serif;
-  z-index: 2;
+  z-index: 3;
 }
 
 .close {
