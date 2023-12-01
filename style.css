@@ -30,6 +30,7 @@ h5 {
   cursor: pointer;
   border: 2px solid #01af52;
   border-radius: 50%;
+  z-index: 3;
 }
 #infoButton:hover {
   text-shadow: 0 0px 10px, 0 0 0px, 0 0 0.5em white;
@@ -57,11 +58,11 @@ h5 {
   padding: 25px;
   cursor: pointer;
   font-size: 24px;
-  z-index: 2;
+  z-index: 3;
 }
 
 #fixedFooter {
-  position: absolute;
+  position: fixed;
   bottom: 20px;
   width: 100%;
   background-color: transparent;
