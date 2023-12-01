@@ -60,7 +60,7 @@ h5 {
 }
 
 #fixedFooter {
-  position: fixed;
+  position: absolute;
   bottom: 20px;
   width: 100%;
   background-color: transparent;
