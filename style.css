@@ -45,7 +45,7 @@ h5 {
   padding: 15px;
   max-width: 300px;
   color: #01af52;
-  font-family: 'IBM Plex Sans', sans-serif;
+  font-family: 'Inter', sans-serif;
   z-index: 2;
 }
 
@@ -65,7 +65,7 @@ h5 {
   width: 100%;
   background-color: transparent;
   color: #01af52;
-  font-family: 'IBM Plex Sans', sans-serif;
+  font-family: 'Inter', sans-serif;
   padding: 10px;
   text-align: center;
   z-index: 1;
