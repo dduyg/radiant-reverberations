@@ -14,8 +14,10 @@ h5 {
  letter-spacing: 1px;
 }
 
-hr { 
-border-top: 1px black solid;
+hr {
+  height: 2px;
+  background-color: black;
+  border: none;
 }
 
 #infoButton {
