@@ -45,7 +45,7 @@ h5 {
   padding: 15px;
   max-width: 300px;
   color: #01af52;
-  font-family: 'Space Grotesk', sans-serif;
+  font-family: 'IBM Plex Sans', sans-serif;
   z-index: 2;
 }
 
@@ -53,7 +53,7 @@ h5 {
   position: absolute;
   top: 0;
   right: 0;
-  padding: 15px;
+  padding: 25px;
   cursor: pointer;
   font-size: 24px;
   z-index: 2;
@@ -65,7 +65,7 @@ h5 {
   width: 100%;
   background-color: transparent;
   color: #01af52;
-  font-family: 'Space Grotesk', sans-serif;
+  font-family: 'IBM Plex Sans', sans-serif;
   padding: 10px;
   text-align: center;
   z-index: 1;
