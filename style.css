@@ -13,12 +13,6 @@ h5 {
  letter-spacing: 1px;
 }
 
-hr {
-  height: 2px;
-  background-color: black;
-  border: none;
-}
-
 #infoButton {
   position: fixed;
   top: 30px;
