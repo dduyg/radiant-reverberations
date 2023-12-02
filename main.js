@@ -122,17 +122,13 @@ function drawLabel(x, y, label, value, align = CENTER) {
 function drawTitle(title, yOffset) {
   push();
   textFont("Space Mono");
-  textSize(width < 600 ? 22 : 34); // Adjust font size based on screen width
+  textSize(width < 600 ? "1.5em" : "2em"); // Adjust font size based on screen width
   fill('#01af52');
   textAlign(CENTER);
 
-  // Set a maximum width for the title to prevent it from being cut off
-  const maxTitleWidth = width * 0.8; // Adjust the percentage as needed
-  const titleX = width / 2;
-  const titleY = height - yOffset;
-
-  // Draw the title with a maximum width
-  text(title, titleX, titleY, maxTitleWidth);
+  // Limit title width to 90% of screen width
+  const titleWidth = min(width * 0.9, textWidth(title));
+  text(title, width / 2, height - yOffset, titleWidth);
 
   pop();
 }
