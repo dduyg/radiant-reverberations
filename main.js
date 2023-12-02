@@ -97,10 +97,7 @@ function drawLabel(x, y, label, value, align = CENTER) {
   push();
   strokeWeight(0);
   textFont("monospace");
-
-  // Set up the static label with color
-  fill('#01af52');
-  textSize(width < 600 ? 16 : 28); // Directly set responsive textSize
+  textSize(width < 600 ? 16 : 28); // Calculate responsive textSize based on the screen
   textAlign(align);
   if (align == LEFT) {
     x += 6;
@@ -108,6 +105,9 @@ function drawLabel(x, y, label, value, align = CENTER) {
   if (align == RIGHT) {
     x -= 6;
   }
+
+  // Set up the static label with color
+  fill('#01af52');
   text(label, x, y + 45);
 
   // Set up the dynamic label with color; currently set to black
