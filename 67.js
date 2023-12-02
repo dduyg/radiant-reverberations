@@ -1,7 +1,8 @@
-/***********************************
- * Title-related Code
- * ----------------------------------------------------------
- */
+/*
+=======================================================
+   Title-related Code
+=======================================================
+*/
 
 // Function to draw the title below the animating visual
 function drawTitle(title, yOffset) {
@@ -17,4 +18,6 @@ function drawTitle(title, yOffset) {
 // Draw the title below the animating visual
 drawTitle("Radiant Reverberations", 40);
 
-/***********************************/
+/*
+=======================================================
+*/
