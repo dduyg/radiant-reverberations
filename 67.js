@@ -1,4 +1,4 @@
-// ------------------ Displaying title work below it ------------------
+// ------------------ Displaying title work ------------------
 function drawTitle(title, yOffset) {
   push();
   textFont("Space Mono");
@@ -13,4 +13,4 @@ function drawTitle(title, yOffset) {
 // (currently positioned 40px below visual)
 drawTitle("Radiant Reverberations", 40);
 
-// --------------------------------------------------------------------
+// -----------------------------------------------------------
