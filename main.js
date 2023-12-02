@@ -97,22 +97,22 @@ function drawLabel(x, y, label, value, align = CENTER) {
   push();
   strokeWeight(0);
   textFont("monospace");
-  textSize(width < 600 ? 16 : 28); // Calculate responsive textSize based on the screen
+  textSize(width < 600 ? 16 : 28); // Calculate responsive textSize based on screen
   textAlign(align);
   if (align == LEFT) {
-    x += 7; // for adjusting the horizontal position
+    x += 6;
   }
   if (align == RIGHT) {
-    x -= 7; // for adjusting the horizontal position
+    x -= 6;
   }
 
   // Set up the static label with color
   fill('#01af52');
-  text(label, x, y + 55); // Adjust value to change vertical position
+  text(label, x, y + 45);
 
   // Set up the dynamic label with color; currently set to black
   fill(0);
-  text(value, x + textWidth(label + ' '), y + 55); // Adjust value to change vertical position
+  text(value, x + textWidth(label + ' '), y + 45);
 
   pop();
 }
