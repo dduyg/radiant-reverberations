@@ -24,7 +24,8 @@ function setup() {
   createCanvas(windowWidth * canvasPercentage, windowHeight * canvasPercentage);
 }
 
-// Draw function to create the visual
+///////////////////////////////////////////////////////////////////////////
+///////// Draw function to create the visual
 function draw() {
   background('#d1d6e6');
 
