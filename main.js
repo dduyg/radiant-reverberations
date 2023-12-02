@@ -93,25 +93,26 @@ function draw() {
 
 ///////////////////////////////////////////////////////////////////////////
 ///////// Set labels with specified styling, position, and alignment
-function drawLabel(label, value) {
+function drawLabel(x, y, label, value, align = CENTER) {
   push();
   strokeWeight(0);
   textFont("monospace");
 
   // Set up the static label with color
   fill('#01af52');
-  textSize(width < 600 ? 16 : 28);
-
-  // Adjust position based on screen size
-  let x = width < 600 ? 8 : 20;
-  let y = 20;
-
-  textAlign(LEFT);
-  text(label, x, y);
+  textSize(width < 600 ? 16 : 28); // Directly set responsive textSize
+  textAlign(align);
+  if (align == LEFT) {
+    x += 6;
+  }
+  if (align == RIGHT) {
+    x -= 6;
+  }
+  text(label, x, y + 45);
 
   // Set up the dynamic label with color; currently set to black
   fill(0);
-  text(value, x + textWidth(label + ' '), y);
+  text(value, x + textWidth(label + ' '), y + 45);
 
   pop();
 }
@@ -130,7 +131,6 @@ function drawTitle(title, yOffset) {
 
 ///////////////////////////////////////////////////////////////////////////
 ///////// Function to handle window resizing
-///////// Resize the canvas to fit the new window dimensions
 function windowResized() {
   resizeCanvas(windowWidth * canvasPercentage, windowHeight * canvasPercentage);
 }
