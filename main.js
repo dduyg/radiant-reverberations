@@ -100,19 +100,19 @@ function drawLabel(x, y, label, value, align = CENTER) {
   textSize(width < 600 ? 16 : 28); // Calculate responsive textSize based on the screen
   textAlign(align);
   if (align == LEFT) {
-    x += 6;
+    x += 7; // for adjusting the horizontal position
   }
   if (align == RIGHT) {
-    x -= 6;
+    x -= 7; // for adjusting the horizontal position
   }
 
   // Set up the static label with color
   fill('#01af52');
-  text(label, x, y + 45);
+  text(label, x, y + 55); // Adjust value to change vertical position
 
   // Set up the dynamic label with color; currently set to black
   fill(0);
-  text(value, x + textWidth(label + ' '), y + 45);
+  text(value, x + textWidth(label + ' '), y + 55); // Adjust value to change vertical position
 
   pop();
 }
