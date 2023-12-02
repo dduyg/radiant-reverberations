@@ -122,7 +122,7 @@ function drawLabel(x, y, label, value, align = CENTER) {
 function drawTitle(title, yOffset) {
   push();
   textFont("Space Mono");
-  textSize(width < 600 ? "1.5em" : "2em"); // Adjust font size based on screen width
+  textSize(width < 600 ? 22 : 34); // Adjust font size based on screen width
   fill('#01af52');
   textAlign(CENTER);
 
