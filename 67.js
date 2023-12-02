@@ -9,7 +9,7 @@ function drawTitle(title, yOffset) {
   pop();
 }
 
-// Draw the title below the animating visual
+// Adjust value to increase/decrease separation between visual and title; currently positioned 40px below visual
 drawTitle("Radiant Reverberations", 40);
 
 // --------------------------------------------------------------------
