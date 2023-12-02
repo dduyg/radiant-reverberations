@@ -120,14 +120,7 @@ function drawLabel(x, y, label, value, align = CENTER) {
   pop();
 }
 
-// Function to handle window resizing
-// Resize the canvas to fit the new window dimensions
-function windowResized() {
-  resizeCanvas(windowWidth * canvasPercentage, windowHeight * canvasPercentage);
-}
-
-
-// ------------------ Displaying title work ------------------
+// Set up title work
 function drawTitle(title, yOffset) {
   push();
   textFont("Space Mono");
@@ -138,4 +131,10 @@ function drawTitle(title, yOffset) {
 
   pop();
 }
-// -----------------------------------------------------------
+
+///////////////////////////////////////////////////////////////////////////
+///////// Function to handle window resizing
+///////// Resize the canvas to fit the new window dimensions
+function windowResized() {
+  resizeCanvas(windowWidth * canvasPercentage, windowHeight * canvasPercentage);
+}
