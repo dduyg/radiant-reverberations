@@ -1,28 +1,22 @@
-/******************************************************************
- ** Parameters for controlling various aspects of the simulation ~~
- ** ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ ~~
- */
+///////////////////////////////////////////////////////////////////////////
+///////// Parameters for controlling various aspects of the simulation
+//////////////////////////////////////////////////////////////////////////
 // Canvas size percentage to make it responsive
 let canvasPercentage = 0.9;
-
 // Frame count modifier (controls the variation speed)
 let frameModifier = 200;
-
 // Sample density modifier (affects the number of samples)
 let sampleDensityModifier = 40;
-
 // Sphere radius percentage (adjust to change the size of the spheres)
 let sphereRadiusPercentage = 0.4;
-
 // Vertical adjustment for the center of the upper hemisphere (experiment to change its position)
 let upperHemisphereVerticalAdjustment = 0.95;
-
 // Vertical adjustment for the center of the lower hemisphere (experiment to change its position)
 let lowerHemisphereVerticalAdjustment = 1.35;
-
 // Fill color for points (modifies point color; currently set to black)
 let pointFillColor = 0;
-/******************************************************************/
+///////////////////////////////////////////////////////////////////////////
+
 
 // Set up canvas based on window dimensions
 function setup() {
