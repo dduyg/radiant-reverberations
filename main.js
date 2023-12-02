@@ -119,16 +119,17 @@ function drawLabel(x, y, label, value, align = CENTER) {
 
 /////////////////
 ///////// Set title work
+// Function to draw the title
 function drawTitle(title, yOffset) {
   push();
   textFont("Space Mono");
-  textSize(width < 600 ? 22 : 34); // Adjust font size based on screen width
+
+  // Adjust font size based on screen width
+  textSize(width < 600 ? map(width, 0, 600, 16, 28) : 40);
+
   fill('#01af52');
   textAlign(CENTER);
-
-  // Limit title width to 90% of screen width
-  const titleWidth = min(width * 0.9, textWidth(title));
-  text(title, width / 2, height - yOffset, titleWidth);
+  text(title, width / 2, height - yOffset);
 
   pop();
 }
