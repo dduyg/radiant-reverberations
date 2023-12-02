@@ -121,14 +121,14 @@ function drawLabel(x, y, label, value, align = CENTER) {
   pop();
 }
 
-///////// Set up title work
+///////// Set title work
 function drawTitle(title, yOffset) {
   push();
   textFont("Space Mono");
   textSize(width < 600 ? 28 : 40); // Adjust font size based on screen width
   fill('#01af52');
   textAlign(CENTER);
-  text(title, width / 2, height + yOffset);
+  text(title, width / 2, height - yOffset);
 
   pop();
 }
