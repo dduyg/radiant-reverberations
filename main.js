@@ -135,10 +135,11 @@ function windowResized() {
 function drawTitle(title, yOffset) {
   push();
   textFont("Space Mono");
-  textSize(width < 600 ? 24 : 40);
-  textAlign(CENTER);
+  textSize(width < 600 ? 28 : 40); // Adjust font size based on screen width
   fill('#01af52');
+  textAlign(CENTER);
   text(title, width / 2, height + yOffset);
+
   pop();
 }
 // -----------------------------------------------------------
