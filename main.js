@@ -91,7 +91,8 @@ function draw() {
   drawTitle("Radiant Reverberations", 40);
 }
 
-// Set labels with specified styling, position, label text, value, and alignment
+///////////////////////////////////////////////////////////////////////////
+///////// Set labels with specified styling, position, value, and alignment
 function drawLabel(x, y, label, value, align = CENTER) {
   push();
   strokeWeight(0);
@@ -120,7 +121,7 @@ function drawLabel(x, y, label, value, align = CENTER) {
   pop();
 }
 
-// Set up title work
+///////// Set up title work
 function drawTitle(title, yOffset) {
   push();
   textFont("Space Mono");
