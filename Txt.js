@@ -4,7 +4,7 @@ function drawTitle(title, yOffset) {
   textFont("Space Mono");
 
   // Adjust font size based on screen width using em units directly
-  textSize(width < 600 ? "1.6em" : "2.8em"); // Adjust these values as needed
+  textSize(width < 600 ? "1.5em" : "2em"); // Adjust these values as needed
 
   // Limit title width to 90% of screen width for smaller screens
   const titleWidth = min(width * 0.9, textWidth(title));
