@@ -92,27 +92,29 @@ function draw() {
 }
 
 ///////////////////////////////////////////////////////////////////////////
-///////// Set labels with specified styling, position, value, and alignment
-function drawLabel(x, y, label, value, align = CENTER) {
+///////// Set labels with specified styling, position, and alignment
+function drawLabel(label, value) {
   push();
   strokeWeight(0);
   textFont("monospace");
-  textSize(width < 600 ? 16 : 28); // Calculate responsive textSize based on the canvas width
-  textAlign(align);
-  if (align == LEFT) {
-    x += 6;
-  }
-  if (align == RIGHT) {
-    x -= 6;
-  }
+
+  // Responsive positioning percentages
+  const topPercentage = 5;
+  const leftPercentage = 3;
+  // Calculate responsive positioning based on window dimensions
+  const topPosition = (topPercentage / 100) * windowHeight;
+  const leftPosition = (leftPercentage / 100) * windowWidth;
 
   // Set up the static label with color
   fill('#01af52');
-  text(label, x, y + 45); // Adjust value to position the label
+  textSize(width < 600 ? 16 : 28);
+  textAlign(LEFT);
+  text(label, leftPosition, topPosition);
 
   // Set up the dynamic label with color; currently set to black
   fill(0);
-  text(value, x + textWidth(label + ' '), y + 45); // Adjust value to position the label
+  textAlign(RIGHT);
+  text(value, leftPosition + textWidth(label), topPosition);
 
   pop();
 }
