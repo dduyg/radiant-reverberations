@@ -1,10 +1,4 @@
-/*
-=======================================================
-   Title-related Code
-=======================================================
-*/
-
-// Function to draw the title below the animating visual
+// ------------------ Displaying title work below it ------------------
 function drawTitle(title, yOffset) {
   push();
   textFont("Space Mono");
@@ -18,6 +12,4 @@ function drawTitle(title, yOffset) {
 // Draw the title below the animating visual
 drawTitle("Radiant Reverberations", 40);
 
-/*
-=======================================================
-*/
+// --------------------------------------------------------------------
