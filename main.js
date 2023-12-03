@@ -86,9 +86,8 @@ function draw() {
   // Display the number of samples taken in the simulation
   drawLabel(8, 32, "Number of samples ", nSamples, LEFT);
 
-  // Adjust value to increase/decrease separation between visual 
-  // and title of work; currently positioned 60px below visual
-  drawTitle("Radiant Reverberations", 60);
+  // Display title of work; currently positioned 60px below visual
+  drawTitle("Radiant Reverberations", 100);
 }
 
 ///////////////////////////////////////////////////////////////////////////
@@ -117,9 +116,8 @@ function drawLabel(x, y, label, value, align = CENTER) {
   pop();
 }
 
-/////////////////
-///////// Set title work
-// Function to draw the title
+////////////////////////
+///////// Set the title of work
 function drawTitle(title, yOffset) {
   push();
   textFont("Space Mono");
