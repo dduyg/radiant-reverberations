@@ -88,8 +88,8 @@ function draw() {
   // Display the number of samples taken in the simulation
   drawLabel(8, 32, "Number of samples ", nSamples, LEFT);
 
-  // Display title of work; currently positioned 60px below visual
-  drawTitle("Radiant Reverberations", 20);
+  // Display title of work
+  drawTitle("Radiant Reverberations", 5);
 }
 
 // Set labels with specified styling, position, and alignment
