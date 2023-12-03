@@ -98,7 +98,7 @@ function drawLabel(x, y, label, value, align = CENTER) {
   push();
   strokeWeight(0);
   textFont("monospace");
-  textSize(width < 600 ? 16 : 28); // Calculate responsive textSize based on screen
+  textSize(width < 600 ? 15 : 20); // sets font size to 15 for screen width less than 600px, otherwise to 20
   textAlign(align);
   if (align == LEFT) {
     x += 6;
