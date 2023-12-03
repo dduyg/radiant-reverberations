@@ -130,7 +130,7 @@ function drawTitle(title, yOffset) {
 
   fill('#01af52');
   textAlign(CENTER);
-  text(title, width / 2, height + yOffset);
+  text(title, width / 2, height - yOffset);
 
   pop();
 }
