@@ -87,8 +87,8 @@ function draw() {
   drawLabel(8, 32, "Number of samples ", nSamples, LEFT);
 
   // Adjust value to increase/decrease separation between visual 
-  // and title of work; currently positioned 40px below visual
-  drawTitle("Radiant Reverberations", 40);
+  // and title of work; currently positioned 60px below visual
+  drawTitle("Radiant Reverberations", 60);
 }
 
 ///////////////////////////////////////////////////////////////////////////
