@@ -98,7 +98,6 @@ function drawLabel(x, y, label, value, align = CENTER) {
   push();
   strokeWeight(0);
   textFont("monospace");
-  textSize(width < 600 ? 15 : 20); // sets font size to 15 for screen width less than 600px, otherwise to 20
   textAlign(align);
   if (align == LEFT) {
     x += 6;
@@ -106,6 +105,8 @@ function drawLabel(x, y, label, value, align = CENTER) {
   if (align == RIGHT) {
     x -= 6;
   }
+  // Font size 15 for screen width less than 600px, otherwise to 20
+  textSize(width < 600 ? 15 : 20);
 
   // Set up the static label with color
   fill('#01af52');
