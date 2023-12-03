@@ -123,7 +123,8 @@ function drawTitle(title, yOffset) {
   push();
   textFont("Space Mono");
 
-  // Adapts font size between 16 and 28 according to screen width; sets directly to 32 for widths of 600px or more
+  // Adapts font size between 16 and 28 according to screen width;
+  // if width is 600px or more, sets directly to 32
   textSize(width < 600 ? map(width, 0, 600, 16, 28) : 32);
 
   fill('#01af52');
