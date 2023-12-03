@@ -89,7 +89,7 @@ function draw() {
   drawLabel(8, 32, "Number of samples ", nSamples, LEFT);
 
   // Display title of work; currently positioned 60px below visual
-  drawTitle("Radiant Reverberations", 100);
+  drawTitle("Radiant Reverberations", 20);
 }
 
 // Set labels with specified styling, position, and alignment
@@ -105,7 +105,7 @@ function drawLabel(x, y, label, value, align = CENTER) {
   if (align == RIGHT) {
     x -= 6;
   }
-  // Font size 15 for screen width less than 600px, otherwise to 20
+  // Font size 15 if screen width is less than 600px, otherwise 20
   textSize(width < 600 ? 15 : 20);
 
   // Set up the static label with color
