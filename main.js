@@ -19,13 +19,13 @@ let pointFillColor = 0;
 
 
 // Set up canvas based on window dimensions
-/////////////////////////////////////////////
+///////////////////////////////////////////
 function setup() {
   createCanvas(windowWidth * canvasPercentage, windowHeight * canvasPercentage);
 }
 
 // Draw function to create the visual
-///////////////////////////////////////
+/////////////////////////////////////
 function draw() {
   background('#d1d6e6');
 
@@ -43,7 +43,7 @@ function draw() {
   const lowerHemisphereCenterY = height / 2 + sphereRadius * lowerHemisphereVerticalAdjustment;
 
   // Rendering the upper hemisphere
-  ///////////////////////////////////
+  /////////////////////////////////
   noStroke();
   fill(pointFillColor);
   
@@ -66,7 +66,7 @@ function draw() {
   }
 
   // Rendering the lower hemisphere
-  ///////////////////////////////////
+  /////////////////////////////////
   // Iterate to cover the entire sphere surface with samples
   for (let phi = 0.0; phi < 2.0 * PI; phi += sampleAngularDelta) {
     for (let theta = 0.0; theta < 0.5 * PI; theta += sampleAngularDelta) {
@@ -93,7 +93,7 @@ function draw() {
 }
 
 // Set labels with specified styling, position, and alignment
-///////////////////////////////////////////////////////////////
+/////////////////////////////////////////////////////////////
 function drawLabel(x, y, label, value, align = CENTER) {
   push();
   strokeWeight(0);
@@ -119,7 +119,6 @@ function drawLabel(x, y, label, value, align = CENTER) {
 }
 
 // Set the title of work
-// ------------------
 function drawTitle(title, yOffset) {
   push();
   textFont("Space Mono");
@@ -134,8 +133,8 @@ function drawTitle(title, yOffset) {
   pop();
 }
 
-///////////////////////////////////////////////////////////////////////////
-///////// Function to handle window resizing
+// Function to handle window resizing
+/////////////////////////////////////
 function windowResized() {
   resizeCanvas(windowWidth * canvasPercentage, windowHeight * canvasPercentage);
 }
