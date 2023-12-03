@@ -43,6 +43,7 @@ function draw() {
   const lowerHemisphereCenterY = height / 2 + sphereRadius * lowerHemisphereVerticalAdjustment;
 
   // Rendering the upper hemisphere
+  /////////////////////////////////
   noStroke();
   fill(pointFillColor);
   
@@ -64,7 +65,8 @@ function draw() {
     }
   }
 
-  // Rendering the lower hemisphere
+  // Rendering the lower hemisphere ///
+  ////////////////////////////////////
   // Iterate to cover the entire sphere surface with samples
   for (let phi = 0.0; phi < 2.0 * PI; phi += sampleAngularDelta) {
     for (let theta = 0.0; theta < 0.5 * PI; theta += sampleAngularDelta) {
