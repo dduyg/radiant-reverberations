@@ -89,7 +89,7 @@ function draw() {
   drawLabel(8, 32, "Number of samples ", nSamples, LEFT);
 
   // Display title of work
-  drawTitle("Radiant Reverberations", 5);
+  drawTitle("A Radiant Reverberation", 5);
 }
 
 // Set labels with specified styling, position, and alignment
