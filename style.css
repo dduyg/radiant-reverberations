@@ -54,7 +54,7 @@ h5 {
   color: #01af52;
   font-family: 'Inter', sans-serif;
 }
-/* Media query for small screens (max-width: 767px) */
+/* Media query for mobile screens */
 @media only screen and (max-width: 767px) {
   #infoDropdown {
     max-width: 90%;
@@ -62,7 +62,7 @@ h5 {
     font-size: 14px;
   }
 }
-/* Media query for larger screens */
+/* Media query for desktop screens */
 @media only screen and (min-width: 768px) {
   #infoDropdown {
     max-width: 65%;
