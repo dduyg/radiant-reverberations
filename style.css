@@ -62,3 +62,19 @@ h5 {
   cursor: pointer;
   font-size: 24px;
 }
+
+#infoDropdown a:link,
+#infoDropdown a:visited {
+  font-weight: bold;
+  font-family: monospace;
+  text-decoration: none;
+  padding-bottom: 0px !important;
+  border-bottom: 2px solid black;
+  transform: skew(52deg) translateX(-50%);
+}
+
+#infoDropdown a:hover {
+  font-weight: bold;
+  color: #d1d6e6;
+  background: #01af52;
+}
