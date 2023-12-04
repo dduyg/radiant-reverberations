@@ -86,7 +86,7 @@ function draw() {
   }
 
   // Display the number of samples taken in the simulation
-  drawLabel(8, 73, "Number of samples ", nSamples, LEFT);
+  drawLabel(8, 71, "Number of samples ", nSamples, LEFT);
 
   // Display title of work
   drawTitle("A Radiant Reverberation", 2);
