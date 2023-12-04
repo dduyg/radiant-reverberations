@@ -44,8 +44,10 @@ h5 {
 #infoDropdown {
   display: none;
   position: fixed;
-  top: 60px;
-  right: 20px;
+  top: 5%;
+  right: 3%;
+  max-height: 80vh;
+  overflow-y: auto;
   background-color: #d1d6e6;
   border: 1px solid black;
   padding: 15px;
