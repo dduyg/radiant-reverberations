@@ -86,7 +86,7 @@ function draw() {
   }
 
   // Display the number of samples taken in the simulation
-  drawLabel(8, 71, "Number of samples ", nSamples, LEFT);
+  drawLabel(8, 69, "Number of samples ", nSamples, LEFT);
 
   // Display title of work
   drawTitle("A Radiant Reverberation", 2);
@@ -105,8 +105,8 @@ function drawLabel(x, y, label, value, align = CENTER) {
   if (align == RIGHT) {
     x -= 6;
   }
-  // Font size 15 if screen width is less than 600px, otherwise 20
-  textSize(width < 600 ? 15 : 20);
+  // Font size 15 if screen width is less than 600px, otherwise 22
+  textSize(width < 600 ? 15 : 22);
 
   // Set up the static label with color
   fill('#01af52');
