@@ -21,7 +21,7 @@ let pointFillColor = 0;
 // Set up canvas based on window dimensions
 ///////////////////////////////////////////
 function setup() {
-  createCanvas(windowWidth * canvasPercentage, windowHeight * canvasPercentage);
+  createCanvas(min(windowWidth, windowHeight) * canvasPercentage, min(windowWidth, windowHeight) * canvasPercentage);
 }
 
 // Draw function to create the visual
