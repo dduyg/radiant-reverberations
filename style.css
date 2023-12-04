@@ -2,7 +2,6 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
-  flex-direction: column;
   height: 100vh;
   margin: 0;
   padding: 1em;
@@ -56,14 +55,14 @@ h5 {
 /* Media query for mobile screens */
 @media only screen and (max-width: 767px) {
   #infoDropdown {
-    max-width: 90%;
+    width: 90%;
     max-height: 85%;
   }
 }
 /* Media query for desktop screens */
 @media only screen and (min-width: 768px) {
   #infoDropdown {
-    max-width: 65%;
+    width: 60%;
     max-height: 70%;
   }
 }
