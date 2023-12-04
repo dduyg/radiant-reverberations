@@ -1,25 +1,14 @@
 body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
   margin: 0;
-  padding: 0;
+  padding: 1em;
   overflow: hidden;
   background-color: #d1d6e6;
   line-height: 1.4;
   -webkit-font-smoothing: antialiased;
-  width: 100vw;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  overscroll-behavior-y: contain;
-}
-
-html, body { height: 100%; }
-html,
-body {
-  height: 100%;
-  width: 100%;
-  overflow: auto;
-}
+}  
 
 h1,
 h2,
@@ -31,7 +20,7 @@ h5 {
 }
 
 #infoButton {
-  position: absolute;
+  position: fixed;
   top: 5%;
   right: 5%;
   font-family: 'Major Mono Display', monospace;
@@ -52,7 +41,7 @@ h5 {
 
 #infoDropdown {
   display: none;
-  position: absolute;
+  position: fixed;
   top: 60px;
   right: 20px;
   background-color: #d1d6e6;
