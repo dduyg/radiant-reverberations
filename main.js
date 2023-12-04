@@ -12,7 +12,7 @@ let sphereRadiusPercentage = 0.4;
 // Vertical adjustment for the center of the upper hemisphere (experiment to change its position)
 let upperHemisphereVerticalAdjustment = 0.80;
 // Vertical adjustment for the center of the lower hemisphere (experiment to change its position)
-let lowerHemisphereVerticalAdjustment = 1.65;
+let lowerHemisphereVerticalAdjustment = 1.6;
 // Fill color for points (modifies point color; currently set to black)
 let pointFillColor = 0;
 //////////////////////////////////////////////////////////////////////////////////////////////////
@@ -89,7 +89,7 @@ function draw() {
   drawLabel(8, 32, "Number of samples ", nSamples, LEFT);
 
   // Display title of work
-  drawTitle("A Radiant Reverberation", 1);
+  drawTitle("A Radiant Reverberation", 2);
 }
 
 // Set labels with specified styling, position, and alignment
