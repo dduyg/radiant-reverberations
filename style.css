@@ -4,6 +4,7 @@ body {
   align-items: center;
   margin: 0;
   padding: 0;
+  overflow: auto;
   background-color: #d1d6e6;
   line-height: 1.4;
 }
@@ -20,7 +21,7 @@ h5 {
 #infoButton {
   position: fixed;
   top: 5%;
-  right: 4%;
+  right: 5%;
   font-family: 'Major Mono Display', monospace;
   font-size: 50px;
   font-weight: bolder;
