@@ -55,14 +55,14 @@ h5 {
 /* Media query for mobile screens */
 @media only screen and (max-width: 767px) {
   #infoDropdown {
-    width: 80%;
+    width: 85vh;
     max-height: 85%;
   }
 }
 /* Media query for desktop screens */
 @media only screen and (min-width: 768px) {
   #infoDropdown {
-    width: 60%;
+    width: 60vh;
     max-height: 70%;
   }
 }
