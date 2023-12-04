@@ -2,13 +2,15 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
+  flex-direction: column;
+  height: 100vh;
   margin: 0;
   padding: 1em;
   overflow: hidden;
   background-color: #d1d6e6;
   line-height: 1.4;
   -webkit-font-smoothing: antialiased;
-}  
+}
 
 h1,
 h2,
