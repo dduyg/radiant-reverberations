@@ -12,7 +12,7 @@ let sphereRadiusPercentage = 0.4;
 // Vertical adjustment for the center of the upper hemisphere (experiment to change its position)
 let upperHemisphereVerticalAdjustment = 0.80;
 // Vertical adjustment for the center of the lower hemisphere (experiment to change its position)
-let lowerHemisphereVerticalAdjustment = 1.35;
+let lowerHemisphereVerticalAdjustment = 1.75;
 // Fill color for points (modifies point color; currently set to black)
 let pointFillColor = 0;
 //////////////////////////////////////////////////////////////////////////////////////////////////
