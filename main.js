@@ -110,11 +110,11 @@ function drawLabel(x, y, label, value, align = CENTER) {
 
   // Set up the static label with color
   fill('#01af52');
-  text(label, x, y + 45);
+  text(label, x, y + 25);
 
   // Set up the dynamic label with color; currently set to black
   fill(0);
-  text(value, x + textWidth(label + ' '), y + 45);
+  text(value, x + textWidth(label + ' '), y + 25);
 
   pop();
 }
