@@ -20,7 +20,7 @@ h5 {
 }
 
 #infoButton {
-  position: absolute;
+  position: fixed;
   top: 5%;
   right: 5%;
   font-family: 'Major Mono Display', monospace;
@@ -41,7 +41,7 @@ h5 {
 
 #infoDropdown {
   display: none;
-  position: absolute;
+  position: fixed;
   top: 60px;
   right: 20px;
   background-color: #d1d6e6;
