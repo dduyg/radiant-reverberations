@@ -1,8 +1,4 @@
 body {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  height: 100vh;
   margin: 0;
   padding: 1em;
   overflow: hidden;
@@ -90,4 +86,21 @@ h5 {
   font-weight: bold;
   color: #d1d6e6;
   background: #01af52;
+}
+
+#visualHolder {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+#infoContainer {
+  position: fixed;
+  top: 5%;
+  right: 5%;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  z-index: 1;
 }
