@@ -21,7 +21,7 @@ let pointFillColor = 0;
 // Set up canvas based on window dimensions
 ///////////////////////////////////////////
 function setup() {
-  createCanvas(windowWidth, windowHeight);
+  createCanvas(windowWidth * canvasPercentage, windowHeight * canvasPercentage);
 }
 
 // Draw function to create the visual
@@ -86,7 +86,7 @@ function draw() {
   }
 
   // Display the number of samples taken in the simulation
-  drawLabel(8, 30, "Number of samples ", nSamples, LEFT);
+  drawLabel(8, 70, "Number of samples ", nSamples, LEFT);
 
   // Display title of work
   drawTitle("A Radiant Reverberation", 2);
@@ -110,11 +110,11 @@ function drawLabel(x, y, label, value, align = CENTER) {
 
   // Set up the static label with color
   fill('#01af52');
-  text(label, x, y + 25);
+  text(label, x, y + 45);
 
   // Set up the dynamic label with color; currently set to black
   fill(0);
-  text(value, x + textWidth(label + ' '), y + 25);
+  text(value, x + textWidth(label + ' '), y + 45);
 
   pop();
 }
