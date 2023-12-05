@@ -13,19 +13,16 @@
      <link href="https://fonts.googleapis.com/css2?family=Inter&family=Space+Mono&display=swap" rel="stylesheet">
   </head>
   <body>
-      <div id="infoContainer">
-        <button id="infoButton" onclick="toggleInfo()">?</button>
-        <div id="infoDropdown" class="dropdown-content">
-           <span onclick="closeInfo()" class="close"><b>&times;</b></span>
-           <h2 style="color: black; font-weight: normal;">A Playful Exploration into the Nuances of Irradiance Sampling</h2>
-           <p>This is a visually engaging display showcasing the sampling of incoming light on the surfaces of hemispheres. It provides a playful representation of the principles behind irradiance sampling. The upper and lower hemispheres depict virtual surfaces, where points on the spherical surfaces are sampled to approximate the amount of incoming light, creating a dynamic pattern that simulates light interaction with surfaces in a 3D space.</p>
-           <p>The dynamic nature mirrors the changing distribution of irradiance samples. The calculation and distribution of samples across the surfaces are influenced by various parameters like frame variation, sample density, and angular separation, all of which affect the visual outcome. The resulting dynamics of sampled points in the spherical space showcase how these samples contribute to the overall illumination of the virtual objects.</p> 
-        </div>
-      </div>  
+      <button id="infoButton" onclick="toggleInfo()">?</button>
+      <div id="infoDropdown" class="dropdown-content">
+         <span onclick="closeInfo()" class="close"><b>&times;</b></span>
+         <h2 style="color: black; font-weight: normal;">A Playful Exploration into the Nuances of Irradiance Sampling</h2>
+         <p>This is a visually engaging display showcasing the sampling of incoming light on the surfaces of hemispheres. It provides a playful representation of the principles behind irradiance sampling. The upper and lower hemispheres depict virtual surfaces, where points on the spherical surfaces are sampled to approximate the amount of incoming light, creating a dynamic pattern that simulates light interaction with surfaces in a 3D space.</p>
+         <p>The dynamic nature mirrors the changing distribution of irradiance samples. The calculation and distribution of samples across the surfaces are influenced by various parameters like frame variation, sample density, and angular separation, all of which affect the visual outcome. The resulting dynamics of sampled points in the spherical space showcase how these samples contribute to the overall illumination of the virtual objects.</p>
+      </div>
 
       <script src="./dropdown.js"></script>
-      <div id="sketch-holder">
-       <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.6.0/p5.min.js" integrity="sha512-3RlxD1bW34eFKPwj9gUXEWtdSMC59QqIqHnD8O/NoTwSJhgxRizdcFVQhUMFyTp5RwLTDL0Lbcqtl8b7bFAzog==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-       <script src="./main.js"></script>
-      </body>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.6.0/p5.min.js" integrity="sha512-3RlxD1bW34eFKPwj9gUXEWtdSMC59QqIqHnD8O/NoTwSJhgxRizdcFVQhUMFyTp5RwLTDL0Lbcqtl8b7bFAzog==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+      <script src="./main.js"></script>
+  </body>
 </html>
