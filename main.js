@@ -15,8 +15,17 @@ let upperHemisphereVerticalAdjustment = 0.95;
 let lowerHemisphereVerticalAdjustment = 1.5;
 // Fill color for points (modifies point color; currently set to black)
 let pointFillColor = 0;
-//////////////////////////////////////////////////////////////////////////////////////////////////
 
+// Light source positions
+let upperLightSource = createVector(0, 0); // Top-left corner for upper hemisphere
+let lowerLightSource = createVector(width, 0); // Diagonal top-right to bottom-left for lower hemisphere
+
+// Gradient color transition parameters
+let upperGradientStart = color(0, 100, 50); // Black for upper hemisphere
+let upperGradientEnd = color(120, 100, 80); // Green for upper hemisphere
+let lowerGradientStart = color(0, 0, 20); // Black for lower hemisphere
+let lowerGradientEnd = color(0, 0, 50); // Dark gray for lower hemisphere
+//////////////////////////////////////////////////////////////////////////////////////////////////
 
 // Set up canvas based on window dimensions
 ///////////////////////////////////////////
@@ -46,8 +55,7 @@ function draw() {
   // Rendering the upper hemisphere
   /////////////////////////////////
   noStroke();
-  fill(pointFillColor);
-  
+
   // Iterate to cover the entire sphere surface with samples
   for (let phi = 0.0; phi < 2.0 * PI; phi += sampleAngularDelta) {
     for (let theta = 0.0; theta < 0.5 * PI; theta += sampleAngularDelta) {
@@ -60,7 +68,16 @@ function draw() {
       const sampleX = x * sphereRadius + sphereCenterX;
       const sampleY = upperHemisphereCenterY + (z - y * 0.25) * sphereRadius;
 
-      // Draw the sample point
+      // Calculate the normalized position within the hemisphere (between 0 and 1)
+      const normalizedPosition = map(phi, 0, 2 * PI, 0, 1);
+      
+      // Interpolate lightness based on the normalized position
+      const upperLightness = lerp(upperGradientStart.levels[2], upperGradientEnd.levels[2], normalizedPosition);
+      
+      // Set fill color using HSL color model
+      fill(upperGradientEnd.levels[0], upperGradientEnd.levels[1], upperLightness);
+
+      // Draw sample point for upper hemisphere
       circle(sampleX, sampleY, 2);
       nSamples++;
     }
@@ -80,7 +97,16 @@ function draw() {
       const sampleX = x * sphereRadius + sphereCenterX;
       const sampleY = lowerHemisphereCenterY - (z + y * 0.25) * sphereRadius;
 
-      // Draw the sample point
+      // Calculate the normalized position within the hemisphere (between 0 and 1)
+      const normalizedPosition = map(phi, 0, 2 * PI, 0, 1);
+      
+      // Interpolate lightness based on the normalized position
+      const lowerLightness = lerp(lowerGradientStart.levels[2], lowerGradientEnd.levels[2], normalizedPosition);
+      
+      // Set fill color using HSL color model
+      fill(lowerGradientEnd.levels[0], lowerGradientEnd.levels[1], lowerLightness);
+
+      // Draw sample point for lower hemisphere
       circle(sampleX, sampleY, 2);
       nSamples++;
     }
