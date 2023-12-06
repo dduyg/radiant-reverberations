@@ -100,22 +100,3 @@ h5 {
   color: #d1d6e6;
   background: #01af52;
 }
-
-/* ------------------------------------------------------------ */
-/* SCROLLBAR */
-
-/* Set the background color of the scrollbar */
-#infoDropdown {
-  scrollbar-color: #01af52 #B8BDCD;
-  scrollbar-width: thin;
-}
-
-/* Style the scrollbar thumb */
-#infoDropdown::-webkit-scrollbar-thumb {
-  background-color: #B8BDCD;
-}
-
-/* Style the scrollbar track */
-#infoDropdown::-webkit-scrollbar-track {
-  background-color: #01af52;
-}
