@@ -1,30 +1,44 @@
-// Parameters for controlling various aspects of the simulation
+//////////////////////////////////////////////////////////////////////////////////////////////////
+///////// Parameters for controlling various aspects of the simulation
+//////////////////////////////////////////////////////////////////////////////////////////////////
+// Canvas size percentage to make it responsive
 let canvasPercentage = 0.9;
+// Frame count modifier (controls the variation speed)
 let frameModifier = 200;
+// Sample density modifier (affects the number of samples)
 let sampleDensityModifier = 40;
+// Sphere radius percentage (adjust to change the size of the spheres)
 let sphereRadiusPercentage = 0.4;
+// Vertical adjustment for the center of the upper hemisphere (experiment to change its position)
 let upperHemisphereVerticalAdjustment = 0.95;
-let lowerHemisphereVerticalAdjustment = 1.35;
+// Vertical adjustment for the center of the lower hemisphere (experiment to change its position)
+let lowerHemisphereVerticalAdjustment = 1.5;
+// Fill color for points (modifies point color; currently set to black)
 let pointFillColor = 0;
+// Light source position for upper hemisphere
+let upperLightSourceX = 0;
+let upperLightSourceY = 0;
+// Light source position for lower hemisphere
+let lowerLightSourceX = windowWidth;
+let lowerLightSourceY = 0;
+//////////////////////////////////////////////////////////////////////////////////////////////////
 
-// Light source parameters for the upper hemisphere
-let upperLightSourceX = 0.1; // Adjust as needed
-let upperLightSourceY = 0.1; // Adjust as needed
 
-// Light source parameters for the lower hemisphere
-let lowerLightSourceX = 0.9; // Adjust as needed
-let lowerLightSourceY = 0.9; // Adjust as needed
-
+// Set up canvas based on window dimensions
+///////////////////////////////////////////
 function setup() {
-  createCanvas(windowWidth * canvasPercentage, windowHeight * canvasPercentage);
+  let cnv = createCanvas(windowWidth * canvasPercentage, windowHeight * canvasPercentage);
+  cnv.id('p5-canvas');
 }
 
+// Draw function to create the visual
+/////////////////////////////////////
 function draw() {
   background('#d1d6e6');
 
   // Parameters influencing sample distribution
   const samplesPerFrame = pow(2, floor((frameCount % frameModifier) / sampleDensityModifier)) * 9;
-  const sampleAngularDelta = PI / samplesPerFrame;
+  const sampleAngularDelta = PI / samplesPerFrame; // Calculates the angular separation between samples
   let nSamples = 0;
 
   // Set up sphere properties
@@ -35,63 +49,62 @@ function draw() {
   const upperHemisphereCenterY = height / 2 - sphereRadius * upperHemisphereVerticalAdjustment;
   const lowerHemisphereCenterY = height / 2 + sphereRadius * lowerHemisphereVerticalAdjustment;
 
-  // Calculate the position of the virtual light source for the upper hemisphere
-  let upperLightPosX = width * upperLightSourceX;
-  let upperLightPosY = height * upperLightSourceY;
-  let upperNormalizedValue = map(upperLightPosX, 0, width, 0, 1);
-
-  // Calculate the position of the virtual light source for the lower hemisphere
-  let lowerLightPosX = width * lowerLightSourceX;
-  let lowerLightPosY = height * lowerLightSourceY;
-  let lowerNormalizedValue = map(lowerLightPosX, 0, width, 0, 1);
-
   // Rendering the upper hemisphere
+  /////////////////////////////////
   noStroke();
-  fill(lerpColor(color('#01af52'), color('#ffffff'), upperNormalizedValue));
+  fill(pointFillColor);
   
+  // Iterate to cover the entire sphere surface with samples
   for (let phi = 0.0; phi < 2.0 * PI; phi += sampleAngularDelta) {
     for (let theta = 0.0; theta < 0.5 * PI; theta += sampleAngularDelta) {
+      // Derive 3D coordinates from spherical angles for incoming light directions
       const x = sin(theta) * cos(phi);
       const y = sin(theta) * sin(phi);
       const z = cos(theta);
 
-      const sampleX = x * sphereRadius + sphereCenterX;
-      const sampleY = upperHemisphereCenterY + (z - y * 0.25) * sphereRadius;
+      // Calculate the position of each sample point on the upper hemisphere
+      const sampleX = x * sphereRadius + sphereCenterX + upperLightSourceX;
+      const sampleY = upperHemisphereCenterY + (z - y * 0.25) * sphereRadius + upperLightSourceY;
 
+      // Draw the sample point
       circle(sampleX, sampleY, 2);
       nSamples++;
     }
   }
 
   // Rendering the lower hemisphere
-  fill(lerpColor(color('#000000'), color('#808080'), lowerNormalizedValue));
-  
+  /////////////////////////////////
+  // Iterate to cover the entire sphere surface with samples
   for (let phi = 0.0; phi < 2.0 * PI; phi += sampleAngularDelta) {
     for (let theta = 0.0; theta < 0.5 * PI; theta += sampleAngularDelta) {
+      // Derive 3D coordinates from spherical angles for incoming light directions
       const x = sin(theta) * cos(phi);
       const y = sin(theta) * sin(phi);
       const z = cos(theta);
 
-      const sampleX = x * sphereRadius + sphereCenterX;
-      const sampleY = lowerHemisphereCenterY - (z + y * 0.25) * sphereRadius;
+      // Calculate the position of each sample point on the lower hemisphere
+      const sampleX = x * sphereRadius + sphereCenterX + lowerLightSourceX;
+      const sampleY = lowerHemisphereCenterY - (z + y * 0.25) * sphereRadius + lowerLightSourceY;
 
+      // Draw the sample point
       circle(sampleX, sampleY, 2);
       nSamples++;
     }
   }
 
   // Display the number of samples taken in the simulation
-  drawLabel(8, 32, "Number of samples ", nSamples, LEFT);
+  drawLabel(8, 46, "Number of samples ", nSamples, LEFT);
 
-  // Adjust value to increase/decrease separation between visual 
-  drawTitle("Radiant Reverberations", 40);
+  // Display title of work
+  drawTitle("Radiant Reverberations", 2);
 }
 
+// Set labels with specified styling, position, and alignment
+/////////////////////////////////////////////////////////////
 function drawLabel(x, y, label, value, align = CENTER) {
   push();
   strokeWeight(0);
   textFont("monospace");
-  textSize(width < 600 ? 16 : 28);
   textAlign(align);
   if (align == LEFT) {
     x += 6;
@@ -99,27 +112,38 @@ function drawLabel(x, y, label, value, align = CENTER) {
   if (align == RIGHT) {
     x -= 6;
   }
+  // Font size 15 if screen width is less than 600px, otherwise 22
+  textSize(width < 600 ? 15 : 22);
 
+  // Set up the static label with color
   fill('#01af52');
   text(label, x, y + 45);
 
+  // Set up the dynamic label with color; currently set to black
   fill(0);
   text(value, x + textWidth(label + ' '), y + 45);
-  
+
   pop();
 }
 
+// Set the title of work
 function drawTitle(title, yOffset) {
   push();
   textFont("Space Mono");
-  textSize(width < 600 ? 28 : 40);
+
+  // Adapts font size between 16 and 28 according to screen width;
+  // if width is 600px or more, sets directly to 32
+  textSize(width < 600 ? map(width, 0, 600, 16, 28) : 32);
+
   fill('#01af52');
   textAlign(CENTER);
-  text(title, width / 2, height + yOffset);
+  text(title, width / 2, height - yOffset);
 
   pop();
 }
 
+// Function to handle window resizing
+/////////////////////////////////////
 function windowResized() {
   resizeCanvas(windowWidth * canvasPercentage, windowHeight * canvasPercentage);
 }
