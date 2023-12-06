@@ -13,7 +13,7 @@ let upperLightSourceY = 0.1; // Adjust as needed
 
 // Light source parameters for the lower hemisphere
 let lowerLightSourceX = 0.9; // Adjust as needed
-let lowerLightSourceY = 0.1; // Adjust as needed
+let lowerLightSourceY = 0.9; // Adjust as needed
 
 function setup() {
   createCanvas(windowWidth * canvasPercentage, windowHeight * canvasPercentage);
