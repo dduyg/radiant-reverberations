@@ -10,7 +10,7 @@ let sampleDensityModifier = 40;
 // Sphere radius percentage (adjust to change the size of the spheres)
 let sphereRadiusPercentage = 0.4;
 // Vertical adjustment for the center of the upper hemisphere (experiment to change its position)
-let upperHemisphereVerticalAdjustment = 0.75;
+let upperHemisphereVerticalAdjustment = 0.95;
 // Vertical adjustment for the center of the lower hemisphere (experiment to change its position)
 let lowerHemisphereVerticalAdjustment = 1.5;
 // Fill color for points (modifies point color; currently set to black)
@@ -21,7 +21,8 @@ let pointFillColor = 0;
 // Set up canvas based on window dimensions
 ///////////////////////////////////////////
 function setup() {
-  createCanvas(windowWidth * canvasPercentage, windowHeight * canvasPercentage);
+  let cnv = createCanvas(windowWidth * canvasPercentage, windowHeight * canvasPercentage);
+  cnv.id('p5-canvas');
 }
 
 // Draw function to create the visual
@@ -86,10 +87,10 @@ function draw() {
   }
 
   // Display the number of samples taken in the simulation
-  drawLabel(8, 70, "Number of samples ", nSamples, LEFT);
+  drawLabel(8, 46, "Number of samples ", nSamples, LEFT);
 
   // Display title of work
-  drawTitle("A Radiant Reverberation", 2);
+  drawTitle("Radiant Reverberations", 2);
 }
 
 // Set labels with specified styling, position, and alignment
