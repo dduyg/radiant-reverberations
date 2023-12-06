@@ -88,7 +88,6 @@ h5 {
 #infoDropdown a:link,
 #infoDropdown a:visited {
   color: #01af52;
-  font-weight: bold;
   text-decoration: none;
   padding-bottom: 0px !important;
   border-bottom: 2px solid #01af52;
