@@ -1,14 +1,17 @@
-body {
-  display: flex;
-  justify-content: center;
-  align-items: center; 
+body { 
   margin: 0;
   padding: 1em;
-  max-height: 95%;
   overflow: hidden;
   background-color: #d1d6e6;
   line-height: 1.4;
   -webkit-font-smoothing: antialiased;
+}
+
+#p5-canvas {
+  display: block;
+  max-height: 95%;
+  max-width: 100%;
+  margin: auto;
 }
 
 h1,
@@ -16,14 +19,14 @@ h2,
 h3,
 h4,
 h5 {
- letter-spacing: 1px;
+ letter-spacing: 2px;
  font-family: 'Space Mono', monospace;
 }
 
 #infoButton {
   position: fixed;
   top: 5%;
-  right: 5%;
+  right: 6%;
   font-family: 'Major Mono Display', monospace;
   font-size: 50px;
   font-weight: bolder;
@@ -47,8 +50,10 @@ h5 {
   right: 5%;
   overflow-y: auto;
   background-color: #d1d6e6;
-  border: 1px solid black;
-  padding: 25px;
+  border: 2px solid #2C2C2C;
+  border-radius: 10px;
+  -webkit-box-shadow: 4px 4px 0 #2C2C2C;
+  box-shadow: 4px 4px 0 #2C2C2C;
   color: #01af52;
   font-family: 'Inter', sans-serif;
 }
@@ -57,14 +62,17 @@ h5 {
   #infoDropdown {
     width: 80%;
     max-height: 80%;
-    font-size: .9em;
+    font-size: 17px;
+    padding: 20px;
   }
 }
 /* Media query for desktop screens */
 @media only screen and (min-width: 768px) {
   #infoDropdown {
-    width: 60%;
+    width: 65%;
     max-height: 60%;
+    font-size: 18px;
+    padding: 2em;
   }
 }
 
@@ -74,16 +82,16 @@ h5 {
   right: 0;
   padding: 25px;
   cursor: pointer;
-  font-size: 24px;
+  font-size: 25px;
 }
 
 #infoDropdown a:link,
 #infoDropdown a:visited {
+  color: #01af52;
   font-weight: bold;
-  font-family: monospace;
   text-decoration: none;
   padding-bottom: 0px !important;
-  border-bottom: 2px solid black;
+  border-bottom: 2px solid #01af52;
   transform: skew(52deg) translateX(-50%);
 }
 
@@ -91,4 +99,23 @@ h5 {
   font-weight: bold;
   color: #d1d6e6;
   background: #01af52;
+}
+
+/* ------------------------------------------------------------ */
+/* SCROLLBAR */
+
+/* Set the background color of the scrollbar */
+#infoDropdown {
+  scrollbar-color: #01af52 #B8BDCD;
+  scrollbar-width: thin;
+}
+
+/* Style the scrollbar thumb */
+#infoDropdown::-webkit-scrollbar-thumb {
+  background-color: #B8BDCD;
+}
+
+/* Style the scrollbar track */
+#infoDropdown::-webkit-scrollbar-track {
+  background-color: #01af52;
 }
