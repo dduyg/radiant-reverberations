@@ -15,11 +15,11 @@ let upperHemisphereVerticalAdjustment = 0.95;
 let lowerHemisphereVerticalAdjustment = 1.5;
 // Fill color for points (modifies point color; currently set to black)
 let pointFillColor = 0;
+//////////////////////////////////////////////////////////////////////////////////////////////////
 
-// Light source positions
+// Add these two variables with desired positions
 let upperLightSource = createVector(0, 0); // Top-left corner
 let lowerLightSource = createVector(width, 0); // Top-right corner
-//////////////////////////////////////////////////////////////////////////////////////////////////
 
 // Set up canvas based on window dimensions
 ///////////////////////////////////////////
@@ -49,7 +49,9 @@ function draw() {
   // Rendering the upper hemisphere
   /////////////////////////////////
   noStroke();
-  fill('#01af52'); // Set color for the upper hemisphere
+  fill(pointFillColor);
+
+  // Iterate to cover the entire sphere surface with samples
   for (let phi = 0.0; phi < 2.0 * PI; phi += sampleAngularDelta) {
     for (let theta = 0.0; theta < 0.5 * PI; theta += sampleAngularDelta) {
       // Derive 3D coordinates from spherical angles for incoming light directions
@@ -69,7 +71,7 @@ function draw() {
 
   // Rendering the lower hemisphere
   /////////////////////////////////
-  fill('#000000'); // Set color for the lower hemisphere
+  // Iterate to cover the entire sphere surface with samples
   for (let phi = 0.0; phi < 2.0 * PI; phi += sampleAngularDelta) {
     for (let theta = 0.0; theta < 0.5 * PI; theta += sampleAngularDelta) {
       // Derive 3D coordinates from spherical angles for incoming light directions
