@@ -17,9 +17,8 @@ let lowerHemisphereVerticalAdjustment = 1.5;
 let pointFillColor = 0;
 
 // Light source positions
-let upperLightSource;
-let lowerLightSource;
-
+let upperLightSource = createVector(0, 0); // Top-left corner
+let lowerLightSource = createVector(width, 0); // Top-right corner
 //////////////////////////////////////////////////////////////////////////////////////////////////
 
 // Set up canvas based on window dimensions
@@ -27,10 +26,6 @@ let lowerLightSource;
 function setup() {
   let cnv = createCanvas(windowWidth * canvasPercentage, windowHeight * canvasPercentage);
   cnv.id('p5-canvas');
-
-  // Initialize light source positions
-  upperLightSource = createVector(0, 0); // Top-left corner
-  lowerLightSource = createVector(width, 0); // Top-right corner
 }
 
 // Draw function to create the visual
