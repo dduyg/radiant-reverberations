@@ -7,9 +7,9 @@ let sampleDensityModifier = 40;
 // Sphere radius percentage (adjust to change the size of the spheres)
 let sphereRadiusPercentage = 0.4;
 // Vertical adjustment for the center of the upper hemisphere (experiment to change its position)
-let upperHemisphereVerticalAdjustment = 0.95;
+let upperHemisphereVerticalAdjustment = 0.85;
 // Vertical adjustment for the center of the lower hemisphere (experiment to change its position)
-let lowerHemisphereVerticalAdjustment = 1.5;
+let lowerHemisphereVerticalAdjustment = 1.4;
 // Fill color for points (modifies point color; currently set to black)
 let pointFillColor = 0;
 
