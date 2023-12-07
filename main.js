@@ -16,7 +16,7 @@ let lowerHemisphereVerticalAdjustment = 1.5;
 // Fill color for points (modifies point color; currently set to black)
 let pointFillColor = 0;
 // Vertical position of the virtual light source (experiment to change its position)
-let lightSourceTheta = 0.0;
+let lightSourceTheta = 0.5;
 //////////////////////////////////////////////////////////////////////////////////////////////////
 
 // Set up canvas based on window dimensions
