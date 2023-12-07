@@ -69,7 +69,7 @@ function draw() {
 
   // Rendering the lower hemisphere
   /////////////////////////////////
-  fill(0); // Set color for the lower hemisphere
+  fill('#000000'); // Set color for the lower hemisphere
   for (let phi = 0.0; phi < 2.0 * PI; phi += sampleAngularDelta) {
     for (let theta = 0.0; theta < 0.5 * PI; theta += sampleAngularDelta) {
       // Derive 3D coordinates from spherical angles for incoming light directions
