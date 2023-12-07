@@ -1,6 +1,3 @@
-//////////////////////////////////////////////////////////////////////////////////////////////////
-///////// Parameters for controlling various aspects of the simulation
-//////////////////////////////////////////////////////////////////////////////////////////////////
 // Canvas size percentage to make it responsive
 let canvasPercentage = 0.9;
 // Frame count modifier (controls the variation speed)
@@ -15,21 +12,14 @@ let upperHemisphereVerticalAdjustment = 0.95;
 let lowerHemisphereVerticalAdjustment = 1.5;
 // Fill color for points (modifies point color; currently set to black)
 let pointFillColor = 0;
-//////////////////////////////////////////////////////////////////////////////////////////////////
-
-// Add these two variables with desired positions
-let upperLightSource = createVector(0, 0); // Top-left corner
-let lowerLightSource = createVector(width, 0); // Top-right corner
 
 // Set up canvas based on window dimensions
-///////////////////////////////////////////
 function setup() {
   let cnv = createCanvas(windowWidth * canvasPercentage, windowHeight * canvasPercentage);
   cnv.id('p5-canvas');
 }
 
 // Draw function to create the visual
-/////////////////////////////////////
 function draw() {
   background('#d1d6e6');
 
@@ -46,12 +36,13 @@ function draw() {
   const upperHemisphereCenterY = height / 2 - sphereRadius * upperHemisphereVerticalAdjustment;
   const lowerHemisphereCenterY = height / 2 + sphereRadius * lowerHemisphereVerticalAdjustment;
 
+  // Light source positions
+  let upperLightSource = { x: width * 0.1, y: height * 0.1 }; // Top-left corner
+  let lowerLightSource = { x: width * 0.9, y: height * 0.1 }; // Diagonal top-right to bottom-left
+
   // Rendering the upper hemisphere
-  /////////////////////////////////
   noStroke();
   fill(pointFillColor);
-
-  // Iterate to cover the entire sphere surface with samples
   for (let phi = 0.0; phi < 2.0 * PI; phi += sampleAngularDelta) {
     for (let theta = 0.0; theta < 0.5 * PI; theta += sampleAngularDelta) {
       // Derive 3D coordinates from spherical angles for incoming light directions
@@ -60,18 +51,16 @@ function draw() {
       const z = cos(theta);
 
       // Calculate the position of each sample point on the upper hemisphere
-      const sampleX = x * sphereRadius + sphereCenterX + upperLightSource.x;
-      const sampleY = upperHemisphereCenterY + (z - y * 0.25) * sphereRadius + upperLightSource.y;
+      const sampleXUpper = x * sphereRadius + upperLightSource.x;
+      const sampleYUpper = upperHemisphereCenterY + (z - y * 0.25) * sphereRadius;
 
       // Draw the sample point
-      circle(sampleX, sampleY, 2);
+      circle(sampleXUpper, sampleYUpper, 2);
       nSamples++;
     }
   }
 
   // Rendering the lower hemisphere
-  /////////////////////////////////
-  // Iterate to cover the entire sphere surface with samples
   for (let phi = 0.0; phi < 2.0 * PI; phi += sampleAngularDelta) {
     for (let theta = 0.0; theta < 0.5 * PI; theta += sampleAngularDelta) {
       // Derive 3D coordinates from spherical angles for incoming light directions
@@ -80,11 +69,11 @@ function draw() {
       const z = cos(theta);
 
       // Calculate the position of each sample point on the lower hemisphere
-      const sampleX = x * sphereRadius + sphereCenterX + lowerLightSource.x;
-      const sampleY = lowerHemisphereCenterY - (z + y * 0.25) * sphereRadius + lowerLightSource.y;
+      const sampleXLower = x * sphereRadius + lowerLightSource.x;
+      const sampleYLower = lowerHemisphereCenterY - (z + y * 0.25) * sphereRadius;
 
       // Draw the sample point
-      circle(sampleX, sampleY, 2);
+      circle(sampleXLower, sampleYLower, 2);
       nSamples++;
     }
   }
@@ -97,7 +86,6 @@ function draw() {
 }
 
 // Set labels with specified styling, position, and alignment
-/////////////////////////////////////////////////////////////
 function drawLabel(x, y, label, value, align = CENTER) {
   push();
   strokeWeight(0);
