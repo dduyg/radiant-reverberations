@@ -1,3 +1,6 @@
+//////////////////////////////////////////////////////////////////////////////////////////////////
+///////// Parameters for controlling various aspects of the simulation
+//////////////////////////////////////////////////////////////////////////////////////////////////
 // Canvas size percentage to make it responsive
 let canvasPercentage = 0.9;
 // Frame count modifier (controls the variation speed)
@@ -7,19 +10,24 @@ let sampleDensityModifier = 40;
 // Sphere radius percentage (adjust to change the size of the spheres)
 let sphereRadiusPercentage = 0.4;
 // Vertical adjustment for the center of the upper hemisphere (experiment to change its position)
-let upperHemisphereVerticalAdjustment = 0.85;
+let upperHemisphereVerticalAdjustment = 0.95;
 // Vertical adjustment for the center of the lower hemisphere (experiment to change its position)
-let lowerHemisphereVerticalAdjustment = 1.4;
+let lowerHemisphereVerticalAdjustment = 1.5;
 // Fill color for points (modifies point color; currently set to black)
 let pointFillColor = 0;
+// Vertical position of the virtual light source (experiment to change its position)
+let lightSourceTheta = 0.0;
+//////////////////////////////////////////////////////////////////////////////////////////////////
 
 // Set up canvas based on window dimensions
+///////////////////////////////////////////
 function setup() {
   let cnv = createCanvas(windowWidth * canvasPercentage, windowHeight * canvasPercentage);
   cnv.id('p5-canvas');
 }
 
 // Draw function to create the visual
+/////////////////////////////////////
 function draw() {
   background('#d1d6e6');
 
@@ -36,13 +44,12 @@ function draw() {
   const upperHemisphereCenterY = height / 2 - sphereRadius * upperHemisphereVerticalAdjustment;
   const lowerHemisphereCenterY = height / 2 + sphereRadius * lowerHemisphereVerticalAdjustment;
 
-  // Light source positions
-  let upperLightSource = { x: width * 0.1, y: height * 0.1 }; // Top-left corner
-  let lowerLightSource = { x: width * 0.9, y: height * 0.1 }; // Diagonal top-right to bottom-left
-
   // Rendering the upper hemisphere
+  /////////////////////////////////
   noStroke();
   fill(pointFillColor);
+
+  // Iterate to cover the entire sphere surface with samples
   for (let phi = 0.0; phi < 2.0 * PI; phi += sampleAngularDelta) {
     for (let theta = 0.0; theta < 0.5 * PI; theta += sampleAngularDelta) {
       // Derive 3D coordinates from spherical angles for incoming light directions
@@ -50,17 +57,23 @@ function draw() {
       const y = sin(theta) * sin(phi);
       const z = cos(theta);
 
+      // Adjust the vertical position of the light source
+      const adjustedY = y * cos(lightSourceTheta) - z * sin(lightSourceTheta);
+      const adjustedZ = y * sin(lightSourceTheta) + z * cos(lightSourceTheta);
+
       // Calculate the position of each sample point on the upper hemisphere
-      const sampleXUpper = x * sphereRadius + upperLightSource.x;
-      const sampleYUpper = upperHemisphereCenterY + (z - y * 0.25) * sphereRadius;
+      const sampleX = x * sphereRadius + sphereCenterX;
+      const sampleY = upperHemisphereCenterY + (adjustedZ - adjustedY * 0.25) * sphereRadius;
 
       // Draw the sample point
-      circle(sampleXUpper, sampleYUpper, 2);
+      circle(sampleX, sampleY, 2);
       nSamples++;
     }
   }
 
   // Rendering the lower hemisphere
+  /////////////////////////////////
+  // Iterate to cover the entire sphere surface with samples
   for (let phi = 0.0; phi < 2.0 * PI; phi += sampleAngularDelta) {
     for (let theta = 0.0; theta < 0.5 * PI; theta += sampleAngularDelta) {
       // Derive 3D coordinates from spherical angles for incoming light directions
@@ -68,12 +81,16 @@ function draw() {
       const y = sin(theta) * sin(phi);
       const z = cos(theta);
 
+      // Adjust the vertical position of the light source
+      const adjustedY = y * cos(lightSourceTheta) - z * sin(lightSourceTheta);
+      const adjustedZ = y * sin(lightSourceTheta) + z * cos(lightSourceTheta);
+
       // Calculate the position of each sample point on the lower hemisphere
-      const sampleXLower = x * sphereRadius + lowerLightSource.x;
-      const sampleYLower = lowerHemisphereCenterY - (z + y * 0.25) * sphereRadius;
+      const sampleX = x * sphereRadius + sphereCenterX;
+      const sampleY = lowerHemisphereCenterY - (adjustedZ + adjustedY * 0.25) * sphereRadius;
 
       // Draw the sample point
-      circle(sampleXLower, sampleYLower, 2);
+      circle(sampleX, sampleY, 2);
       nSamples++;
     }
   }
@@ -86,6 +103,7 @@ function draw() {
 }
 
 // Set labels with specified styling, position, and alignment
+/////////////////////////////////////////////////////////////
 function drawLabel(x, y, label, value, align = CENTER) {
   push();
   strokeWeight(0);
