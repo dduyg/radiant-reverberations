@@ -1,8 +1,7 @@
-//////////////////////////////////////////////////////////////////////////////////////////////////
-///////// Parameters for controlling various aspects of the simulation
-//////////////////////////////////////////////////////////////////////////////////////////////////
-// Canvas size percentage to make it responsive
-let canvasPercentage = 0.9;
+/******************************************************************
+ ** Parameters for controlling various aspects of the simulation ~~
+ ** ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ ~~
+ */
 // Frame count modifier (controls the variation speed)
 let frameModifier = 200;
 // Sample density modifier (affects the number of samples)
@@ -13,12 +12,13 @@ let sphereRadiusPercentage = 0.4;
 let upperHemisphereVerticalAdjustment = 0.95;
 // Vertical adjustment for the center of the lower hemisphere (experiment to change its position)
 let lowerHemisphereVerticalAdjustment = 1.5;
-// Fill color for points (modifies point color; currently set to black)
-let pointFillColor = 0;
 // Initial position of the virtual light source
 let lightSourceTheta = 0.0;
-//////////////////////////////////////////////////////////////////////////////////////////////////
-
+// Fill color for points (modifies point color; currently set to black)
+let pointFillColor = 0;
+// Canvas size percentage to make it responsive
+let canvasPercentage = 0.9;
+/******************************************************************/
 
 // Set up canvas based on window dimensions
 ///////////////////////////////////////////
