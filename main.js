@@ -1,7 +1,6 @@
-/******************************************************************
- ** Parameters for controlling various aspects of the simulation ~~
- ** ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ ~~
- */
+//////////////////////////////////////////////////////////////////////////////////////////////////
+///////// Parameters for controlling various aspects of the simulation
+//////////////////////////////////////////////////////////////////////////////////////////////////
 // Frame count modifier (controls the variation speed)
 let frameModifier = 200;
 // Sample density modifier (affects the number of samples)
@@ -18,10 +17,10 @@ let lightSourceTheta = 0.0;
 let pointFillColor = 0;
 // Canvas size percentage to make it responsive
 let canvasPercentage = 0.9;
-/******************************************************************/
+//////////////////////////////////////////////////////////////////////////////////////////////////
 
 
-// ~~~~~ Set up canvas based on window dimensions ~~~~~
+//// Set up canvas based on window dimensions ~~~~~
 function setup() {
   let cnv = createCanvas(windowWidth * canvasPercentage, windowHeight * canvasPercentage);
   cnv.id('p5-canvas');
