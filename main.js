@@ -20,8 +20,8 @@ let pointFillColor = 0;
 let canvasPercentage = 0.9;
 /******************************************************************/
 
-// Set up canvas based on window dimensions
-///////////////////////////////////////////
+
+// ~~~~~ Set up canvas based on window dimensions ~~~~~
 function setup() {
   let cnv = createCanvas(windowWidth * canvasPercentage, windowHeight * canvasPercentage);
   cnv.id('p5-canvas');
