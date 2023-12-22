@@ -108,6 +108,6 @@ footer {
   background-color: #2C2C2C;
   color: #01af52;
   padding: 10px;
-  font-size: 28px; /* Set the initial font size */
+  letter-spacing: 2px;
   font-family: 'Space Mono', monospace;
 }
