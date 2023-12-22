@@ -9,7 +9,6 @@ body {
 
 #p5-canvas {
   display: block;
-  max-height: 95%;
   max-width: 100%;
   margin: auto;
 }
