@@ -100,9 +100,6 @@ function draw() {
   // Display the number of samples taken in the simulation
   drawLabel(8, 46, "Number of samples ", nSamples, LEFT);
 
-  // Display title of work
-  drawTitle("Radiant Reverberations", 2);
-
   // Adjust the position of the virtual light source over time
   lightSourceTheta += 0.01; // Adjust the increment value based on the desired speed
 }
@@ -130,22 +127,6 @@ function drawLabel(x, y, label, value, align = CENTER) {
   // Set up the dynamic label with color; currently set to black
   fill(0);
   text(value, x + textWidth(label + ' '), y + 45);
-
-  pop();
-}
-
-// Set the title of work
-function drawTitle(title, yOffset) {
-  push();
-  textFont("Space Mono");
-
-  // Adapts font size between 16 and 28 according to screen width;
-  // if width is 600px or more, sets directly to 32
-  textSize(width < 600 ? map(width, 0, 600, 16, 28) : 32);
-
-  fill('#01af52');
-  textAlign(CENTER);
-  text(title, width / 2, height - yOffset);
 
   pop();
 }
