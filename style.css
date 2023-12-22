@@ -100,14 +100,13 @@ h5 {
 }
 
 footer {
-  position: absolute;
-  bottom: 0;
-  background-color: #2C2C2C;
+  margin-top: auto;
   text-align: center;
+  background-color: #2C2C2C;
   padding: 1em;
 }
 
 footer h1 {
   color: #01af52;
-  margin: 0;
+  margin-bottom: 0;
 }
