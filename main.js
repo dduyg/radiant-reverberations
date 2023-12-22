@@ -15,14 +15,15 @@ let lowerHemisphereVerticalAdjustment = 1.5;
 let lightSourceTheta = 0.0;
 // Fill color for points (modifies point color; currently set to black)
 let pointFillColor = 0;
-// Canvas size percentage to make it responsive
-let canvasPercentage = 0.9;
 //////////////////////////////////////////////////////////////////////////////////////////////////
 
 
-//// Set up canvas based on window dimensions ~~~~~
+// Set up canvas based on window dimensions
 function setup() {
-  let cnv = createCanvas(windowWidth * canvasPercentage, windowHeight * canvasPercentage);
+  // Canvas size percentage to make it responsive
+  const canvasPercentage = 0.9;
+  
+  const cnv = createCanvas(windowWidth * canvasPercentage, windowHeight * canvasPercentage);
   cnv.id('p5-canvas');
 }
 
