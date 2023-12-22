@@ -100,7 +100,7 @@ h5 {
 }
 
 footer {
-  position: sticky;
+  position: absolute;
   bottom: 0;
   background-color: #2C2C2C;
   text-align: center;
