@@ -13,10 +13,11 @@ function closeInfo() {
 
 
 function adjustFontSize() {
-  const title = document.querySelector('h1');
+  const title = document.querySelector('footer');
   const width = window.innerWidth || document.documentElement.clientWidth || document.body.clientWidth;
+
   title.style.fontSize = width < 600 ? `${map(width, 0, 600, 16, 28)}px` : '28px';
 }
 
 window.addEventListener('resize', adjustFontSize);
-window.addEventListener('load', adjustFontSize);
+adjustFontSize(); // Call it initially to set the font size
