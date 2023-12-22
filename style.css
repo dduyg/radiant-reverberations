@@ -106,10 +106,11 @@ footer {
   width: 100%;
   text-align: center;
   background-color: #2C2C2C;
-  padding: 1em;
+  color: #01af52;
+  padding: 10px;
 }
 
 footer h1 {
   color: #01af52;
-  margin: 0;
+  font-size: 28px; /* Set the initial font size */
 }
