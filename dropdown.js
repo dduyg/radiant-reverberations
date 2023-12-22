@@ -12,18 +12,13 @@ function closeInfo() {
 /***********************************/
 
 
-function adjustFontSize() {
-  const title = document.querySelector('footer h1');
+function setFooterFontSize() {
+  const title = document.getElementById("footerTitle");
   const width = window.innerWidth;
 
-  if (width >= 600) {
-    title.style.fontSize = '28px';
-  } else {
-    const newSize = map(width, 0, 600, 16, 28);
-    title.style.fontSize = `${newSize}px`;
-  }
+  title.style.fontSize = width < 600 ? map(width, 0, 600, 16, 28) + "px" : "28px";
 }
 
-// Call the function on page load and window resize
-window.onload = adjustFontSize;
-window.onresize = adjustFontSize;
+// Call the function initially and on window resize
+setFooterFontSize();
+window.addEventListener("resize", setFooterFontSize);
