@@ -99,8 +99,22 @@ h5 {
   background: #01af52;
 }
 
+footer {
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  background-color: #2C2C2C;
+  text-align: center;
+  padding: 1em;
+}
+
 footer h1 {
   font-size: 16px;
-  /* Adapt font size based on screen width */
-  font-size: clamp(16px, calc(16px + 4vw), 28px);
+}
+
+/* Media query for larger screens */
+@media only screen and (min-width: 600px) {
+  footer h1 {
+    font-size: 28px;
+  }
 }
