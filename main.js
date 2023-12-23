@@ -31,7 +31,7 @@ function setup() {
 // Draw function to create the visual
 /////////////////////////////////////
 function draw() {
-  background('#d1d6e6');
+  clear();
 
   // Parameters influencing sample distribution
   const samplesPerFrame = pow(2, floor((frameCount % frameModifier) / sampleDensityModifier)) * 9;
