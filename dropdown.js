@@ -12,12 +12,14 @@ function closeInfo() {
 /***********************************/
 
 
-function adjustFontSize() {
-  const title = document.querySelector('footer');
-  const width = window.innerWidth || document.documentElement.clientWidth || document.body.clientWidth;
+function adjustFooterSize() {
+  let footer = document.querySelector('footer');
+  let screenWidth = window.innerWidth;
 
-  title.style.fontSize = width < 600 ? `${map(width, 0, 600, 16, 28)}px` : '28px';
+  // Adapts font size between 16 and 30 according to screen width;
+  footer.style.fontSize = screenWidth < 600 ? `${map(screenWidth, 0, 600, 16, 28)}px` : '30px';
 }
 
-window.addEventListener('resize', adjustFontSize);
-adjustFontSize(); // Call it initially to set the font size
+// Call the function initially and whenever the window is resized
+adjustFooterSize();
+window.addEventListener('resize', adjustFooterSize);
