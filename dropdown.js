@@ -17,7 +17,7 @@ function adjustFooterSize() {
   let screenWidth = window.innerWidth;
 
   // Adapts font size between 18 and 28 according to screen width
-  footer.style.fontSize = `${Math.max(18, Math.min(28, map(screenWidth, 0, 600, 18, 28)))}px`;
+  footer.style.fontSize = `${Math.max(18, Math.min(28, screenWidth / 30 * 18))}px`;
 }
 
 // Call the function initially and whenever the window is resized
