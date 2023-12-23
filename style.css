@@ -101,9 +101,11 @@ h5 {
 
 footer {
   position: fixed;
+  white-space: nowrap;
   bottom: 3%;
   margin: auto;
   width: 100%;
+  min-width: 200px;
   text-align: center;
   background-color: #2C2C2C;
   color: #01af52;
