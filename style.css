@@ -11,6 +11,7 @@ body {
   display: block;
   max-width: 100%;
   margin: auto;
+  background-color: transparent;
 }
 
 h1,
@@ -104,6 +105,7 @@ footer {
   z-index: -1;
   white-space: nowrap;
   bottom: 5%;
+  left: 0;
   margin: auto;
   width: 100%;
   min-width: 200px;
