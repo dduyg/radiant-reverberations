@@ -101,6 +101,7 @@ h5 {
 
 footer {
   position: fixed;
+  z-index: -1;
   white-space: nowrap;
   bottom: 5%;
   margin: auto;
