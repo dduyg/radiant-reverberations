@@ -16,10 +16,8 @@ function adjustFooterSize() {
   let footer = document.querySelector('footer');
   let screenWidth = window.innerWidth;
 
-  // Adapts font size between 17 and 28 according to screen width
-  let fontSize = screenWidth < 600 ? map(screenWidth, 0, 600, 17, 28) : 28;
-
-  footer.style.fontSize = `${fontSize}px`;
+  // Adapts font size between 17 and 28 according to screen width;
+  footer.style.fontSize = screenWidth < 600 ? `${map(screenWidth, 0, 600, 17, 28)}px` : '28px';
 }
 
 // Call the function initially and whenever the window is resized
