@@ -42,10 +42,9 @@ function draw() {
   const sphereRadius = min(width, height) * sphereRadiusPercentage;
   const sphereCenterX = width / 2;
 
-  // Adjusting for vertical separation between spheres with padding
-  const padding = 20; // to add 20 pixels of padding
-  const upperHemisphereCenterY = height / 2 - sphereRadius * upperHemisphereVerticalAdjustment + padding;
-  const lowerHemisphereCenterY = height / 2 + sphereRadius * lowerHemisphereVerticalAdjustment - padding;
+  // Adjusting for vertical separation between spheres
+  const upperHemisphereCenterY = height / 2 - sphereRadius * upperHemisphereVerticalAdjustment * (canvasPercentage / 0.9);
+  const lowerHemisphereCenterY = height / 2 + sphereRadius * lowerHemisphereVerticalAdjustment * (canvasPercentage / 0.9);
 
   // Rendering the upper hemisphere
   /////////////////////////////////
