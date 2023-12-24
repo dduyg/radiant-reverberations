@@ -43,8 +43,8 @@ function draw() {
   const sphereCenterX = width / 2;
 
   // Adjusting for vertical separation between spheres
-  const upperHemisphereCenterY = height / 2 + 40 - sphereRadius * upperHemisphereVerticalAdjustment;
-  const lowerHemisphereCenterY = height / 2 + 40 + sphereRadius * lowerHemisphereVerticalAdjustment;
+  const upperHemisphereCenterY = height / 2 + 10 - sphereRadius * upperHemisphereVerticalAdjustment;
+  const lowerHemisphereCenterY = height / 2 + 10 + sphereRadius * lowerHemisphereVerticalAdjustment;
 
   // Rendering the upper hemisphere
   /////////////////////////////////
