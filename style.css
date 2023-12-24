@@ -113,4 +113,10 @@ footer {
   color: #01af52;
   letter-spacing: 2px;
   font-family: 'Space Mono', monospace;
+  font-size: 26px;
+}
+@media only screen and (max-width: 767px) {
+  footer {
+    font-size: 20px; /* Smaller font size for screens up to 600px wide */
+  }
 }
