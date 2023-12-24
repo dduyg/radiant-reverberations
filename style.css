@@ -1,6 +1,7 @@
 body { 
   margin: 0;
   padding: 1em;
+  height: 100vh;
   overflow: hidden;
   background-color: #d1d6e6;
   line-height: 1.4;
@@ -10,6 +11,7 @@ body {
 #p5-canvas {
   display: block;
   max-width: 100%;
+  max-height: 100%;
   margin: auto;
   background-color: transparent;
 }
