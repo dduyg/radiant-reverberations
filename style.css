@@ -101,7 +101,7 @@ h5 {
 }
 
 footer {
-  position: fixed;
+  position: absolute;
   z-index: -1;
   bottom: 3%;
   left: 0;
