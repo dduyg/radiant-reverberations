@@ -25,7 +25,7 @@ function setup() {
   cnv.id('p5-canvas');
 }
 
-// Draw function to create the visual
+// Creating the visual
 /////////////////////////////////////
 function draw() {
   clear();
