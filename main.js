@@ -26,7 +26,7 @@ function setup() {
 }
 
 // Creating the visual with draw()
-/////////////////////////////////////
+//////////////////////////////////
 function draw() {
   clear();
 
