@@ -98,12 +98,12 @@ function draw() {
   lightSourceTheta += 0.01; // Adjust the increment value based on the desired speed
   
   // Display the number of samples taken in the simulation
-  drawLabel(8, 46, "Number of samples: ", nSamples, "Radiant Reverberations", LEFT);
+  drawLabel(8, 46, "Radiant Reverberations", "Number of samples: ", nSamples, LEFT);
 }
 
 // Set labels with specified styling, position, and alignment
 /////////////////////////////////////////////////////////////
-function drawLabel(x, y, label, value, title, align = CENTER) {
+function drawLabel(x, y, title, label, value, align = CENTER) {
   push();
   strokeWeight(0);
   textFont("monospace");
@@ -117,18 +117,15 @@ function drawLabel(x, y, label, value, title, align = CENTER) {
   // Font size 15 if screen width is less than 600px, otherwise 22
   textSize(width < 600 ? 15 : 22);
 
-  // Set up the static label with color
-  fill('#01af52');
-  text(label, x, y + 45);
-
-  // Set up the dynamic label with color; currently set to black
-  fill(0);
-  text(value, x + textWidth(label + ' '), y + 45);
-
-  // Set up the second line with title of work
+  // Set up title of work
   textStyle(BOLD);
   textFont("Space Mono");
-  text(title, x, y + 70);
+  fill('#01af52');
+  text(title, x, y + 45);
+
+  // Set up label with color
+  fill(0);
+  text(`${label}: ${value}`, x, y + 70);
 
   pop();
 }
