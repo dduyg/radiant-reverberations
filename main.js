@@ -21,10 +21,7 @@ let pointFillColor = 0;
 // Set up canvas based on window dimensions
 ///////////////////////////////////////////
 function setup() {
-  // Canvas size percentage to make it responsive
-  const canvasPercentage = 0.7;
-  
-  const cnv = createCanvas(windowWidth * canvasPercentage, windowHeight * canvasPercentage);
+  const cnv = createCanvas(windowWidth, windowHeight);
   cnv.id('p5-canvas');
 }
 
