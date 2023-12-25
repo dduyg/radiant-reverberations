@@ -127,9 +127,3 @@ function drawLabel(x, y, label, value, align = CENTER) {
 
   pop();
 }
-
-// Function to handle window resizing
-/////////////////////////////////////
-function windowResized() {
-  resizeCanvas(windowWidth * canvasPercentage, windowHeight * canvasPercentage);
-}
