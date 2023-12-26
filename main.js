@@ -6,7 +6,7 @@ let frameModifier = 200;
 // Sample density modifier (affects the number of samples)
 let sampleDensityModifier = 40;
 // Sphere radius percentage (adjust to change the size of the spheres)
-let sphereRadiusPercentage = 0.1;
+let sphereRadiusPercentage = 0.5;
 // Vertical adjustment for the center of the upper hemisphere (experiment to change its position)
 let upperHemisphereVerticalAdjustment = 0.95;
 // Vertical adjustment for the center of the lower hemisphere (experiment to change its position)
