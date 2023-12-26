@@ -114,8 +114,9 @@ function drawLabel(x, y, title, label, value, align = CENTER) {
     x -= 4;
   }
 
-  // Font size adjustments based on screen width
+  // Font size title 19 if screen width is less than 600px, otherwise 24
   const titleFontSize = width < 600 ? 19 : 24;
+  // Font size label 15 if screen width is less than 600px, otherwise 20
   const labelValueFontSize = width < 600 ? 15 : 20;
 
   // Set up the title of work
