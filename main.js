@@ -6,7 +6,7 @@ let frameModifier = 200;
 // Sample density modifier (affects the number of samples)
 let sampleDensityModifier = 40;
 // Sphere radius percentage (adjust to change the size of the spheres)
-let sphereRadiusPercentage = width < 600 ? 0.5 : 0.36;
+let sphereRadiusPercentage = 0.4;
 // Vertical adjustment for the center of the upper hemisphere (experiment to change its position)
 let upperHemisphereVerticalAdjustment = 0.95;
 // Vertical adjustment for the center of the lower hemisphere (experiment to change its position)
@@ -40,8 +40,10 @@ function draw() {
   const sphereCenterX = width / 2;
 
   // Adjusting for vertical separation between spheres
-  const upperHemisphereCenterY = height / 2 - sphereRadius * upperHemisphereVerticalAdjustment;
-  const lowerHemisphereCenterY = height / 2 + sphereRadius * lowerHemisphereVerticalAdjustment;
+  const padding = 5; // Adjust value based on desired padding
+
+  const upperHemisphereCenterY = height / 2 - sphereRadius * upperHemisphereVerticalAdjustment + padding;
+  const lowerHemisphereCenterY = height / 2 + sphereRadius * lowerHemisphereVerticalAdjustment - padding;
 
   // Rendering the upper hemisphere
   /////////////////////////////////
