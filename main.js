@@ -130,13 +130,13 @@ function drawLabel(x, y, title, label, value, align = CENTER) {
   y += verticalSpace;
 
   // Set up the static label; currently set to black
-  fill(0);
+  fill('#01af52');
   textFont("monospace");
   textSize(labelValueFontSize);
   text(`${label} `, x, y + 70);
 
   // Set up the dynamic value of label
-  fill('#01af52');
+  fill(0);
   text(value, x + textWidth(label), y + 70);
 
   pop();
