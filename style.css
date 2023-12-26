@@ -99,22 +99,3 @@ h5 {
   color: #d1d6e6;
   background: #01af52;
 }
-
-footer {
-  position: absolute;
-  z-index: -1;
-  bottom: 2%;
-  left: 0;
-  margin: auto;
-  width: 100%;
-  text-align: center;
-  background-color: transparent;
-  color: #01af52;
-  font-family: monospace;
-  font-size: 16px;
-}
-@media only screen and (max-width: 767px) {
-  footer {
-    font-size: 14px; /* Smaller font size for mobile screens */
-  }
-}
