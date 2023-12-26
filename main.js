@@ -98,7 +98,7 @@ function draw() {
   lightSourceTheta += 0.01; // Adjust the increment value based on the desired speed
   
   // Display the number of samples taken in the simulation
-  drawLabel(7, 46, "Radiant Reverberations", "Number of samples: ", nSamples, LEFT);
+  drawLabel(6, 46, "Radiant Reverberations", "Number of samples: ", nSamples, LEFT);
 }
 
 // Set labels with specified styling, position, and alignment
@@ -119,14 +119,12 @@ function drawLabel(x, y, title, label, value, align = CENTER) {
   const labelValueFontSize = width < 600 ? 15 : 20;
 
   // Set up the first line (title) with bold, and green color
-  textStyle(ITALIC);
-  textFont("Space Mono");
   fill('#01af52');
+  textFont("Space Mono");
   textSize(titleFontSize);
   text(title, x, y + 45);
 
-  // Set up the second line (label with value) with monospace font
-  textStyle(NORMAL);
+  // Set up the second line (label with value) with monospace
   fill(0);
   textFont("monospace");
   textSize(labelValueFontSize);
