@@ -125,6 +125,10 @@ function drawLabel(x, y, title, label, value, align = CENTER) {
   textSize(titleFontSize);
   text(title, x, y + 45);
 
+  // Add a bit more space between the first and second lines
+  const verticalSpace = titleFontSize * 0.2;
+  y += verticalSpace;
+
   // Set up the static label; currently set to black
   fill(0);
   textFont("monospace");
