@@ -123,9 +123,13 @@ function drawLabel(x, y, title, label, value, align = CENTER) {
   fill('#01af52');
   text(title, x, y + 45);
 
-  // Set up label with color
+  // Set up the static label with color; currently set to black
   fill(0);
-  text(`${label}: ${value}`, x, y + 70);
+  text(`${label} `, x, y + 70);
+
+  // Set up the dynamic label with color; currently set to black
+  fill('#01af52');
+  text(value, x + textWidth(label), y + 70);
 
   pop();
 }
