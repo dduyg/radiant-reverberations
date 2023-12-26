@@ -121,9 +121,15 @@ function drawLabel(x, y, title, label, value, align = CENTER) {
   // Font size label 15 if screen width is less than 600px, otherwise 20
   const labelValueFontSize = width < 600 ? 15 : 20;
 
+  // Calculate text width and height for background rectangle
+  const titleWidth = textWidth(title);
+  const titleHeight = textAscent() + textDescent();
+
   // Set up the title of work
   textStyle(BOLD);
-  fill('#01af52');
+  fill('#01af52'); // Background color
+  rect(x, y + 45 - titleHeight, titleWidth, titleHeight + titleFontSize * 0.2); // Adjust background size
+  fill('#d1d6e6'); // Title text color
   textFont("Space Mono");
   textSize(titleFontSize);
   text(title, x, y + 45);
