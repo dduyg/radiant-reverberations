@@ -124,12 +124,13 @@ function drawLabel(x, y, title, label, value, align = CENTER) {
   // Set up the title of work
   textStyle(BOLD);
   fill('#FFFF00'); // Background color for the title
+  noStroke();
   const titleWidth = textWidth(title);
   rect(x, y + 45 - titleFontSize, titleWidth + 8, titleFontSize + 4); // Background rectangle
   fill('#01af52'); // Text color for the title
   textFont("Space Mono");
   textSize(titleFontSize);
-  text(title, x + 4, y + 45 - titleFontSize / 2); // Adjusted position
+  text(title, x + 4, y + 45); // Add a bit of padding
 
   // Add a bit more space between the first and second lines
   const verticalSpace = titleFontSize * 0.2;
