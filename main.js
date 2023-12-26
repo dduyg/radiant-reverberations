@@ -39,12 +39,11 @@ function draw() {
   const sphereRadius = min(width, height) * sphereRadiusPercentage;
   const sphereCenterX = width / 2;
 
-  // Define the empty space above the upper hemisphere and below the lower hemisphere
-  const emptySpace = 50;
+  // Adjusting for vertical separation between spheres with added padding
+  const padding = 20; // Adjust value based on desired padding
 
-  // Adjusting for vertical separation between spheres
-  const upperHemisphereCenterY = height / 2 + 10 - sphereRadius * upperHemisphereVerticalAdjustment - emptySpace / 2;
-  const lowerHemisphereCenterY = height / 2 + 10 + sphereRadius * lowerHemisphereVerticalAdjustment + emptySpace / 2;
+  const upperHemisphereCenterY = height / 2 + padding - sphereRadius * upperHemisphereVerticalAdjustment;
+  const lowerHemisphereCenterY = height / 2 + padding + sphereRadius * lowerHemisphereVerticalAdjustment;
 
   // Rendering the upper hemisphere
   /////////////////////////////////
