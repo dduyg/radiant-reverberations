@@ -127,7 +127,7 @@ function drawLabel(x, y, title, label, value, align = CENTER) {
   fill(0);
   text(`${label} `, x, y + 70);
 
-  // Set up the dynamic label with color; currently set to black
+  // Set up the dynamic label with color
   fill('#01af52');
   text(value, x + textWidth(label), y + 70);
 
