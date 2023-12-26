@@ -125,8 +125,8 @@ function drawLabel(x, y, title, label, value, align = CENTER) {
   textStyle(BOLD);
   fill('#FFFF00'); // Background color for the title
   noStroke();
-  const titleWidth = textWidth(title) + 8; // Include padding
-  rect(x, y + 45 - titleFontSize, titleWidth, titleFontSize + 4); // Background rectangle
+  const titleWidth = textWidth(title);
+  rect(x, y + 45 - titleFontSize, titleWidth + 8, titleFontSize + 4); // Background rectangle
   fill('#01af52'); // Text color for the title
   textFont("Space Mono");
   textSize(titleFontSize);
