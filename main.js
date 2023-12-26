@@ -115,7 +115,7 @@ function drawLabel(x, y, title, label, value, align = CENTER) {
   }
 
   // Font size adjustments based on screen width
-  const titleFontSize = width < 600 ? 19 : 24;
+  const titleFontSize = width < 600 ? 18 : 24;
   const labelValueFontSize = width < 600 ? 15 : 20;
 
   // Set up the first line (title) with bold, Space Mono font, and green color
