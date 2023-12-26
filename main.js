@@ -5,8 +5,6 @@
 let frameModifier = 200;
 // Sample density modifier (affects the number of samples)
 let sampleDensityModifier = 40;
-// Sphere radius percentage to change the size of the spheres, adjustments based on screen width
-////---------
 // Vertical adjustment for the center of the upper hemisphere (experiment to change its position)
 let upperHemisphereVerticalAdjustment = 0.95;
 // Vertical adjustment for the center of the lower hemisphere (experiment to change its position)
@@ -35,9 +33,11 @@ function draw() {
   const sampleAngularDelta = PI / samplesPerFrame; // Calculates the angular separation between samples
   let nSamples = 0;
 
+  // Initial sphere radius percentage to change the size of the spheres based on screen width; 
+  // currently set to 0.4 if screen width is less than 600px, otherwise 0.2
+  const sphereRadiusPercentage = width < 600 ? 0.36 : 0.25;
+
   // Set up sphere properties
-  const sphereRadiusPercentage = width < 600 ? 0.4 : 0.2;
-  
   const sphereRadius = min(width, height) * sphereRadiusPercentage;
   const sphereCenterX = width / 2;
 
