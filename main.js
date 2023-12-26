@@ -106,6 +106,7 @@ function draw() {
 function drawLabel(x, y, title, label, value, align = CENTER) {
   push();
   strokeWeight(0);
+  textFont("Space Mono");
   textAlign(align);
   if (align == LEFT) {
     x += 6;
@@ -115,18 +116,16 @@ function drawLabel(x, y, title, label, value, align = CENTER) {
   }
 
   // Font size adjustments based on screen width
-  const titleFontSize = width < 600 ? 18 : 24;
+  const titleFontSize = width < 600 ? 19 : 24;
   const labelValueFontSize = width < 600 ? 15 : 20;
 
-  // Set up the first line (title) with bold, Space Mono font, and green color
-  textFont("Space Mono");
+  // Set up the first line (title) with bold, and green color
   fill('#01af52');
   textSize(titleFontSize);
   text(title, x, y + 45);
 
   // Set up the second line (label with value) with monospace font
   fill(0);
-  textFont("monospace");
   textSize(labelValueFontSize);
   text(`${label} `, x, y + 70);
   fill('#01af52');
