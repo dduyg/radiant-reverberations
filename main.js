@@ -36,7 +36,7 @@ function draw() {
   let nSamples = 0;
 
   // Set up sphere properties
-  const sphereRadius = height * sphereRadiusPercentage;
+  const sphereRadius = min(width, height) * sphereRadiusPercentage;
   const sphereCenterX = width / 2;
 
   // Adjusting for vertical separation between spheres
