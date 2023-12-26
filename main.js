@@ -118,17 +118,19 @@ function drawLabel(x, y, title, label, value, align = CENTER) {
   const titleFontSize = width < 600 ? 19 : 24;
   const labelValueFontSize = width < 600 ? 15 : 20;
 
-  // Set up the first line (title) with bold, and green color
+  // Set up the title of work
   fill('#01af52');
   textFont("Space Mono");
   textSize(titleFontSize);
   text(title, x, y + 45);
 
-  // Set up the second line (label with value) with monospace
+  // Set up the static label; currently set to black
   fill(0);
   textFont("monospace");
   textSize(labelValueFontSize);
   text(`${label} `, x, y + 70);
+
+  // Set up the dynamic value of label
   fill('#01af52');
   text(value, x + textWidth(label), y + 70);
 
