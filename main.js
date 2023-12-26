@@ -98,7 +98,7 @@ function draw() {
   lightSourceTheta += 0.01; // Adjust the increment value based on the desired speed
   
   // Display the number of samples taken in the simulation
-  drawLabel(8, 46, " Radiant Reverberations", "Number of samples: ", nSamples, LEFT);
+  drawLabel(8, 46, "Radiant Reverberations", " Number of samples: ", nSamples, LEFT);
 }
 
 // Set labels with specified styling, position, and alignment
