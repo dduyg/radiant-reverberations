@@ -40,7 +40,7 @@ function draw() {
   const sphereCenterX = width / 2;
 
   // Adjusting for vertical separation between spheres
-  const padding = 5; // Adjust value based on desired padding
+  const padding = width < 600 ? 10 : 40; // Adjust value based on desired padding
 
   const upperHemisphereCenterY = height / 2 - sphereRadius * upperHemisphereVerticalAdjustment + padding;
   const lowerHemisphereCenterY = height / 2 + sphereRadius * lowerHemisphereVerticalAdjustment - padding;
