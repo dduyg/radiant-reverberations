@@ -33,8 +33,8 @@ function draw() {
   const sampleAngularDelta = PI / samplesPerFrame; // Calculates the angular separation between samples
   let nSamples = 0;
 
-  // Initial sphere radius percentage to change the size of the spheres based on screen width; 
-  // currently set to 0.4 if screen width is less than 600px, otherwise 0.2
+  // Initial sphere radius percentage to adjust the size of the spheres based on screen width;
+  // currently set to 0.36 if screen width is less than 600px, otherwise 0.25
   const sphereRadiusPercentage = width < 600 ? 0.36 : 0.25;
 
   // Set up sphere properties
