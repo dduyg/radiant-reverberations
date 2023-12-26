@@ -110,11 +110,11 @@ footer {
   text-align: center;
   background-color: transparent;
   color: #01af52;
-  font-family: 'Space Mono', monospace;
-  font-size: 18px;
+  font-family: monospace;
+  font-size: 16px;
 }
 @media only screen and (max-width: 767px) {
   footer {
-    font-size: 16px; /* Smaller font size for mobile screens */
+    font-size: 14px; /* Smaller font size for mobile screens */
   }
 }
