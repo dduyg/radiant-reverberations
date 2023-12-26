@@ -107,15 +107,14 @@ footer {
   left: 0;
   margin: auto;
   width: 100%;
-  min-width: 200px;
   text-align: center;
   background-color: transparent;
   color: #01af52;
   font-family: 'Space Mono', monospace;
-  font-size: 27px;
+  font-size: 18px;
 }
 @media only screen and (max-width: 767px) {
   footer {
-    font-size: 23px; /* Smaller font size for mobile screens */
+    font-size: 16px; /* Smaller font size for mobile screens */
   }
 }
