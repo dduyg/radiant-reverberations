@@ -106,7 +106,6 @@ function draw() {
 function drawLabel(x, y, title, label, value, align = CENTER) {
   push();
   strokeWeight(0);
-  textFont("monospace");
   textAlign(align);
   if (align == LEFT) {
     x += 6;
@@ -114,20 +113,24 @@ function drawLabel(x, y, title, label, value, align = CENTER) {
   if (align == RIGHT) {
     x -= 6;
   }
-  // Font size 15 if screen width is less than 600px, otherwise 22
-  textSize(width < 600 ? 15 : 22);
 
-  // Set up title of work
+  // Font size adjustments based on screen width
+  const titleFontSize = width < 600 ? 19 : 24;
+  const labelValueFontSize = width < 600 ? 15 : 20;
+
+  // Set up the first line (title) with bold, Space Mono font, and green color
   textStyle(BOLD);
   textFont("Space Mono");
   fill('#01af52');
+  textSize(titleFontSize);
   text(title, x, y + 45);
 
-  // Set up the static label with color; currently set to black
+  // Set up the second line (label with value) with monospace font and black color for label, green color for value
+  textStyle(NORMAL); // Set to normal (not bold)
   fill(0);
+  textFont("monospace");
+  textSize(labelValueFontSize);
   text(`${label} `, x, y + 70);
-
-  // Set up the dynamic label with color
   fill('#01af52');
   text(value, x + textWidth(label), y + 70);
 
