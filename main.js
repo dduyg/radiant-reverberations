@@ -1,5 +1,5 @@
 //////////////////////////////////////////////////////////////////////////////////////////////////
-///////// Parameters for controlling various aspects of the simulation
+///////// Parameters controlling various aspects of the simulation
 //////////////////////////////////////////////////////////////////////////////////////////////////
 // Frame count modifier (controls the variation speed)
 let frameModifier = 200;
@@ -149,4 +149,9 @@ function drawLabel(x, y, title, label, value, align = CENTER) {
   text(value, x + textWidth(label), y + 70);
 
   pop();
+}
+
+// Function to handle window resizing
+function windowResized() {
+  resizeCanvas(windowWidth, windowHeight);
 }
