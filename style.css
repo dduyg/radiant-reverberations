@@ -89,14 +89,12 @@ h2 {
 
 #infoDropdown a:link,
 #infoDropdown a:visited {
-  color: #2C2C2C;
+  color: inherit;
+  font-style: italic;
   text-decoration: none;
-  padding-bottom: 0px !important;
   border-bottom: 3px solid #01af52;
-  transform: skew(52deg) translateX(-50%);
 }
 #infoDropdown a:hover {
-  font-weight: bold;
   font-family: monospace;
   color: #d1d6e6;
   background: #01af52;
