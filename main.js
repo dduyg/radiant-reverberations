@@ -152,6 +152,7 @@ function drawLabel(x, y, title, label, value, align = CENTER) {
 }
 
 // Function to handle window resizing
+/////////////////////////////////////
 function windowResized() {
   resizeCanvas(windowWidth, windowHeight);
 }
