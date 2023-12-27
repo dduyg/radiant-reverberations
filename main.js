@@ -10,11 +10,10 @@ let upperHemisphereVerticalAdjustment = 0.95;
 // Vertical adjustment for the center of the lower hemisphere (experiment to change its position)
 let lowerHemisphereVerticalAdjustment = 1.5;
 // Initial position of the virtual light source
-let lightSourceTheta = 0.0;
+let lightSourcePosition = 0.0;
 // Fill color for points (modifies point color; currently set to black)
 let pointFillColor = 0;
 //////////////////////////////////////////////////////////////////////////////////////////////////
-
 
 // Set up canvas based on window dimensions
 ///////////////////////////////////////////
@@ -58,9 +57,9 @@ function draw() {
       const y = sin(theta) * sin(phi);
       const z = cos(theta);
 
-      // Rotate the incoming light direction based on the lightSourceTheta
-      const rotatedX = cos(lightSourceTheta) * x - sin(lightSourceTheta) * y;
-      const rotatedY = sin(lightSourceTheta) * x + cos(lightSourceTheta) * y;
+      // Rotate the incoming light direction based on the lightSourcePosition
+      const rotatedX = cos(lightSourcePosition) * x - sin(lightSourcePosition) * y;
+      const rotatedY = sin(lightSourcePosition) * x + cos(lightSourcePosition) * y;
 
       // Calculate the position of each sample point on the upper hemisphere
       const sampleX = rotatedX * sphereRadius + sphereCenterX;
@@ -82,9 +81,9 @@ function draw() {
       const y = sin(theta) * sin(phi);
       const z = cos(theta);
 
-      // Rotate the incoming light direction based on the lightSourceTheta
-      const rotatedX = cos(lightSourceTheta) * x - sin(lightSourceTheta) * y;
-      const rotatedY = sin(lightSourceTheta) * x + cos(lightSourceTheta) * y;
+      // Rotate the incoming light direction based on the lightSourcePosition
+      const rotatedX = cos(lightSourcePosition) * x - sin(lightSourcePosition) * y;
+      const rotatedY = sin(lightSourcePosition) * x + cos(lightSourcePosition) * y;
 
       // Calculate the position of each sample point on the lower hemisphere
       const sampleX = rotatedX * sphereRadius + sphereCenterX;
@@ -97,7 +96,7 @@ function draw() {
   }
 
   // Adjust the position of the virtual light source over time
-  lightSourceTheta += 0.01; // Adjust the increment value based on the desired speed
+  lightSourcePosition += 0.01; // Adjust the increment value based on the desired speed
   
   // Display the number of samples taken in the simulation
   drawLabel(8, 46, "Radiant Reverberations", "Number of samples: ", nSamples, LEFT);
