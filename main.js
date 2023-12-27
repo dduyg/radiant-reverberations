@@ -131,7 +131,7 @@ function drawLabel(x, y, title, label, value, align = CENTER) {
   noStroke();
   rect(x - padding, y + 45 - titleFontSize - padding, titleWidth + 2 * padding, titleFontSize + 2 * padding);
   fill('#01af52'); // Text color for the title
-  text(title, x, y + 45 - titleFontSize + padding);
+  text(title, x, y + 45 - padding * 0.5); // Adjust the position based on padding
 
   // Add a bit more space between the first and second lines
   const verticalSpace = titleFontSize * 0.2;
