@@ -17,6 +17,7 @@ body {
 h1,
 h2 {
  font-family: 'Space Mono', monospace;
+ color: #01af52;
 }
 
 #infoButton {
