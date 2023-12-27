@@ -127,7 +127,7 @@ function drawLabel(x, y, title, label, value, align = CENTER) {
   textFont("Space Mono");
   textSize(titleFontSize);
   const titleWidth = textWidth(title);
-  const padding = 4;
+  const padding = 3;
   noStroke();
   rect(x - padding, y + 45 - titleFontSize + padding / 2, titleWidth + 2 * padding, titleFontSize + padding);
   fill('#d1d6e6');
