@@ -97,9 +97,9 @@ h5 {
   border-bottom: 2px solid #01af52;
   transform: skew(52deg) translateX(-50%);
 }
-
 #infoDropdown a:hover {
   font-weight: bold;
+  font-family: monospace;
   color: #d1d6e6;
   background: #01af52;
 }
