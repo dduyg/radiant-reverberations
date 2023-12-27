@@ -123,14 +123,14 @@ function drawLabel(x, y, title, label, value, align = CENTER) {
 
   // Set up the title of work
   textStyle(BOLD);
-  fill('#FFFF00'); // Background color for the title
+  fill('#01af52');
   textFont("Space Mono");
   textSize(titleFontSize);
   const titleBounds = font.textBounds(title, x, y + 45);
-  const paddingX = 8; // Adjust the horizontal padding as needed
-  const paddingY = 4; // Adjust the vertical padding as needed
+  const padding = 8; // Adjust the padding as needed
+  fill('#FFFF00'); // Background color for the title
   noStroke();
-  rect(titleBounds.x - paddingX, titleBounds.y - paddingY, titleBounds.w + 2 * paddingX, titleBounds.h + 2 * paddingY); // Background rectangle
+  rect(titleBounds.x - padding, titleBounds.y - padding, titleBounds.w + 2 * padding, titleBounds.h + 2 * padding); // Background rectangle
   fill('#01af52'); // Text color for the title
   text(title, x, y + 45); // Adjust the position based on padding
 
