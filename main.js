@@ -54,7 +54,7 @@ function drawHemisphereSamples(sphereRadius, sphereCenterX, hemisphereCenterY, s
       const rotatedY = sin(lightSourcePosition) * x + cos(lightSourcePosition) * y;
 
       const sampleX = rotatedX * sphereRadius + sphereCenterX;
-      const sampleY = hemisphereCenterY + direction * (z - rotatedY * 0.25) * sphereRadius;
+      const sampleY = hemisphereCenterY + direction * (rotatedY * 0.25) * sphereRadius + z * sphereRadius;
 
       // Draw each sample as a circle
       circle(sampleX, sampleY, 2);
