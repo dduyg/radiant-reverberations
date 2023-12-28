@@ -1,51 +1,52 @@
-// Set up canvas with p5.js
+// Initialize variables
 function setup() {
   const cnv = createCanvas(windowWidth, windowHeight);
   cnv.id('p5-canvas');
 }
 
-// Define parameters for sampling and light source
-let frameModifier = 200;
-let sampleDensityModifier = 40;
-let upperHemisphereVerticalAdjustment = 0.95;
-let lowerHemisphereVerticalAdjustment = 1.5;
-let lightSourcePosition = 0.0;
+// Define parameters and draw the irradiance sampling pattern
+let frameModifier = 200; // Controls frame variation
+let sampleDensityModifier = 40; // Controls sample density
+let upperHemisphereVerticalAdjustment = 0.95; // Adjustments for upper hemisphere
+let lowerHemisphereVerticalAdjustment = 1.5; // Adjustments for lower hemisphere
+let lightSourcePosition = 0.0; // Controls light source position
 
 // Main drawing function
 function draw() {
   clear();
 
-  // Calculate the number of samples per frame
+  // Calculate samples per frame
   const samplesPerFrame = pow(2, floor((frameCount % frameModifier) / sampleDensityModifier)) * 9;
   const sampleAngularDelta = PI / samplesPerFrame;
   let nSamples = 0;
 
-  // Set the radius of the sphere based on screen width and height
+  // Set sphere radius percentage based on canvas size
   const sphereRadiusPercentage = width < 600 ? 0.36 : 0.24;
   const sphereRadius = min(width, height) * sphereRadiusPercentage;
   const sphereCenterX = width / 2;
 
-  // Calculate the center positions of upper and lower hemispheres
+  // Calculate hemisphere centers
   const upperHemisphereCenterY = height / 2 - sphereRadius * upperHemisphereVerticalAdjustment;
   const lowerHemisphereCenterY = height / 2 + sphereRadius * lowerHemisphereVerticalAdjustment;
 
-  // Draw samples on the upper hemisphere
-  nSamples = drawHemisphereSamples(sphereRadius, sphereCenterX, upperHemisphereCenterY, sampleAngularDelta, 1, nSamples);
+  // Draw samples on upper hemisphere
+  drawSamples(upperHemisphereCenterY, 0.25, sphereRadius);
 
-  // Draw samples on the lower hemisphere
-  nSamples = drawHemisphereSamples(sphereRadius, sphereCenterX, lowerHemisphereCenterY, sampleAngularDelta, -1, nSamples);
+  // Draw samples on lower hemisphere
+  drawSamples(lowerHemisphereCenterY, -0.25, sphereRadius);
 
-  // Move the light source position for animation
+  // Update light source position
   lightSourcePosition += 0.01;
 
-  // Draw information label
+  // Draw label with project information
   drawLabel(8, 46, "Radiant Reverberations", "Number of samples: ", nSamples, LEFT);
 }
 
 // Function to draw samples on a hemisphere
-function drawHemisphereSamples(sphereRadius, sphereCenterX, hemisphereCenterY, sampleAngularDelta, direction, nSamples) {
-  noStroke(); // Remove outline
-  fill(0);    // Set fill color to black
+function drawSamples(centerY, yOffset, radius) {
+  noStroke();
+  fill(0);
+
   for (let azimuthalAngle = 0.0; azimuthalAngle < 2.0 * PI; azimuthalAngle += sampleAngularDelta) {
     for (let polarAngle = 0.0; polarAngle < 0.5 * PI; polarAngle += sampleAngularDelta) {
       const x = sin(polarAngle) * cos(azimuthalAngle);
@@ -55,16 +56,13 @@ function drawHemisphereSamples(sphereRadius, sphereCenterX, hemisphereCenterY, s
       const rotatedX = cos(lightSourcePosition) * x - sin(lightSourcePosition) * y;
       const rotatedY = sin(lightSourcePosition) * x + cos(lightSourcePosition) * y;
 
-      const sampleX = rotatedX * sphereRadius + sphereCenterX;
-      const sampleY = hemisphereCenterY + direction * (z - rotatedY * 0.25) * sphereRadius;
+      const sampleX = rotatedX * radius + sphereCenterX;
+      const sampleY = centerY + (z + yOffset * rotatedY) * radius;
 
-      // Draw each sample as a filled circle
       circle(sampleX, sampleY, 2);
       nSamples++;
     }
   }
-
-  return nSamples;
 }
 
 // Set labels with specified styling, position, and alignment
