@@ -48,14 +48,14 @@ function draw() {
   /////////////////////////////////
   noStroke();
   fill(pointFillColor);
-  
+
   // Iterate to cover the entire sphere surface with samples
-  for (let phi = 0.0; phi < 2.0 * PI; phi += sampleAngularDelta) {
-    for (let theta = 0.0; theta < 0.5 * PI; theta += sampleAngularDelta) {
+  for (let azimuthalAngle = 0.0; azimuthalAngle < 2.0 * PI; azimuthalAngle += sampleAngularDelta) {
+    for (let polarAngle = 0.0; polarAngle < 0.5 * PI; polarAngle += sampleAngularDelta) {
       // Derive 3D coordinates from spherical angles for incoming light directions
-      const x = sin(theta) * cos(phi);
-      const y = sin(theta) * sin(phi);
-      const z = cos(theta);
+      const x = sin(polarAngle) * cos(azimuthalAngle);
+      const y = sin(polarAngle) * sin(azimuthalAngle);
+      const z = cos(polarAngle);
 
       // Rotate the incoming light direction based on the lightSourcePosition
       const rotatedX = cos(lightSourcePosition) * x - sin(lightSourcePosition) * y;
@@ -74,12 +74,12 @@ function draw() {
   // Rendering the lower hemisphere
   /////////////////////////////////
   // Iterate to cover the entire sphere surface with samples
-  for (let phi = 0.0; phi < 2.0 * PI; phi += sampleAngularDelta) {
-    for (let theta = 0.0; theta < 0.5 * PI; theta += sampleAngularDelta) {
+  for (let azimuthalAngle = 0.0; azimuthalAngle < 2.0 * PI; azimuthalAngle += sampleAngularDelta) {
+    for (let polarAngle = 0.0; polarAngle < 0.5 * PI; polarAngle += sampleAngularDelta) {
       // Derive 3D coordinates from spherical angles for incoming light directions
-      const x = sin(theta) * cos(phi);
-      const y = sin(theta) * sin(phi);
-      const z = cos(theta);
+      const x = sin(polarAngle) * cos(azimuthalAngle);
+      const y = sin(polarAngle) * sin(azimuthalAngle);
+      const z = cos(polarAngle);
 
       // Rotate the incoming light direction based on the lightSourcePosition
       const rotatedX = cos(lightSourcePosition) * x - sin(lightSourcePosition) * y;
@@ -97,7 +97,7 @@ function draw() {
 
   // Adjust the position of the virtual light source over time
   lightSourcePosition += 0.01; // Adjust the increment value based on the desired speed
-  
+
   // Display the number of samples taken in the simulation
   drawLabel(8, 46, "Radiant Reverberations", "Number of samples: ", nSamples, LEFT);
 }
