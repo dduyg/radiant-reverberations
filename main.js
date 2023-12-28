@@ -44,7 +44,8 @@ function draw() {
 
 // Function to draw samples on a hemisphere
 function drawHemisphereSamples(sphereRadius, sphereCenterX, hemisphereCenterY, sampleAngularDelta, direction, nSamples) {
-  fill(0); // Set fill color to black
+  noStroke(); // Remove outline
+  fill(0);    // Set fill color to black
   for (let azimuthalAngle = 0.0; azimuthalAngle < 2.0 * PI; azimuthalAngle += sampleAngularDelta) {
     for (let polarAngle = 0.0; polarAngle < 0.5 * PI; polarAngle += sampleAngularDelta) {
       const x = sin(polarAngle) * cos(azimuthalAngle);
