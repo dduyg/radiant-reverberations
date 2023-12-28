@@ -44,6 +44,7 @@ function draw() {
 
 // Function to draw samples on a hemisphere
 function drawHemisphereSamples(sphereRadius, sphereCenterX, hemisphereCenterY, sampleAngularDelta, direction, nSamples) {
+  fill(0); // Set fill color to black
   for (let azimuthalAngle = 0.0; azimuthalAngle < 2.0 * PI; azimuthalAngle += sampleAngularDelta) {
     for (let polarAngle = 0.0; polarAngle < 0.5 * PI; polarAngle += sampleAngularDelta) {
       const x = sin(polarAngle) * cos(azimuthalAngle);
@@ -54,9 +55,9 @@ function drawHemisphereSamples(sphereRadius, sphereCenterX, hemisphereCenterY, s
       const rotatedY = sin(lightSourcePosition) * x + cos(lightSourcePosition) * y;
 
       const sampleX = rotatedX * sphereRadius + sphereCenterX;
-      const sampleY = hemisphereCenterY + direction * (rotatedY * 0.25) * sphereRadius + z * sphereRadius;
+      const sampleY = hemisphereCenterY + direction * (z - rotatedY * 0.25) * sphereRadius;
 
-      // Draw each sample as a circle
+      // Draw each sample as a filled circle
       circle(sampleX, sampleY, 2);
       nSamples++;
     }
