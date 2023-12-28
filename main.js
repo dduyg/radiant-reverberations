@@ -30,10 +30,10 @@ function draw() {
   const lowerHemisphereCenterY = height / 2 + sphereRadius * lowerHemisphereVerticalAdjustment;
 
   // Draw samples on the upper hemisphere
-  drawHemisphereSamples(sphereRadius, sphereCenterX, upperHemisphereCenterY, sampleAngularDelta, 1);
+  nSamples = drawHemisphereSamples(sphereRadius, sphereCenterX, upperHemisphereCenterY, sampleAngularDelta, 1, nSamples);
 
   // Draw samples on the lower hemisphere
-  drawHemisphereSamples(sphereRadius, sphereCenterX, lowerHemisphereCenterY, sampleAngularDelta, -1);
+  nSamples = drawHemisphereSamples(sphereRadius, sphereCenterX, lowerHemisphereCenterY, sampleAngularDelta, -1, nSamples);
 
   // Move the light source position for animation
   lightSourcePosition += 0.01;
@@ -43,7 +43,7 @@ function draw() {
 }
 
 // Function to draw samples on a hemisphere
-function drawHemisphereSamples(sphereRadius, sphereCenterX, hemisphereCenterY, sampleAngularDelta, direction) {
+function drawHemisphereSamples(sphereRadius, sphereCenterX, hemisphereCenterY, sampleAngularDelta, direction, nSamples) {
   for (let azimuthalAngle = 0.0; azimuthalAngle < 2.0 * PI; azimuthalAngle += sampleAngularDelta) {
     for (let polarAngle = 0.0; polarAngle < 0.5 * PI; polarAngle += sampleAngularDelta) {
       const x = sin(polarAngle) * cos(azimuthalAngle);
@@ -61,6 +61,8 @@ function drawHemisphereSamples(sphereRadius, sphereCenterX, hemisphereCenterY, s
       nSamples++;
     }
   }
+
+  return nSamples;
 }
 
 // Set labels with specified styling, position, and alignment
