@@ -1,26 +1,17 @@
-//////////////////////////////////////////////////////////////////////////////////////////////////
-///////// Parameters controlling various aspects of the simulation
-//////////////////////////////////////////////////////////////////////////////////////////////////
-// Frame count modifier (controls the variation speed)
-let frameModifier = 200;
-// Sample density modifier (affects the number of samples)
-let sampleDensityModifier = 40;
-// Vertical adjustment for the center of the upper hemisphere (experiment to change its position)
-let upperHemisphereVerticalAdjustment = 0.95;
-// Vertical adjustment for the center of the lower hemisphere (experiment to change its position)
-let lowerHemisphereVerticalAdjustment = 1.5;
-// Initial position of the virtual light source
-let lightSourcePosition = 0.0;
-// Fill color for points (modifies point color; currently set to black)
-let pointFillColor = 0;
-//////////////////////////////////////////////////////////////////////////////////////////////////
-
 // Set up canvas based on window dimensions
 ///////////////////////////////////////////
 function setup() {
   const cnv = createCanvas(windowWidth, windowHeight);
   cnv.id('p5-canvas');
 }
+
+// Parameters controlling various aspects of the simulation
+///////////////////////////////////////////////////////////
+let frameModifier = 200;
+let sampleDensityModifier = 40;
+let upperHemisphereVerticalAdjustment = 0.95;
+let lowerHemisphereVerticalAdjustment = 1.5;
+let lightSourcePosition = 0.0;
 
 // Creating the visual with draw()
 //////////////////////////////////
@@ -47,7 +38,7 @@ function draw() {
   // Rendering the upper hemisphere
   /////////////////////////////////
   noStroke();
-  fill(pointFillColor);
+  fill(0);
 
   // Iterate to cover the entire sphere surface with samples
   for (let azimuthalAngle = 0.0; azimuthalAngle < 2.0 * PI; azimuthalAngle += sampleAngularDelta) {
