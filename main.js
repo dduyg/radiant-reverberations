@@ -1,96 +1,72 @@
-// Set up canvas based on window dimensions
-///////////////////////////////////////////
+// Set up the canvas for the irradiance sampling display.
 function setup() {
   const cnv = createCanvas(windowWidth, windowHeight);
   cnv.id('p5-canvas');
 }
 
-// Parameters controlling various aspects of the simulation
-///////////////////////////////////////////////////////////
-let frameModifier = 200;
-let sampleDensityModifier = 40;
-let upperHemisphereVerticalAdjustment = 0.95;
-let lowerHemisphereVerticalAdjustment = 1.5;
-let lightSourcePosition = 0.0;
+// Define parameters for irradiance sampling and visualization.
+let frameModifier = 200; // Controls frame variation
+let sampleDensityModifier = 40; // Influences sample density
+let upperHemisphereVerticalAdjustment = 0.95; // Adjusts upper hemisphere position
+let lowerHemisphereVerticalAdjustment = 1.5; // Adjusts lower hemisphere position
+let lightSourcePosition = 0.0; // Initial position of the light source
 
-// Creating the visual with draw()
-//////////////////////////////////
+// Perform irradiance sampling and visualize dynamic patterns.
 function draw() {
   clear();
 
-  // Parameters influencing sample distribution
+  // Calculate the number of samples per frame based on modifiers.
   const samplesPerFrame = pow(2, floor((frameCount % frameModifier) / sampleDensityModifier)) * 9;
-  const sampleAngularDelta = PI / samplesPerFrame; // Calculates the angular separation between samples
+  const sampleAngularDelta = PI / samplesPerFrame;
   let nSamples = 0;
 
-  // Initializing size of the spheres based on screen width:
-  // currently set to 0.36 if screen width is less than 600px, otherwise 0.24
+  // Set the sphere's radius percentage based on window size.
   const sphereRadiusPercentage = width < 600 ? 0.36 : 0.24;
-
-  // Set up sphere properties
   const sphereRadius = min(width, height) * sphereRadiusPercentage;
   const sphereCenterX = width / 2;
 
-  // Adjusting for vertical separation between spheres
+  // Calculate positions of upper and lower hemispheres.
   const upperHemisphereCenterY = height / 2 - sphereRadius * upperHemisphereVerticalAdjustment;
   const lowerHemisphereCenterY = height / 2 + sphereRadius * lowerHemisphereVerticalAdjustment;
 
-  // Rendering the upper hemisphere
-  /////////////////////////////////
+  // Visualize irradiance samples on the upper hemisphere.
+  visualizeIrradianceSamples(upperHemisphereCenterY, sphereRadius, sampleAngularDelta, true);
+
+  // Visualize irradiance samples on the lower hemisphere.
+  visualizeIrradianceSamples(lowerHemisphereCenterY, sphereRadius, sampleAngularDelta, false);
+
+  // Move the light source position for dynamic visualization.
+  lightSourcePosition += 0.01;
+
+  // Display label with relevant information.
+  drawLabel(8, 46, "Radiant Reverberations", "Number of samples: ", nSamples, LEFT);
+}
+
+// Visualize irradiance samples on a hemisphere.
+function visualizeIrradianceSamples(hemisphereCenterY, sphereRadius, sampleAngularDelta, isUpper) {
   noStroke();
   fill(0);
 
-  // Iterate to cover the entire sphere surface with samples
   for (let azimuthalAngle = 0.0; azimuthalAngle < 2.0 * PI; azimuthalAngle += sampleAngularDelta) {
     for (let polarAngle = 0.0; polarAngle < 0.5 * PI; polarAngle += sampleAngularDelta) {
-      // Derive 3D coordinates from spherical angles for incoming light directions
+      // Calculate 3D coordinates on the sphere.
       const x = sin(polarAngle) * cos(azimuthalAngle);
       const y = sin(polarAngle) * sin(azimuthalAngle);
       const z = cos(polarAngle);
 
-      // Rotate the incoming light direction based on the lightSourcePosition
+      // Rotate the coordinates based on the light source position.
       const rotatedX = cos(lightSourcePosition) * x - sin(lightSourcePosition) * y;
       const rotatedY = sin(lightSourcePosition) * x + cos(lightSourcePosition) * y;
 
-      // Calculate the position of each sample point on the upper hemisphere
+      // Calculate sample position on the canvas.
       const sampleX = rotatedX * sphereRadius + sphereCenterX;
-      const sampleY = upperHemisphereCenterY + (z - rotatedY * 0.25) * sphereRadius;
+      const sampleY = hemisphereCenterY + (isUpper ? z - rotatedY * 0.25 : - (z + rotatedY * 0.25)) * sphereRadius;
 
-      // Draw the sample point
+      // Visualize the sample as a small circle.
       circle(sampleX, sampleY, 2);
       nSamples++;
     }
   }
-
-  // Rendering the lower hemisphere
-  /////////////////////////////////
-  // Iterate to cover the entire sphere surface with samples
-  for (let azimuthalAngle = 0.0; azimuthalAngle < 2.0 * PI; azimuthalAngle += sampleAngularDelta) {
-    for (let polarAngle = 0.0; polarAngle < 0.5 * PI; polarAngle += sampleAngularDelta) {
-      // Derive 3D coordinates from spherical angles for incoming light directions
-      const x = sin(polarAngle) * cos(azimuthalAngle);
-      const y = sin(polarAngle) * sin(azimuthalAngle);
-      const z = cos(polarAngle);
-
-      // Rotate the incoming light direction based on the lightSourcePosition
-      const rotatedX = cos(lightSourcePosition) * x - sin(lightSourcePosition) * y;
-      const rotatedY = sin(lightSourcePosition) * x + cos(lightSourcePosition) * y;
-
-      // Calculate the position of each sample point on the lower hemisphere
-      const sampleX = rotatedX * sphereRadius + sphereCenterX;
-      const sampleY = lowerHemisphereCenterY - (z + rotatedY * 0.25) * sphereRadius;
-
-      // Draw the sample point
-      circle(sampleX, sampleY, 2);
-      nSamples++;
-    }
-  }
-
-  // Adjust the position of the virtual light source over time
-  lightSourcePosition += 0.01; // Adjust the increment value based on the desired speed
-
-  // Display the number of samples taken in the simulation
-  drawLabel(8, 46, "Radiant Reverberations", "Number of samples: ", nSamples, LEFT);
 }
 
 // Set labels with specified styling, position, and alignment
@@ -141,8 +117,7 @@ function drawLabel(x, y, title, label, value, align = CENTER) {
   pop();
 }
 
-// Function to handle window resizing
-/////////////////////////////////////
+// Update canvas size when the window is resized.
 function windowResized() {
   resizeCanvas(windowWidth, windowHeight);
 }
