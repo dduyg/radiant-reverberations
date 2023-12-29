@@ -37,11 +37,11 @@ function draw() {
   // Move virtual light source position
   lightSourcePosition += 0.004;
 
-  // Display label with title and sample count
+  // Display labels with title and sample count
   displayInfo(8, 46, "Radiant Reverberations", "Number of samples: ", nUpperSamples + nLowerSamples, LEFT);
 }
 
-// Function to render samples on a hemisphere
+// Function to render samples on the hemispheres
 function renderHemisphereSamples(hemisphereCenterY, sphereRadius, sampleAngularDelta, direction) {
   noStroke();
   fill(0);
