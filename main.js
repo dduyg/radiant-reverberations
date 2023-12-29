@@ -34,7 +34,7 @@ function draw() {
   // Rendering samples on lower hemisphere
   let nLowerSamples = renderHemisphereSamples(lowerHemisphereCenterY, sphereRadius, sampleAngularDelta, -1);
 
-  // Move light source position for stimulation
+  // Move virtual light source position
   lightSourcePosition += 0.004;
 
   // Display label with title and sample count
