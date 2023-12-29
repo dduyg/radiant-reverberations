@@ -4,12 +4,12 @@ function setup() {
   cnv.id('p5-canvas');
 }
 
-// Define parameters for sampling and virtual light source
+// Define parameters for sampling and light source
 let frameModifier = 200; // Controls frame variation
 let sampleDensityModifier = 40; // Controls sample density
 let upperHemisphereVerticalAdjustment = 0.95; // Adjusts upper hemisphere position
 let lowerHemisphereVerticalAdjustment = 1.5; // Adjusts lower hemisphere position
-let lightSourcePosition = 0.0; // Initial position of the light source
+let lightSourcePosition = 0.0; // Initial position of the virtual light source
 
 // Perform irradiance sampling
 function draw() {
