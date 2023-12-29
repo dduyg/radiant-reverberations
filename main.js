@@ -28,10 +28,10 @@ function draw() {
   const upperHemisphereCenterY = height / 2 - sphereRadius * upperHemisphereVerticalAdjustment;
   const lowerHemisphereCenterY = height / 2 + sphereRadius * lowerHemisphereVerticalAdjustment;
 
-  // Rendering samples on upper hemisphere
+  // Rendering the upper hemisphere
   let nUpperSamples = renderHemisphereSamples(upperHemisphereCenterY, sphereRadius, sampleAngularDelta, 1);
 
-  // Rendering samples on lower hemisphere
+  // Rendering the lower hemisphere
   let nLowerSamples = renderHemisphereSamples(lowerHemisphereCenterY, sphereRadius, sampleAngularDelta, -1);
 
   // Move virtual light source position
