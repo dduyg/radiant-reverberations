@@ -35,7 +35,7 @@ function draw() {
   let nLowerSamples = renderHemisphereSamples(lowerHemisphereCenterY, sphereRadius, sampleAngularDelta, -1);
 
   // Move the light source position for animation
-  lightSourcePosition += 0.005;
+  lightSourcePosition += 0.004;
 
   // Display label with information
   displayInfo(8, 46, "Radiant Reverberations", "Number of samples: ", nUpperSamples + nLowerSamples, LEFT);
@@ -106,7 +106,7 @@ function displayInfo(x, y, title, label, value, align = CENTER) {
   y += verticalSpace;
 
   // Set up the static label
-  textStyle(BOLD);
+  textStyle(NORMAL);
   fill('#01af52');
   textFont("monospace");
   textSize(labelValueFontSize);
