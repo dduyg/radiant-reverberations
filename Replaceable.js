@@ -15,11 +15,11 @@ let lightSourcePosition = 0.0; // Initial position of the light source
 function draw() {
   clear();
 
-  // Calculate the number of samples per frame based on modifiers
+  // Calculate the number of samples per frame based on parameters
   const samplesPerFrame = pow(2, floor((frameCount % frameModifier) / sampleDensityModifier)) * 9;
   const sampleAngularDelta = PI / samplesPerFrame;
 
-  // Set sphere properties based on window size
+  // Set sphere properties based on screen size
   const sphereRadiusPercentage = width < 600 ? 0.36 : 0.24;
   const sphereRadius = min(width, height) * sphereRadiusPercentage;
   const sphereCenterX = width / 2;
@@ -37,7 +37,7 @@ function draw() {
   // Move the light source position for animation
   lightSourcePosition += 0.01;
 
-  // Display label with relevant information
+  // Display label with information
   displayInfo(8, 46, "Radiant Reverberations", "Number of samples: ", nUpperSamples + nLowerSamples, LEFT);
 }
 
