@@ -1,79 +1,110 @@
-// Set up the canvas for the irradiance sampling display
+//////////////////////////////////////////////////////////////////////////////////////////////////
+///////// Parameters controlling various aspects of the simulation
+//////////////////////////////////////////////////////////////////////////////////////////////////
+// Frame count modifier (controls the variation speed)
+let frameModifier = 200;
+// Sample density modifier (affects the number of samples)
+let sampleDensityModifier = 40;
+// Vertical adjustment for the center of the upper hemisphere (experiment to change its position)
+let upperHemisphereVerticalAdjustment = 0.95;
+// Vertical adjustment for the center of the lower hemisphere (experiment to change its position)
+let lowerHemisphereVerticalAdjustment = 1.5;
+// Initial position of the virtual light source
+let lightSourcePosition = 0.0;
+// Fill color for points (modifies point color; currently set to black)
+let pointFillColor = 0;
+//////////////////////////////////////////////////////////////////////////////////////////////////
+
+// Set up canvas based on window dimensions
+///////////////////////////////////////////
 function setup() {
   const cnv = createCanvas(windowWidth, windowHeight);
   cnv.id('p5-canvas');
 }
 
-// Define parameters for sampling and light source
-let frameModifier = 200; // Controls frame variation
-let sampleDensityModifier = 40; // Controls sample density
-let upperHemisphereVerticalAdjustment = 0.95; // Adjusts upper hemisphere position
-let lowerHemisphereVerticalAdjustment = 1.5; // Adjusts lower hemisphere position
-let lightSourcePosition = 0.0; // Initial position of the light source
-
-// Perform irradiance sampling
+// Creating the visual with draw()
+//////////////////////////////////
 function draw() {
   clear();
 
-  // Calculate the number of samples per frame based on parameters
+  // Parameters influencing sample distribution
   const samplesPerFrame = pow(2, floor((frameCount % frameModifier) / sampleDensityModifier)) * 9;
-  const sampleAngularDelta = PI / samplesPerFrame;
+  const sampleAngularDelta = PI / samplesPerFrame; // Calculates the angular separation between samples
+  let nSamples = 0;
 
-  // Set sphere properties based on screen size
+  // Initializing size of the spheres based on screen width:
+  // currently set to 0.36 if screen width is less than 600px, otherwise 0.24
   const sphereRadiusPercentage = width < 600 ? 0.36 : 0.24;
+
+  // Set up sphere properties
   const sphereRadius = min(width, height) * sphereRadiusPercentage;
   const sphereCenterX = width / 2;
 
-  // Calculate positions of upper and lower hemispheres
+  // Adjusting for vertical separation between spheres
   const upperHemisphereCenterY = height / 2 - sphereRadius * upperHemisphereVerticalAdjustment;
   const lowerHemisphereCenterY = height / 2 + sphereRadius * lowerHemisphereVerticalAdjustment;
 
-  // Rendering samples on upper hemisphere
-  let nUpperSamples = renderHemisphereSamples(upperHemisphereCenterY, sphereRadius, sampleAngularDelta, 1);
-
-  // Rendering samples on lower hemisphere
-  let nLowerSamples = renderHemisphereSamples(lowerHemisphereCenterY, sphereRadius, sampleAngularDelta, -1);
-
-  // Move the light source position for animation
-  lightSourcePosition += 0.01;
-
-  // Display label with information
-  displayInfo(8, 46, "Radiant Reverberations", "Number of samples: ", nUpperSamples + nLowerSamples, LEFT);
-}
-
-// Function to render samples on a hemisphere
-function renderHemisphereSamples(hemisphereCenterY, sphereRadius, sampleAngularDelta, direction) {
+  // Rendering the upper hemisphere
+  /////////////////////////////////
   noStroke();
-  fill(0);
+  fill(pointFillColor);
+  
+  // Iterate to cover the entire sphere surface with samples
+  for (let phi = 0.0; phi < 2.0 * PI; phi += sampleAngularDelta) {
+    for (let theta = 0.0; theta < 0.5 * PI; theta += sampleAngularDelta) {
+      // Derive 3D coordinates from spherical angles for incoming light directions
+      const x = sin(theta) * cos(phi);
+      const y = sin(theta) * sin(phi);
+      const z = cos(theta);
 
-  let nSamples = 0; // Initialize nSamples for each hemisphere
-
-  for (let azimuthalAngle = 0.0; azimuthalAngle < 2.0 * PI; azimuthalAngle += sampleAngularDelta) {
-    for (let polarAngle = 0.0; polarAngle < 0.5 * PI; polarAngle += sampleAngularDelta) {
-      // Calculate 3D coordinates in spherical space
-      const x = sin(polarAngle) * cos(azimuthalAngle);
-      const y = sin(polarAngle) * sin(azimuthalAngle);
-      const z = cos(polarAngle);
-
-      // Rotate sample based on light source position
+      // Rotate the incoming light direction based on the lightSourcePosition
       const rotatedX = cos(lightSourcePosition) * x - sin(lightSourcePosition) * y;
       const rotatedY = sin(lightSourcePosition) * x + cos(lightSourcePosition) * y;
 
-      // Calculate final sample position on the canvas
-      const sampleX = rotatedX * sphereRadius + width / 2; // Using width/2 for simplicity
-      const sampleY = hemisphereCenterY + direction * (z - rotatedY * 0.25) * sphereRadius;
+      // Calculate the position of each sample point on the upper hemisphere
+      const sampleX = rotatedX * sphereRadius + sphereCenterX;
+      const sampleY = upperHemisphereCenterY + (z - rotatedY * 0.25) * sphereRadius;
 
-      // Render sample point
+      // Draw the sample point
       circle(sampleX, sampleY, 2);
-      nSamples++; // Increment nSamples for each rendered sample
+      nSamples++;
     }
   }
 
-  return nSamples; // Return the total number of samples for this hemisphere
+  // Rendering the lower hemisphere
+  /////////////////////////////////
+  // Iterate to cover the entire sphere surface with samples
+  for (let phi = 0.0; phi < 2.0 * PI; phi += sampleAngularDelta) {
+    for (let theta = 0.0; theta < 0.5 * PI; theta += sampleAngularDelta) {
+      // Derive 3D coordinates from spherical angles for incoming light directions
+      const x = sin(theta) * cos(phi);
+      const y = sin(theta) * sin(phi);
+      const z = cos(theta);
+
+      // Rotate the incoming light direction based on the lightSourcePosition
+      const rotatedX = cos(lightSourcePosition) * x - sin(lightSourcePosition) * y;
+      const rotatedY = sin(lightSourcePosition) * x + cos(lightSourcePosition) * y;
+
+      // Calculate the position of each sample point on the lower hemisphere
+      const sampleX = rotatedX * sphereRadius + sphereCenterX;
+      const sampleY = lowerHemisphereCenterY - (z + rotatedY * 0.25) * sphereRadius;
+
+      // Draw the sample point
+      circle(sampleX, sampleY, 2);
+      nSamples++;
+    }
+  }
+
+  // Adjust the position of the virtual light source over time
+  lightSourcePosition += 0.01; // Adjust the increment value based on the desired speed
+  
+  // Display the number of samples taken in the simulation
+  drawLabel(8, 46, "Radiant Reverberations", "Number of samples: ", nSamples, LEFT);
 }
 
-// Function to display information label
-function displayInfo(x, y, title, label, value, align = CENTER) {
+// Set labels with specified styling, position, and alignment
+/////////////////////////////////////////////////////////////
+function drawLabel(x, y, title, label, value, align = CENTER) {
   push();
   strokeWeight(0);
   textAlign(align);
@@ -119,7 +150,8 @@ function displayInfo(x, y, title, label, value, align = CENTER) {
   pop();
 }
 
-// Update canvas size when the window is resized.
+// Function to handle window resizing
+/////////////////////////////////////
 function windowResized() {
   resizeCanvas(windowWidth, windowHeight);
 }
