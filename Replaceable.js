@@ -2,12 +2,6 @@
 let frameModifier = 200;
 // Sample density modifier (affects the number of samples)
 let sampleDensityModifier = 40;
-// Vertical adjustment for the center of the upper hemisphere (experiment to change its position)
-let upperHemisphereVerticalAdjustment = 0.95;
-// Vertical adjustment for the center of the lower hemisphere (experiment to change its position)
-let lowerHemisphereVerticalAdjustment = 1.5;
-// Initial position of the virtual light source
-let lightSourcePosition = 0.0;
 
 // Creating the visual with draw()
 //////////////////////////////////
