@@ -28,23 +28,25 @@ function draw() {
   const upperHemisphereCenterY = height / 2 - sphereRadius * upperHemisphereVerticalAdjustment;
   const lowerHemisphereCenterY = height / 2 + sphereRadius * lowerHemisphereVerticalAdjustment;
 
-  // Draw samples for upper hemisphere
-  drawSamples(upperHemisphereCenterY, sphereRadius, sampleAngularDelta, 1);
+  // Draw samples for upper hemisphere and get the total number of samples
+  let nUpperSamples = drawSamples(upperHemisphereCenterY, sphereRadius, sampleAngularDelta, 1);
 
-  // Draw samples for lower hemisphere
-  drawSamples(lowerHemisphereCenterY, sphereRadius, sampleAngularDelta, -1);
+  // Draw samples for lower hemisphere and get the total number of samples
+  let nLowerSamples = drawSamples(lowerHemisphereCenterY, sphereRadius, sampleAngularDelta, -1);
 
   // Update light source position for animation
   lightSourcePosition += 0.01;
 
   // Display information label
-  drawLabel(8, 46, "Radiant Reverberations", "Number of samples: ", samplesPerFrame * 2, LEFT);
+  drawLabel(8, 46, "Radiant Reverberations", "Number of samples: ", nUpperSamples + nLowerSamples, LEFT);
 }
 
-// Function to draw samples on a hemisphere
+// Function to draw samples on a hemisphere and return the total number of samples
 function drawSamples(hemisphereCenterY, sphereRadius, sampleAngularDelta, direction) {
   noStroke();
   fill(0);
+
+  let nSamples = 0; // Initialize nSamples for each hemisphere
 
   for (let azimuthalAngle = 0.0; azimuthalAngle < 2.0 * PI; azimuthalAngle += sampleAngularDelta) {
     for (let polarAngle = 0.0; polarAngle < 0.5 * PI; polarAngle += sampleAngularDelta) {
@@ -58,13 +60,16 @@ function drawSamples(hemisphereCenterY, sphereRadius, sampleAngularDelta, direct
       const rotatedY = sin(lightSourcePosition) * x + cos(lightSourcePosition) * y;
 
       // Calculate sample position on the canvas
-      const sampleX = rotatedX * sphereRadius + sphereCenterX;
+      const sampleX = rotatedX * sphereRadius + width / 2; // Using width/2 for simplicity
       const sampleY = hemisphereCenterY + direction * (z - rotatedY * 0.25) * sphereRadius;
 
       // Draw sample point
       circle(sampleX, sampleY, 2);
+      nSamples++; // Increment nSamples for each drawn sample
     }
   }
+
+  return nSamples; // Return the total number of samples for this hemisphere
 }
 
 // Set labels with specified styling, position, and alignment
