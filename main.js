@@ -59,7 +59,7 @@ function drawHemisphereSamples(centerY, hemisphereRadius, angularDelta) {
 
       // Calculate final sample position
       const sampleX = rotatedX * hemisphereRadius + sphereCenterX;
-      const sampleY = centerY + (z - rotatedY * 0.25) * hemisphereRadius;
+      const sampleY = centerY + z * hemisphereRadius - rotatedY * 0.25 * hemisphereRadius;
 
       // Draw the sample
       circle(sampleX, sampleY, 2);
