@@ -5,13 +5,10 @@ let sampleDensityModifier = 40;
 
 // Creating the visual with draw()
 //////////////////////////////////
-function draw() {
-  clear();
+function draw()
 
   // Parameters influencing sample distribution
-
-  // Rendering the upper hemisphere
-  /////////////////////////////////
+  
   // Iterate to cover the entire sphere surface with samples
   for (let phi = 0.0; phi < 2.0 * PI; phi += sampleAngularDelta) {
     for (let theta = 0.0; theta < 0.5 * PI; theta += sampleAngularDelta) {
@@ -19,5 +16,3 @@ function draw() {
       const x = sin(theta) * cos(phi);
       const y = sin(theta) * sin(phi);
       const z = cos(theta);
-
-// Set labels with specified styling, position, and alignment
