@@ -45,8 +45,9 @@ function draw() {
 function renderHemisphereSamples(hemisphereCenterY, sphereRadius, sampleAngularDelta, direction) {
   noStroke();
   fill(0);
-
-  let nSamples = 0; // Initialize nSamples for each hemisphere
+  
+  // Initialize nSamples for each hemisphere
+  let nSamples = 0;
 
   for (let azimuthalAngle = 0.0; azimuthalAngle < 2.0 * PI; azimuthalAngle += sampleAngularDelta) {
     for (let polarAngle = 0.0; polarAngle < 0.5 * PI; polarAngle += sampleAngularDelta) {
@@ -68,8 +69,9 @@ function renderHemisphereSamples(hemisphereCenterY, sphereRadius, sampleAngularD
       nSamples++; // Increment nSamples for each rendered sample
     }
   }
-
-  return nSamples; // Return the total number of samples for this hemisphere
+  
+  // Return the total number of samples for this hemisphere
+  return nSamples;
 }
 
 // Helper function to set information labels with specified styling, position, and alignment
