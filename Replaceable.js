@@ -26,8 +26,4 @@ function draw() {
       const y = sin(theta) * sin(phi);
       const z = cos(theta);
 
-  // Adjust the position of the virtual light source
-  lightSourcePosition += 0.01;
-
 // Set labels with specified styling, position, and alignment
-//////////////////////////////////////////
