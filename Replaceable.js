@@ -50,16 +50,16 @@ function renderHemisphereSamples(hemisphereCenterY, sphereRadius, sampleAngularD
 
   for (let azimuthalAngle = 0.0; azimuthalAngle < 2.0 * PI; azimuthalAngle += sampleAngularDelta) {
     for (let polarAngle = 0.0; polarAngle < 0.5 * PI; polarAngle += sampleAngularDelta) {
-      // Calculate 3D coordinates on the sphere
+      // Calculate 3D coordinates in spherical space
       const x = sin(polarAngle) * cos(azimuthalAngle);
       const y = sin(polarAngle) * sin(azimuthalAngle);
       const z = cos(polarAngle);
 
-      // Rotate coordinates based on light source position
+      // Rotate sample based on light source position
       const rotatedX = cos(lightSourcePosition) * x - sin(lightSourcePosition) * y;
       const rotatedY = sin(lightSourcePosition) * x + cos(lightSourcePosition) * y;
 
-      // Calculate sample position on the canvas
+      // Calculate final sample position on canvas
       const sampleX = rotatedX * sphereRadius + width / 2; // Using width/2 for simplicity
       const sampleY = hemisphereCenterY + direction * (z - rotatedY * 0.25) * sphereRadius;
 
