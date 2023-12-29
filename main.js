@@ -1,17 +1,17 @@
-// Setup function to create a canvas for visualization
+// Setup function to create a canvas for rendering
 function setup() {
   const cnv = createCanvas(windowWidth, windowHeight);
   cnv.id('p5-canvas');
 }
 
-// Parameters influencing the visualization
+// Parameters influencing the rendering
 let frameModifier = 200; // Controls frame variation
 let sampleDensityModifier = 40; // Controls sample density
 let upperHemisphereVerticalAdjustment = 0.95; // Vertical adjustment for upper hemisphere
 let lowerHemisphereVerticalAdjustment = 1.5; // Vertical adjustment for lower hemisphere
 let lightSourcePosition = 0.0; // Initial light source position
 
-// Draw function to create the dynamic visualization
+// Render function to create the dynamic representation
 function draw() {
   clear();
 
@@ -28,11 +28,11 @@ function draw() {
   const upperHemisphereCenterY = height / 2 - sphereRadius * upperHemisphereVerticalAdjustment;
   const lowerHemisphereCenterY = height / 2 + sphereRadius * lowerHemisphereVerticalAdjustment;
 
-  // Draw samples for upper hemisphere and get the total number of samples
-  let nUpperSamples = drawSamples(upperHemisphereCenterY, sphereRadius, sampleAngularDelta, 1);
+  // Render samples for upper hemisphere and get the total number of samples
+  let nUpperSamples = renderHemisphereSamples(upperHemisphereCenterY, sphereRadius, sampleAngularDelta, 1);
 
-  // Draw samples for lower hemisphere and get the total number of samples
-  let nLowerSamples = drawSamples(lowerHemisphereCenterY, sphereRadius, sampleAngularDelta, -1);
+  // Render samples for lower hemisphere and get the total number of samples
+  let nLowerSamples = renderHemisphereSamples(lowerHemisphereCenterY, sphereRadius, sampleAngularDelta, -1);
 
   // Update light source position for animation
   lightSourcePosition += 0.01;
@@ -41,8 +41,8 @@ function draw() {
   drawLabel(8, 46, "Radiant Reverberations", "Number of samples: ", nUpperSamples + nLowerSamples, LEFT);
 }
 
-// Function to draw samples on a hemisphere and return the total number of samples
-function drawSamples(hemisphereCenterY, sphereRadius, sampleAngularDelta, direction) {
+// Function to render samples on a hemisphere and return the total number of samples
+function renderHemisphereSamples(hemisphereCenterY, sphereRadius, sampleAngularDelta, direction) {
   noStroke();
   fill(0);
 
@@ -63,9 +63,9 @@ function drawSamples(hemisphereCenterY, sphereRadius, sampleAngularDelta, direct
       const sampleX = rotatedX * sphereRadius + width / 2; // Using width/2 for simplicity
       const sampleY = hemisphereCenterY + direction * (z - rotatedY * 0.25) * sphereRadius;
 
-      // Draw sample point
+      // Render sample point
       circle(sampleX, sampleY, 2);
-      nSamples++; // Increment nSamples for each drawn sample
+      nSamples++; // Increment nSamples for each rendered sample
     }
   }
 
