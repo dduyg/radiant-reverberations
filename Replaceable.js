@@ -59,7 +59,7 @@ function renderHemisphereSamples(hemisphereCenterY, sphereRadius, sampleAngularD
       const rotatedX = cos(lightSourcePosition) * x - sin(lightSourcePosition) * y;
       const rotatedY = sin(lightSourcePosition) * x + cos(lightSourcePosition) * y;
 
-      // Calculate final sample position on canvas
+      // Calculate final sample position on the canvas
       const sampleX = rotatedX * sphereRadius + width / 2; // Using width/2 for simplicity
       const sampleY = hemisphereCenterY + direction * (z - rotatedY * 0.25) * sphereRadius;
 
