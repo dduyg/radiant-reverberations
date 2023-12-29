@@ -35,14 +35,14 @@ function draw() {
   // Visualize irradiance samples on the lower hemisphere.
   visualizeIrradianceSamples(lowerHemisphereCenterY, sphereRadius, sampleAngularDelta, false);
 
-  // Move the light source position for dynamic visualization.
+  // Move the light source position for animation
   lightSourcePosition += 0.01;
 
   // Display label with relevant information.
   drawLabel(8, 46, "Radiant Reverberations", "Number of samples: ", nSamples, LEFT);
 }
 
-// Visualize irradiance samples on a hemisphere.
+// Function to draw samples on a hemisphere
 function visualizeIrradianceSamples(hemisphereCenterY, sphereRadius, sampleAngularDelta, isUpper) {
   noStroke();
   fill(0);
