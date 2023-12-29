@@ -86,8 +86,8 @@ function displayInfo(x, y, title, label, value, align = CENTER) {
 
   // Font size title 19 if screen width is less than 600px, otherwise 24
   const titleFontSize = width < 600 ? 19 : 24;
-  // Font size label 15 if screen width is less than 600px, otherwise 20
-  const labelValueFontSize = width < 600 ? 15 : 20;
+  // Font size label 17 if screen width is less than 600px, otherwise 22
+  const labelValueFontSize = width < 600 ? 17 : 22;
 
   // Set up the title of work
   textStyle(BOLD);
