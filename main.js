@@ -63,7 +63,7 @@ function renderHemisphereSamples(hemisphereCenterY, sphereRadius, sampleAngularD
       const sampleX = rotatedX * sphereRadius + width / 2;
       const sampleY = hemisphereCenterY + direction * (z - rotatedY * 0.25) * sphereRadius;
 
-      // Render sample point
+      // Draw the sample point
       circle(sampleX, sampleY, 2);
       nSamples++; // Increment nSamples for each rendered sample
     }
