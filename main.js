@@ -106,7 +106,7 @@ function displayInfo(x, y, title, label, value, align = CENTER) {
   y += verticalSpace;
 
   // Set up the static label
-  textStyle(NORMAL);
+  textStyle(BOLD);
   fill('#01af52');
   textFont("monospace");
   textSize(labelValueFontSize);
