@@ -37,7 +37,7 @@ function draw() {
   // Move the light source position for animation
   lightSourcePosition += 0.004;
 
-  // Display label with information
+  // Display label with title and sample count
   displayInfo(8, 46, "Radiant Reverberations", "Number of samples: ", nUpperSamples + nLowerSamples, LEFT);
 }
 
