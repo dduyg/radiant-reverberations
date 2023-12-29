@@ -1,4 +1,4 @@
-// Set up the canvas for the irradiance sampling display
+// Set up canvas for the irradiance sampling display
 function setup() {
   const cnv = createCanvas(windowWidth, windowHeight);
   cnv.id('p5-canvas');
