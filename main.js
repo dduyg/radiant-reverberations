@@ -34,7 +34,7 @@ function draw() {
   // Rendering samples on lower hemisphere
   let nLowerSamples = renderHemisphereSamples(lowerHemisphereCenterY, sphereRadius, sampleAngularDelta, -1);
 
-  // Move the light source position for animation
+  // Move light source position for stimulation
   lightSourcePosition += 0.004;
 
   // Display label with title and sample count
@@ -60,7 +60,7 @@ function renderHemisphereSamples(hemisphereCenterY, sphereRadius, sampleAngularD
       const rotatedY = sin(lightSourcePosition) * x + cos(lightSourcePosition) * y;
 
       // Calculate final sample position on the canvas
-      const sampleX = rotatedX * sphereRadius + width / 2; // Using width/2 for simplicity
+      const sampleX = rotatedX * sphereRadius + width / 2;
       const sampleY = hemisphereCenterY + direction * (z - rotatedY * 0.25) * sphereRadius;
 
       // Render sample point
