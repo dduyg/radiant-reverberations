@@ -38,7 +38,7 @@ function draw() {
   lightSourcePosition += 0.01;
 
   // Display information label
-  drawLabel(8, 46, "Radiant Reverberations", "Number of samples: ", nUpperSamples + nLowerSamples, LEFT);
+  displayInfo(8, 46, "Radiant Reverberations", "Number of samples: ", nUpperSamples + nLowerSamples, LEFT);
 }
 
 // Function to render samples on a hemisphere and return the total number of samples
@@ -72,9 +72,8 @@ function renderHemisphereSamples(hemisphereCenterY, sphereRadius, sampleAngularD
   return nSamples; // Return the total number of samples for this hemisphere
 }
 
-// Set labels with specified styling, position, and alignment
-/////////////////////////////////////////////////////////////
-function drawLabel(x, y, title, label, value, align = CENTER) {
+// Function to display information label
+function displayInfo(x, y, title, label, value, align = CENTER) {
   push();
   strokeWeight(0);
   textAlign(align);
