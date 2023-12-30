@@ -91,7 +91,7 @@ function displayInfo(x, y, title, label, value, align = CENTER) {
   // Font size label 17 if screen width is less than 600px, otherwise 22
   const labelValueFontSize = width < 600 ? 17 : 22;
 
-  // Set the title of work
+  // Set up the title of work
   textStyle(BOLD);
   fill('#01af52');
   textFont("Space Mono");
@@ -107,14 +107,14 @@ function displayInfo(x, y, title, label, value, align = CENTER) {
   const verticalSpace = titleFontSize * 0.2;
   y += verticalSpace;
 
-  // Set the static label
+  // Set up the static label
   textStyle(NORMAL);
   fill('#01af52');
   textFont("monospace");
   textSize(labelValueFontSize);
   text(`${label} `, x, y + 70);
 
-  // Set the dynamic value of label; currently set to black
+  // Set up the dynamic value of label; currently set to black
   fill(0);
   text(value, x + textWidth(label), y + 70);
 
