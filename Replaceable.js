@@ -1,3 +1,5 @@
+// Set up canvas for the irradiance sampling display
+
 // Creating the visual with draw()
 //////////////////////////////////
 function draw()
