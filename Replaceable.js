@@ -9,9 +9,8 @@ function draw()
     for (let theta = 0.0; theta < 0.5 * PI; theta += sampleAngularDelta) {
       // Derive 3D coordinates from spherical angles for incoming light directions
       const x = sin(theta) * cos(phi);
-      const y = sin(theta) * sin(phi);
-      const z = cos(theta);
-////////////////_/_//_/_;
+      ;
+////////////////;
 
   // Looping through angular coordinates for sampling
   for (let azimuthalAngle = 0.0; azimuthalAngle < 2.0 * PI; azimuthalAngle += sampleAngularDelta) {
@@ -26,8 +25,6 @@ function draw()
 ////
  // Iterate through azimuthal and polar angles to sample points on the hemisphere
   for (let
-      // Calculate final sample position on the canvas
-      const sampleX = rotatedX * sphereRadius + width / 2;
-      
+          
       // Draw a small circle at the sample position
       circle(sampleX, 
