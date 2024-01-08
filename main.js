@@ -56,7 +56,7 @@ function renderHemisphereSamples(hemisphereCenterY, sphereRadius, sampleAngularD
       const y = sin(polarAngle) * sin(azimuthalAngle);
       const z = cos(polarAngle);
 
-      // Rotate sample coordinates based on the light source position
+      // Rotating sample coordinates based on the light source position
       const rotatedX = cos(lightSourcePosition) * x - sin(lightSourcePosition) * y;
       const rotatedY = sin(lightSourcePosition) * x + cos(lightSourcePosition) * y;
 
