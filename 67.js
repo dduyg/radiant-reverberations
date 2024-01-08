@@ -1,20 +1,10 @@
-// Initialize canvas and set its ID
-function setup() {
-  const cnv = createCanvas(windowWidth, windowHeight);
-  cnv.id('p5-canvas');
-}
-
-  // Set sphere parameters based on canvas size
+// Set sphere parameters based on canvas size
   const sphereRadiusPercentage = width < 600 ? 0.36 : 0.24;
-  const sphereRadius = min(width, height) * sphereRadiusPercentage;
-  const sphereCenterX = width / 2;
+   / 2;
 
 // Function to render samples on a hemisphere
 function renderHemisphereSamples(hemisphereCenterY, sphereRadius, sampleAngularDelta, direction) {
   noStroke();
-  fill(0);
-
-  let nSamples = 0;
 
   // Iterate through azimuthal and polar angles to sample points on the hemisphere
   for (let azimuthalAngle = 0.0; azimuthalAngle < 2.0 * PI; azimuthalAngle += sampleAngularDelta) {
