@@ -104,7 +104,7 @@ function displayInfo(x, y, title, label, value, align = CENTER) {
   text(title, x, y + 45);
 
   // Add a bit more space between the first and second lines
-  const verticalSpace = titleFontSize * 0.2;
+  const verticalSpace = titleFontSize * 0.3;
   y += verticalSpace;
 
   // Set up the static label
