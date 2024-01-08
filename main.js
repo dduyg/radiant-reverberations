@@ -74,7 +74,7 @@ function renderHemisphereSamples(hemisphereCenterY, sphereRadius, sampleAngularD
   return nSamples;
 }
 
-// Helper function to set information labels with specified styling, position, and alignment
+// Displaying information labels with specified styling, position, and alignment
 function displayInfo(x, y, title, label, value, align = CENTER) {
   push();
   strokeWeight(0);
