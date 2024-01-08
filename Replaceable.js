@@ -22,3 +22,12 @@ function draw()
 
 // Mapping coordinates to screen space
       const sampleX = rotatedX
+
+////
+ // Iterate through azimuthal and polar angles to sample points on the hemisphere
+  for (let
+      // Calculate final sample position on the canvas
+      const sampleX = rotatedX * sphereRadius + width / 2;
+      
+      // Draw a small circle at the sample position
+      circle(sampleX, 
