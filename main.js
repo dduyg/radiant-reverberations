@@ -5,7 +5,7 @@ function setup() {
 }
 
 // Define parameters for sampling and light source
-let frameModifier = 200; // Controls frame variation
+let frameModifier = 200; // Controls frame variation speed
 let sampleDensityModifier = 40; // Controls sample density
 let upperHemisphereVerticalAdjustment = 0.95; // Adjusts upper hemisphere position
 let lowerHemisphereVerticalAdjustment = 1.5; // Adjusts lower hemisphere position
