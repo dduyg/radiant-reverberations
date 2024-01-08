@@ -1,4 +1,3 @@
-
 // Creating the visual with draw()
 //////////////////////////////////
 function draw()
@@ -22,7 +21,4 @@ function draw()
     for (let polarAngle = 0.0; polarAngle < 0.5 * PI; polarAngle += sampleAngularDelta) {
       //
       );// Loop through azimuthal and polar angles to sample points on the hemisphere
-      
-      // Mapping coordinates to screen space
-      const sampleX = rotatedX * sphereRadius + width / 2;
-      const sampleY = hemisphereCenterY + direction * (z - rotatedY * 0.25) * sphereRadius;
+/// Iterate through the entire spherical surface to cover with samples
