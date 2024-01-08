@@ -1,7 +1,3 @@
-// Frame count modifier (controls the variation speed)
-let frameModifier = 200;
-// Sample density modifier (affects the number of samples)
-let sampleDensityModifier = 40;
 
 // Creating the visual with draw()
 //////////////////////////////////
