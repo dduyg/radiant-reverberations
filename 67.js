@@ -4,40 +4,10 @@ function setup() {
   cnv.id('p5-canvas');
 }
 
-// Parameters influencing the simulation
-let frameVariation = 200; // Rename from frameModifier for clarity
-let sampleDensityModifier = 40;
-let upperHemisphereVerticalAdjustment = 0.95;
-let lowerHemisphereVerticalAdjustment = 1.5;
-let lightSourcePosition = 0.0;
-
-// Main draw function
-function draw() {
-  clear();
-
-  // Calculate the number of samples per frame based on variations
-  const samplesPerFrame = pow(2, floor((frameCount % frameVariation) / sampleDensityModifier)) * 9;
-  const sampleAngularDelta = PI / samplesPerFrame;
-
   // Set sphere parameters based on canvas size
   const sphereRadiusPercentage = width < 600 ? 0.36 : 0.24;
   const sphereRadius = min(width, height) * sphereRadiusPercentage;
   const sphereCenterX = width / 2;
-
-  // Calculate center positions for upper and lower hemispheres
-  const upperHemisphereCenterY = height / 2 - sphereRadius * upperHemisphereVerticalAdjustment;
-  const lowerHemisphereCenterY = height / 2 + sphereRadius * lowerHemisphereVerticalAdjustment;
-
-  // Render samples for upper and lower hemispheres
-  let nUpperSamples = renderHemisphereSamples(upperHemisphereCenterY, sphereRadius, sampleAngularDelta, 1);
-  let nLowerSamples = renderHemisphereSamples(lowerHemisphereCenterY, sphereRadius, sampleAngularDelta, -1);
-
-  // Update light source position for animation
-  lightSourcePosition += 0.002;
-
-  // Display project information
-  displayInfo(8, 46, "Radiant Reverberations", "Number of samples: ", nUpperSamples + nLowerSamples, LEFT);
-}
 
 // Function to render samples on a hemisphere
 function renderHemisphereSamples(hemisphereCenterY, sphereRadius, sampleAngularDelta, direction) {
