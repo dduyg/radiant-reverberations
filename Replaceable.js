@@ -17,4 +17,7 @@ function draw()
   for (let
           
       // Draw a small circle at the sample position
-      circle(sampleX, 
+      circle(sampleX,
+
+// Function to render samples on a hemisphere function 
+  renderHemisphereSamples(hemisphereCenterY, sphereRadius, sampleAngularDelta, direction) { noStroke()
