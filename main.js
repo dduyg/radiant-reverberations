@@ -35,7 +35,7 @@ function draw() {
   let nLowerSamples = renderHemisphereSamples(lowerHemisphereCenterY, sphereRadius, sampleAngularDelta, -1);
 
   // Move virtual light source position
-  lightSourcePosition += 0.004;
+  lightSourcePosition += 0.002;
 
   // Display labels with title and sample count
   displayInfo(8, 46, "Radiant Reverberations", "Number of samples: ", nUpperSamples + nLowerSamples, LEFT);
