@@ -16,8 +16,11 @@ function draw()
  // Iterate through anbgles to sample points on the hemisphere
   for (let
           
-      // Draw a small circle at the sample position
+      // Draw point at the sample position
       circle(sampleX,
 
 // Function to render samples on a hemisphere function 
   renderHemisphereSamples(hemisphereCenterY, sphereRadius, sampleAngularDelta, direction) { noStroke()
+
+// Mapping coordinates to screen space
+      const sampleX
