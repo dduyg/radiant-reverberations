@@ -7,7 +7,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="mobile-web-app-capable" content="yes">   
   <title>Radiant Reverberations by Duygu</title>
-  <link rel="shortcut icon" type="image/x-icon" href="https://cdn.glitch.global/1842aad0-fe02-435b-b7ab-83ee4ebb2d50/favicon.ico?v=1710096541703">
+  <link rel="shortcut icon" type="image/x-icon" href="favicon.ico">
   <link href="https://fonts.googleapis.com/css2?family=Major+Mono+Display&family=Schibsted+Grotesk&family=Space+Mono&display=swap" rel="stylesheet">
   <style>
     body { 
@@ -124,18 +124,22 @@
     }
     #infoDropdown::-webkit-scrollbar-thumb,
     #infoDropdown::-webkit-scrollbar-thumb:hover {
-      background: url('https://cdn.glitch.global/1842aad0-fe02-435b-b7ab-83ee4ebb2d50/scroll.png?v=1727177336946') no-repeat center center;
+      background-image: url("data:image/svg+xml;utf8,<svg version='1.0' xmlns='http://www.w3.org/2000/svg' width='300pt' height='528pt' viewBox='0 0 300 528' preserveAspectRatio='xMidYMid meet'><g transform='translate(0,528) scale(0.1,-0.1)' fill='%23FFFFEA' stroke='none'><path d='M445 5201 c-167 -48 -290 -161 -362 -331 l-28 -65 0 -2160 0 -2160 22 -59 c69 -182 177 -285 367 -349 60 -21 77 -21 1266 -25 663 -2 1224 0 1248 3 l42 6 0 2580 0 2579 -1247 -1 c-1156 0 -1252 -2 -1308 -18z m1148 -946 c23 -11 187 -169 439 -424 450 -456 456 -464 444 -572 -3 -33 -15 -77 -26 -98 -22 -44 -90 -107 -137 -127 -49 -21 -146 -18 -193 6 -24 12 -162 144 -335 318 l-294 297 -103 -105 c-529 -542 -514 -530 -631 -530 -50 0 -72 6 -113 30 -90 51 -144 140 -144 234 1 85 33 124 449 547 217 220 408 407 425 416 70 37 153 40 219 8z m-719 -2035 c32 -16 126 -107 322 -311 153 -159 282 -290 288 -292 5 -2 140 129 300 291 165 167 308 303 331 315 60 32 166 30 220 -5 130 -84 178 -206 127 -320 -16 -37 -112 -141 -421 -455 -262 -266 -416 -416 -445 -431 -61 -33 -113 -38 -177 -17 -51 16 -80 44 -464 432 -435 440 -453 462 -454 554 -1 78 24 132 90 194 33 30 74 59 92 64 49 15 140 6 191 -19z'/></g></svg>");
       background-size: contain;
+      background-repeat: no-repeat;
+      background-position: center center;
     }
-    @-moz-document url-prefix() { /* Firefox scrollbar */
+    @-moz-document url-prefix() { /* Firefox support */  
       #infoDropdown {
-        scrollbar-color: transparent transparent;  
+        scrollbar-color: transparent transparent;
         scrollbar-width: thin;
       }
       #infoDropdown::-webkit-scrollbar-thumb {
-        background: url('https://cdn.glitch.global/1842aad0-fe02-435b-b7ab-83ee4ebb2d50/scroll.png?v=1727177336946') no-repeat center center;
+        background-image: url("data:image/svg+xml;utf8,<svg version='1.0' xmlns='http://www.w3.org/2000/svg' width='300pt' height='528pt' viewBox='0 0 300 528' preserveAspectRatio='xMidYMid meet'><g transform='translate(0,528) scale(0.1,-0.1)' fill='%23FFFFEA' stroke='none'><path d='M445 5201 c-167 -48 -290 -161 -362 -331 l-28 -65 0 -2160 0 -2160 22 -59 c69 -182 177 -285 367 -349 60 -21 77 -21 1266 -25 663 -2 1224 0 1248 3 l42 6 0 2580 0 2579 -1247 -1 c-1156 0 -1252 -2 -1308 -18z m1148 -946 c23 -11 187 -169 439 -424 450 -456 456 -464 444 -572 -3 -33 -15 -77 -26 -98 -22 -44 -90 -107 -137 -127 -49 -21 -146 -18 -193 6 -24 12 -162 144 -335 318 l-294 297 -103 -105 c-529 -542 -514 -530 -631 -530 -50 0 -72 6 -113 30 -90 51 -144 140 -144 234 1 85 33 124 449 547 217 220 408 407 425 416 70 37 153 40 219 8z m-719 -2035 c32 -16 126 -107 322 -311 153 -159 282 -290 288 -292 5 -2 140 129 300 291 165 167 308 303 331 315 60 32 166 30 220 -5 130 -84 178 -206 127 -320 -16 -37 -112 -141 -421 -455 -262 -266 -416 -416 -445 -431 -61 -33 -113 -38 -177 -17 -51 16 -80 44 -464 432 -435 440 -453 462 -454 554 -1 78 24 132 90 194 33 30 74 59 92 64 49 15 140 6 191 -19z'/></g></svg>");
         background-size: contain;
-      }
+        background-repeat: no-repeat;
+        background-position: center center;
+      }        
     }
 
      #credits {
@@ -185,7 +189,7 @@
     <p>The resulting simulation aims to demonstrate the concept of irradiance sampling in an interactive and simplified manner. Irradiance sampling is a technique used in computer graphics that mimics the realistic interaction of light with surfaces in virtual environments. It involves sampling points on a surface to approximate the amount of incoming light at each point. By realistically simulating the complex interplay of light on surfaces, this sophisticated technique allows us to achieve high-quality, lifelike computer-generated images close to the visual richness found in the real world.</p>
     <p class="callout">Learn more about the intricacies of <i>'Radiant Reverberations'</i> by exploring its technical details through a <a href="https://gist.github.com/dduyg/7c69ba0de5e40511b1f587a60412da6f">breakdown</a> with code snippets and an overview of the <a href="parameters.html">parameters</a> & their effects. The code combines mathematical calculations with p5.js for rendering the hemispheres.</p>
   </div>  
-  <div id="credits"><a href="https://glitch.com/@dduyg" target="_blank">/dduyg</a></div>  
+  <div id="credits"><a href="https://instagram.com/insert.data" target="_blank">/dduyg</a></div>  
 
   <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.6.0/p5.min.js" integrity="sha512-3RlxD1bW34eFKPwj9gUXEWtdSMC59QqIqHnD8O/NoTwSJhgxRizdcFVQhUMFyTp5RwLTDL0Lbcqtl8b7bFAzog==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
   <script src="./main.js"></script>
