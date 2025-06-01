@@ -1,0 +1,344 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="description" content="Using the p5.js library to visually explore irradiance sampling">
+  <meta name="author" content="Duygu Dağdelen">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="mobile-web-app-capable" content="yes">   
+  <title>Radiant Reverberations by Duygu</title>
+  <link rel="shortcut icon" type="image/x-icon" href="https://cdn.glitch.global/1842aad0-fe02-435b-b7ab-83ee4ebb2d50/favicon.ico?v=1710096541703">
+  <link href="https://fonts.googleapis.com/css2?family=Major+Mono+Display&family=Schibsted+Grotesk&family=Space+Mono&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron&family=Ubuntu:wght@700&display=swap" rel="stylesheet">
+  <style>
+        /* Setting responsive font-size */
+        body { font-size: clamp(1rem, 2vw + 1rem, 1.5rem); /* Responsive font size */ }
+        h1 { font-size: clamp(1.5rem, 3vw + 1rem, 3rem); /* Responsive h1 size */ }
+        h2 { font-size: clamp(1.25rem, 2.5vw + 0.75rem, 2.25rem); /* Responsive size for h2 */ }
+        h3 { font-size: clamp(1rem, 2vw + 0.5rem, 1.75rem); /* Responsive size for h3 */ }
+        p { font-size: clamp(0.9rem, 2vw + 0.5rem, 1.2rem); /* Responsive paragraph size */ }
+        @media (max-width: 600px) {
+          body { font-size: 0.9rem; /* Smaller for small screens */ }
+        }
+        @media (min-width: 601px) and (max-width: 1200px) {
+          body { font-size: 1.1rem; /* Medium for medium screens */ }
+        }
+        @media (min-width: 1201px) {
+          body { font-size: 1.25rem; /* Larger for large screens */ }
+        }
+        /**************************************/
+        
+        body {
+            background-color: #d1d6e6;
+            color: #01af52;
+            font-family: "Schibsted Grotesk", sans-serif;
+            margin: 0;
+            padding: 0;
+            line-height: 1.4;
+            outline: none;
+            -webkit-font-smoothing: antialiased;
+            -webkit-tap-highlight-color: transparent;
+        }
+        main {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 1.25em;      
+        }
+        h1 {
+            margin-top: 0;
+            padding-top: 0;
+            font-family: "Orbitron", sans-serif;
+        }
+        a {
+            color: inherit;
+            text-decoration: none;
+        }
+        header {
+            margin-top: 100px;
+            text-align: center !important;
+        }
+        nav {
+            position: absolute;
+            top: 3%;
+            left: 5%;
+            margin: 0;
+            padding: 0;
+            cursor: pointer;
+        }
+        nav a {
+            position: relative;
+            overflow: hidden;
+            text-decoration: none;
+            color: #403D39;
+            font-family: "Ubuntu", sans-serif;
+        }
+        nav a::after {
+            content: "";
+            background: rgba(1, 175, 82, 0.8);
+            position: absolute;
+            left: 12px;
+            bottom: -6px;
+            width: calc(100% - 8px);
+            height: calc(100% - 8px);
+            z-index: -1;
+            transition: 0.35s cubic-bezier(0.25, 0.1, 0, 2.05);
+        }
+        nav a:hover::after {
+            left: 0;
+            bottom: -2px;
+            width: 100%;
+            height: 100%;
+        }
+
+        details {
+            margin-bottom: 0.625em;
+            border: 0.0625em solid #01af52;
+            border-radius: 0.625em;
+            background: rgba(255, 255, 255, 0.1);
+            padding: 0.625em 0;
+            position: relative;
+            width: 90vw;
+            max-width: 800px !important;
+        }
+
+        summary {
+            cursor: pointer;
+            padding: 0.625em;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            list-style: none;
+            word-break: break-all;
+            max-width: 100%;
+            font-family: 'Space Mono', monospace;
+            font-size: 1.1em;
+        }
+    
+        summary::-webkit-details-marker {
+            display: none;
+        }
+
+        .arrow {
+            transition: transform 0.3s ease;
+            display: inline-block;
+            margin-left: 0.5em;
+            width: 24px;
+            height: 24px;
+            background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" fill="%2301af52" viewBox="0 0 24 24"><path d="M12 2a10 10 0 1 0 10 10A10.011 10.011 0 0 0 12 2zm0 18a8 8 0 1 1 8-8 8.009 8.009 0 0 1-8 8z"/><path d="M12 12.586 8.707 9.293l-1.414 1.414L12 15.414l4.707-4.707-1.414-1.414L12 12.586z"/></svg>');
+            background-size: contain;
+            background-repeat: no-repeat;
+        }
+
+        details[open] summary .parameter {
+            font-style: italic;
+            text-decoration: underline;
+        }
+
+        details[open] .arrow {
+            transform: rotate(180deg);
+        }
+
+        details[open] summary ~ * {
+            animation: slideDown 0.3s ease-in-out;
+        }
+        @keyframes slideDown {
+            from {
+                opacity: 0;
+                transform: translateY(-10px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        ul {
+          line-height: 1.4;
+          margin: 0.625em;
+        }
+        ul li {
+          padding: 0.625em 0;
+          margin-left: 0;
+        }
+        ul ul {
+          list-style-type: square;
+          margin: 0;
+        }
+
+        #credits {
+          position: absolute;
+          top: 3%;
+          right: 8%;
+          margin: 0;
+          padding: 0;
+          text-align: center;
+          color: #01af52;
+          font-family: 'Space Mono', monospace;
+          cursor: pointer;      
+        }
+        #credits a::before {
+          content: '';
+          display: inline-block;
+          position: relative;
+          transform-origin: center center;
+          top: -0.0325em;
+          height: 0.65em;
+          width: 0.65em;
+          background-color: #01af52;
+          color: #01af52;
+          border-radius: 100%;
+          margin-right: 0.35em;
+          animation: 1.5s rotate ease-in-out infinite;
+        }
+        @keyframes rotate {
+          0% { transform: rotateX(0deg); }
+          100% { transform: rotateX(360deg); }
+        }
+        nav, header, #credits {
+          -webkit-user-select: none;
+             -moz-user-select: none;
+              -ms-user-select: none;
+                  user-select: none;
+        }
+    </style>
+</head>
+<body>
+    <nav>
+      <a href="./">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" style="width: 16px; height: 16px;">
+          <g data-name="12-Arrow Left">
+            <path d="M25 0H7a7 7 0 0 0-7 7v18a7 7 0 0 0 7 7h18a7 7 0 0 0 7-7V7a7 7 0 0 0-7-7zm5 25a5 5 0 0 1-5 5H7a5 5 0 0 1-5-5V7a5 5 0 0 1 5-5h18a5 5 0 0 1 5 5z" fill="#403D39"/>
+            <path d="m13.71 9.71-1.42-1.42-7 7a1 1 0 0 0 0 1.41l7 7 1.41-1.41L8.41 17H27v-2H8.41z" fill="#0D0A06"/>
+          </g>
+        </svg>
+        <i>return</i>
+      </a>
+    </nav>
+    <main>
+        <header>
+          <div>Radiant Reverberations'</div>
+          <h1>&nbsp;&nbsp;&nbsp;&nbsp;Parameters</h1>
+        </header>
+        <details>
+            <summary>
+                <span class="parameter">frameModifier</span>
+                <span class="arrow"></span>
+            </summary>
+            <ul>
+              <li><strong>Effect on the irradiance sampling process:</strong> Influences how quickly the distribution of irradiance samples changes.</li>
+              <li><strong>Effect on the visual outcome:</strong> Controls the variation speed of the visual.</li>
+              <li>
+                <strong>Altering parameter:</strong>
+                <ul>
+                  <li>Increase: Speeds up the variation, making the visual more dynamic.</li>
+                  <li>Decrease: Slows down the variation, resulting in a more gradual change.</li>
+                </ul>
+              </li>
+            </ul>
+        </details>
+        <details>
+            <summary>
+                <span class="parameter">sampleDensityModifier</span>
+                <span class="arrow"></span>
+            </summary>
+            <ul>
+              <li><strong>Effect on the irradiance sampling process:</strong> Alters the density of samples, impacting the accuracy of the irradiance approximation.</li>
+              <li><strong>Effect on the visual outcome:</strong> Affects the number of samples in the visual pattern.</li>
+              <li>
+                <strong>Altering parameter:</strong>
+                <ul>
+                  <li>Increase: More samples, providing a more detailed representation.</li>
+                  <li>Decrease: Fewer samples, leading to a less detailed visual.</li>
+                </ul>
+              </li>  
+            </ul>
+        </details>
+        <details>
+            <summary>
+                <span class="parameter">upperHemisphereVerticalAdjustment</span>
+                <span class="arrow"></span>
+            </summary>
+            <ul>
+              <li><strong>Effect on the irradiance sampling process:</strong> Influences the starting position for sample distribution.</li>
+              <li><strong>Effect on the visual outcome:</strong> Adjusts the vertical position of the center of the upper hemisphere.</li>
+              <li>
+                <strong>Altering parameter:</strong>
+                <ul>
+                  <li>Increase: Raises the upper hemisphere, potentially concentrating samples in the upper region.</li>
+                  <li>Decrease: Lowers the upper hemisphere, shifting the focus of samples downward.</li>
+                </ul>
+              </li>        
+            </ul>
+        </details>
+        <details>
+            <summary>
+                <span class="parameter">lowerHemisphereVerticalAdjustment</span>
+                <span class="arrow"></span>
+            </summary>
+            <ul>
+              <li><strong>Effect on the irradiance sampling process:</strong> Impacts the starting position for sample distribution in the lower hemisphere.</li>
+              <li><strong>Effect on the visual outcome:</strong> Adjusts the vertical position of the center of the lower hemisphere.</li>
+              <li>
+                <strong>Altering parameter:</strong>
+                <ul>
+                  <li>Increase: Lowers the lower hemisphere, potentially concentrating samples in the lower region.</li>
+                  <li>Decrease: Raises the lower hemisphere, shifting the focus of samples upward.</li>
+                </ul>
+              </li>      
+            </ul>
+        </details>
+        <details>
+            <summary>
+                <span class="parameter">lightSourcePosition</span>
+                <span class="arrow"></span>
+            </summary>
+            <ul>
+              <li><strong>Effect on the irradiance sampling process:</strong> Simulates dynamic changes in lighting conditions.</li>
+              <li><strong>Effect on the visual outcome:</strong> Controls the rotation of incoming light directions.</li> 
+              <li>
+                <strong>Altering parameter:</strong>
+                <ul>
+                  <li>Increase: Rotates the light source faster, leading to quicker changes in illumination.</li>
+                  <li>Decrease: Slows down the rotation, resulting in a more gradual shift in lighting.</li>
+                </ul>
+              </li>      
+            </ul>
+        </details>
+        <details>
+            <summary>
+                <span class="parameter">sphereRadiusPercentage</span>
+                <span class="arrow"></span>
+            </summary>
+            <ul>
+              <li><strong>Effect on the irradiance sampling process:</strong> Influences the scale of the hemispheres, affecting the spatial distribution of samples.</li>
+              <li><strong>Effect on the visual outcome:</strong> Adjusts the size of the spheres based on screen width.</li> 
+              <li>
+                <strong>Altering parameter:</strong>
+                <ul>
+                  <li>Increase: Larger spheres, potentially spreading samples over a wider area.</li>
+                  <li>Decrease: Smaller spheres, potentially concentrating samples in a smaller region.</li>
+                </ul>
+              </li>      
+            </ul>
+        </details>
+    </main>
+    <div id="credits"><a href="https://glitch.com/@dduyg" target="_blank">/dduyg</a></div>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            const detailsElements = document.querySelectorAll("details");
+            detailsElements.forEach(details => {
+                details.addEventListener("toggle", function() {
+                    if (details.open) {
+                        detailsElements.forEach(otherDetails => {
+                            if (otherDetails !== details) {
+                                otherDetails.removeAttribute("open");
+                            }
+                        });
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+</html>
